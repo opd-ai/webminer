@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Validation Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <h1>🔍 WebMiner API Validation Test</h1>
+    <p>This test validates that all documented API methods are available and working correctly.</p>
+    
+    <div id="test-results"></div>
+    
+    <script src="../webminer.js"></script>
+    <script>
+        const results = document.getElementById('test-results');
+        
+        function addResult(message, status) {
+            const div = document.createElement('div');
+            div.className = `test-result ${status}`;
+            div.textContent = message;
+            results.appendChild(div);
+        }
+        
+        function runAPIValidationTests() {
+            addResult('🚀 Starting API validation tests...', 'info');
+            
+            // Test 1: WebMiner class availability
+            try {
+                const miner = new WebMiner({
+                    pool: 'wss://test.pool',
+                    wallet: 'test_wallet_address',
+                    throttle: 0.25
+                });
+                addResult('✅ WebMiner class instantiation: PASS', 'pass');
+            } catch (error) {
+                addResult('❌ WebMiner class instantiation: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 2: MiningConsent module availability
+            try {
+                if (typeof MiningConsent !== 'undefined' && MiningConsent.init) {
+                    addResult('✅ MiningConsent module: PASS', 'pass');
+                } else {
+                    addResult('❌ MiningConsent module: FAIL - Not available', 'fail');
+                }
+            } catch (error) {
+                addResult('❌ MiningConsent module: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 3: PerformanceMonitor module availability  
+            try {
+                if (typeof PerformanceMonitor !== 'undefined' && PerformanceMonitor.init) {
+                    addResult('✅ PerformanceMonitor module: PASS', 'pass');
+                } else {
+                    addResult('❌ PerformanceMonitor module: FAIL - Not available', 'fail');
+                }
+            } catch (error) {
+                addResult('❌ PerformanceMonitor module: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 4: MobileOptimizer module availability
+            try {
+                if (typeof MobileOptimizer !== 'undefined' && MobileOptimizer.init) {
+                    addResult('✅ MobileOptimizer module: PASS', 'pass');
+                } else {
+                    addResult('❌ MobileOptimizer module: FAIL - Not available', 'fail');
+                }
+            } catch (error) {
+                addResult('❌ MobileOptimizer module: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 5: WebMiner methods availability
+            try {
+                const miner = new WebMiner({ pool: 'test', wallet: 'test' });
+                const methods = ['start', 'stop', 'getStats', 'isMining', 'pauseMining', 'resumeMining', 'restartWorker'];
+                let methodsAvailable = 0;
+                
+                methods.forEach(method => {
+                    if (typeof miner[method] === 'function') {
+                        methodsAvailable++;
+                    }
+                });
+                
+                if (methodsAvailable === methods.length) {
+                    addResult(`✅ WebMiner methods (${methodsAvailable}/${methods.length}): PASS`, 'pass');
+                } else {
+                    addResult(`❌ WebMiner methods (${methodsAvailable}/${methods.length}): FAIL`, 'fail');
+                }
+            } catch (error) {
+                addResult('❌ WebMiner methods test: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 6: Configuration validation
+            try {
+                const config = {
+                    pool: 'wss://test.pool',
+                    wallet: 'test_wallet',
+                    throttle: 0.25,
+                    enablePerformanceMonitoring: true,
+                    enableMobileOptimizations: true,
+                    pauseWhenHidden: true
+                };
+                
+                const miner = new WebMiner(config);
+                
+                if (miner.config.throttle === 0.25 && 
+                    miner.config.enablePerformanceMonitoring === true) {
+                    addResult('✅ Configuration handling: PASS', 'pass');
+                } else {
+                    addResult('❌ Configuration handling: FAIL - Config not applied correctly', 'fail');
+                }
+            } catch (error) {
+                addResult('❌ Configuration test: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 7: Performance monitoring initialization
+            try {
+                PerformanceMonitor.init().then(() => {
+                    if (PerformanceMonitor.metrics && PerformanceMonitor.stats) {
+                        addResult('✅ PerformanceMonitor initialization: PASS', 'pass');
+                    } else {
+                        addResult('❌ PerformanceMonitor initialization: FAIL - Metrics not available', 'fail');
+                    }
+                }).catch(error => {
+                    addResult('❌ PerformanceMonitor initialization: FAIL - ' + error.message, 'fail');
+                });
+            } catch (error) {
+                addResult('❌ PerformanceMonitor initialization test: FAIL - ' + error.message, 'fail');
+            }
+            
+            // Test 8: Mobile optimizer initialization
+            try {
+                MobileOptimizer.init();
+                if (MobileOptimizer.capabilities) {
+                    addResult('✅ MobileOptimizer initialization: PASS', 'pass');
+                } else {
+                    addResult('❌ MobileOptimizer initialization: FAIL - Capabilities not detected', 'fail');
+                }
+            } catch (error) {
+                addResult('❌ MobileOptimizer initialization: FAIL - ' + error.message, 'fail');
+            }
+            
+            addResult('🏁 API validation tests completed!', 'info');
+            
+            // Test summary
+            const passCount = document.querySelectorAll('.pass').length;
+            const failCount = document.querySelectorAll('.fail').length;
+            addResult(`📊 Results: ${passCount} passed, ${failCount} failed`, passCount > failCount ? 'pass' : 'fail');
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(runAPIValidationTests, 100);
+        });
+    </script>
+</body>
+</html>

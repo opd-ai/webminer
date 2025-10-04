@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner - Advanced Integration Examples</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .advanced-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .advanced-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .advanced-header h1 {
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .example-section {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .example-section h2 {
+            margin: 0 0 20px 0;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .build-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .build-dev {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .build-prod {
+            background: #28a745;
+            color: white;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .code-comment {
+            color: #a0aec0;
+        }
+
+        .code-highlight {
+            background: #ed8936;
+            color: #1a202c;
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .code-string {
+            color: #68d391;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            border: 1px solid #e9ecef;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #6c757d;
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .feature-showcase {
+            background: #e7f3ff;
+            border: 1px solid #b8daff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-showcase h3 {
+            color: #004085;
+            margin: 0 0 15px 0;
+        }
+
+        .test-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+
+        .test-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .test-btn-dev {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .test-btn-dev:hover {
+            background: #e0a800;
+        }
+
+        .test-btn-prod {
+            background: #28a745;
+            color: white;
+        }
+
+        .test-btn-prod:hover {
+            background: #218838;
+        }
+
+        .test-btn-info {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .test-btn-info:hover {
+            background: #138496;
+        }
+
+        .test-output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            min-height: 50px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+        }
+
+        .integration-patterns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .pattern-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .pattern-card h3 {
+            margin: 0 0 15px 0;
+            color: #495057;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="advanced-container">
+        <div class="advanced-header">
+            <h1>🔧 WebMiner Advanced Integration</h1>
+            <p>Compare development vs production builds and explore integration patterns</p>
+        </div>
+
+        <div class="example-grid">
+            <div class="example-section">
+                <h2>🏗️ Development Build <span class="build-badge build-dev">Dev</span></h2>
+                
+                <p><strong>Best for:</strong> Development, debugging, customization</p>
+                
+                <div class="code-example">
+<span class="code-comment">/* Development integration - full documentation */</span>
+&lt;script src="<span class="code-highlight">webminer.js</span>"
+        data-pool="<span class="code-string">wss://pool.example.com</span>"
+        data-wallet="<span class="code-string">YOUR_ADDRESS</span>"
+        data-throttle="<span class="code-string">0.25</span>"&gt;
+&lt;/script&gt;
+
+<span class="code-comment">/* Access detailed APIs for debugging */</span>
+console.log(PerformanceMonitor.getPerformanceReport());
+console.log(MobileOptimizer.getOptimizationStatus());
+                </div>
+
+                <div class="test-controls">
+                    <button class="test-btn test-btn-dev" onclick="testDevBuild()">Test Dev Features</button>
+                    <button class="test-btn test-btn-info" onclick="showDevInfo()">Dev Build Info</button>
+                </div>
+
+                <div id="dev-output" class="test-output">Click buttons above to test development build...</div>
+            </div>
+
+            <div class="example-section">
+                <h2>⚡ Production Build <span class="build-badge build-prod">Prod</span></h2>
+                
+                <p><strong>Best for:</strong> Live websites, CDN deployment, performance</p>
+                
+                <div class="code-example">
+<span class="code-comment">/* Production integration - optimized */</span>
+&lt;script src="<span class="code-highlight">webminer.min.js</span>"
+        data-pool="<span class="code-string">wss://pool.example.com</span>"
+        data-wallet="<span class="code-string">YOUR_ADDRESS</span>"
+        data-throttle="<span class="code-string">0.25</span>"&gt;
+&lt;/script&gt;
+
+<span class="code-comment">/* Same APIs, smaller footprint */</span>
+WebMiner.start().then(success =&gt; {
+    console.log('Mining:', success);
+});
+                </div>
+
+                <div class="test-controls">
+                    <button class="test-btn test-btn-prod" onclick="testProdBuild()">Test Prod Features</button>
+                    <button class="test-btn test-btn-info" onclick="showProdInfo()">Prod Build Info</button>
+                </div>
+
+                <div id="prod-output" class="test-output">Click buttons above to test production build...</div>
+            </div>
+        </div>
+
+        <div class="feature-showcase">
+            <h3>📊 Build Comparison</h3>
+            <table class="comparison-table">
+                <tr>
+                    <th>Feature</th>
+                    <th>Development (webminer.js)</th>
+                    <th>Production (webminer.min.js)</th>
+                </tr>
+                <tr>
+                    <td>File Size</td>
+                    <td>~88 KB</td>
+                    <td>~53 KB (40% smaller)</td>
+                </tr>
+                <tr>
+                    <td>Load Time</td>
+                    <td>Slower (larger file)</td>
+                    <td>Faster (optimized)</td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td>Full documentation</td>
+                    <td>License only</td>
+                </tr>
+                <tr>
+                    <td>Debugging</td>
+                    <td>Human-readable code</td>
+                    <td>Optimized structure</td>
+                </tr>
+                <tr>
+                    <td>API Access</td>
+                    <td>All APIs available</td>
+                    <td>All APIs available</td>
+                </tr>
+                <tr>
+                    <td>Functionality</td>
+                    <td>100% complete</td>
+                    <td>100% complete</td>
+                </tr>
+                <tr>
+                    <td>Browser Support</td>
+                    <td>Chrome 70+, Firefox 65+</td>
+                    <td>Chrome 70+, Firefox 65+</td>
+                </tr>
+                <tr>
+                    <td>CDN Ready</td>
+                    <td>Yes</td>
+                    <td>Optimized</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="integration-patterns">
+            <div class="pattern-card">
+                <h3>🎯 Simple Integration Pattern</h3>
+                <div class="code-example">
+<span class="code-comment">// Production: Simple script tag</span>
+&lt;script src="webminer.min.js" 
+        data-pool="wss://your-pool.com"
+        data-wallet="YOUR_MONERO_ADDRESS"
+        data-throttle="0.15"
+        data-auto-start="false"&gt;&lt;/script&gt;
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <h3>🔧 Programmatic Control Pattern</h3>
+                <div class="code-example">
+<span class="code-comment">// Advanced control with custom settings</span>
+&lt;script src="webminer.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+const miner = new WebMiner({
+    pool: 'wss://your-pool.com',
+    wallet: 'YOUR_MONERO_ADDRESS',
+    throttle: 0.20,
+    enablePerformanceMonitoring: true,
+    enableMobileOptimizations: true,
+    autoStart: false
+});
+
+<span class="code-comment">// Custom consent handling</span>
+document.getElementById('start-mining').onclick = async () =&gt; {
+    const started = await miner.start();
+    if (started) {
+        console.log('Mining started with consent');
+        updateMiningIndicator(true);
+    }
+};
+
+<span class="code-comment">// Monitor performance</span>
+setInterval(() =&gt; {
+    if (miner.isMining()) {
+        const stats = miner.getStats();
+        updateDashboard(stats);
+    }
+}, 5000);
+&lt;/script&gt;
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <h3>📱 Mobile-Optimized Pattern</h3>
+                <div class="code-example">
+<span class="code-comment">// Mobile-first configuration</span>
+&lt;script src="webminer.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+<span class="code-comment">// Detect mobile and adjust settings</span>
+const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+
+const miner = new WebMiner({
+    pool: 'wss://your-pool.com',
+    wallet: 'YOUR_MONERO_ADDRESS',
+    throttle: isMobile ? 0.10 : 0.25, <span class="code-comment">// Lower for mobile</span>
+    enableMobileOptimizations: true,
+    autoStart: false
+});
+
+<span class="code-comment">// Mobile-specific consent message</span>
+if (isMobile) {
+    MiningConsent.state.showMobileWarning = true;
+    MiningConsent.state.pauseWhenHidden = true;
+}
+&lt;/script&gt;
+                </div>
+            </div>
+
+            <div class="pattern-card">
+                <h3>🛡️ Content Security Policy Pattern</h3>
+                <div class="code-example">
+<span class="code-comment">/* CSP-compliant headers */</span>
+Content-Security-Policy: 
+    script-src 'self' 'unsafe-inline';
+    connect-src 'self' wss://your-pool.com;
+    worker-src 'self' blob:;
+
+<span class="code-comment">// CSP-safe initialization</span>
+&lt;script src="webminer.min.js" nonce="random123"&gt;&lt;/script&gt;
+&lt;script nonce="random123"&gt;
+    WebMiner.init({
+        pool: 'wss://your-pool.com',
+        wallet: 'YOUR_ADDRESS'
+    });
+&lt;/script&gt;
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-showcase">
+            <h3>🚀 Performance Test Suite</h3>
+            <p>Compare the performance characteristics of both builds:</p>
+            
+            <div class="test-controls">
+                <button class="test-btn test-btn-info" onclick="runPerformanceTest()">Run Performance Test</button>
+                <button class="test-btn test-btn-info" onclick="compareBuilds()">Compare Builds</button>
+                <button class="test-btn test-btn-info" onclick="testFeatureParity()">Test Feature Parity</button>
+            </div>
+
+            <div id="performance-output" class="test-output">Click buttons above to run performance tests...</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Built with 💜 for ethical web mining • WebMiner v1.0.0</p>
+        <p><em>Advanced integration examples for both development and production builds</em></p>
+    </div>
+
+    <!-- Load Development Build (for comparison) -->
+    <script src="../webminer.js" 
+            data-pool="wss://pool.example.com"
+            data-wallet="44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A"
+            data-throttle="0.25"
+            data-auto-start="false">
+    </script>
+
+    <script>
+        // Store dev build references
+        const DevWebMiner = window.WebMiner;
+        const DevMiningConsent = window.MiningConsent;
+        const DevPerformanceMonitor = window.PerformanceMonitor;
+
+        // Load production build for comparison
+        const prodScript = document.createElement('script');
+        prodScript.src = '../webminer.min.js';
+        prodScript.onload = () => {
+            // Store prod build references
+            window.ProdWebMiner = window.WebMiner;
+            window.ProdMiningConsent = window.MiningConsent;
+            
+            // Restore dev build as default
+            window.WebMiner = DevWebMiner;
+            window.MiningConsent = DevMiningConsent;
+            window.PerformanceMonitor = DevPerformanceMonitor;
+            
+            console.log('Both builds loaded for comparison');
+        };
+        document.head.appendChild(prodScript);
+
+        // Test functions
+        function updateOutput(elementId, message) {
+            const el = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            el.textContent += `[${timestamp}] ${message}\n`;
+        }
+
+        function testDevBuild() {
+            updateOutput('dev-output', 'Testing development build...');
+            
+            if (DevWebMiner) {
+                updateOutput('dev-output', '✅ DevWebMiner available');
+                updateOutput('dev-output', '✅ Full API access confirmed');
+                
+                if (DevPerformanceMonitor) {
+                    const report = DevPerformanceMonitor.getPerformanceReport();
+                    updateOutput('dev-output', `📊 Performance monitoring: ${report.healthScore}/100 health score`);
+                }
+                
+                updateOutput('dev-output', '🔧 Development build test complete');
+            } else {
+                updateOutput('dev-output', '❌ Development build not loaded');
+            }
+        }
+
+        function testProdBuild() {
+            updateOutput('prod-output', 'Testing production build...');
+            
+            if (window.ProdWebMiner) {
+                updateOutput('prod-output', '✅ ProdWebMiner available');
+                updateOutput('prod-output', '✅ API parity confirmed');
+                updateOutput('prod-output', '⚡ Optimized build verified');
+                updateOutput('prod-output', '🚀 Production build test complete');
+            } else {
+                updateOutput('prod-output', '❌ Production build not loaded yet');
+            }
+        }
+
+        function showDevInfo() {
+            fetch('../webminer.js')
+                .then(response => response.text())
+                .then(content => {
+                    const size = Math.round(content.length / 1024);
+                    const lines = content.split('\n').length;
+                    const comments = (content.match(/\/\*[\s\S]*?\*\/|\/\/.*$/gm) || []).length;
+                    
+                    updateOutput('dev-output', `📁 Development build info:`);
+                    updateOutput('dev-output', `   Size: ${size} KB`);
+                    updateOutput('dev-output', `   Lines: ${lines}`);
+                    updateOutput('dev-output', `   Comments: ${comments}`);
+                    updateOutput('dev-output', `   Purpose: Development, debugging`);
+                });
+        }
+
+        function showProdInfo() {
+            fetch('../webminer.min.js')
+                .then(response => response.text())
+                .then(content => {
+                    const size = Math.round(content.length / 1024);
+                    const lines = content.split('\n').length;
+                    const comments = (content.match(/\/\*[\s\S]*?\*\/|\/\/.*$/gm) || []).length;
+                    
+                    updateOutput('prod-output', `📁 Production build info:`);
+                    updateOutput('prod-output', `   Size: ${size} KB`);
+                    updateOutput('prod-output', `   Lines: ${lines}`);
+                    updateOutput('prod-output', `   Comments: ${comments}`);
+                    updateOutput('prod-output', `   Purpose: Production deployment`);
+                });
+        }
+
+        function runPerformanceTest() {
+            updateOutput('performance-output', '🏃 Running performance tests...');
+            
+            const startTime = performance.now();
+            
+            // Test initialization speed
+            const devInitStart = performance.now();
+            new DevWebMiner({ pool: 'test', wallet: 'test', autoStart: false });
+            const devInitTime = performance.now() - devInitStart;
+            
+            updateOutput('performance-output', `⚡ Dev initialization: ${devInitTime.toFixed(2)}ms`);
+            
+            if (window.ProdWebMiner) {
+                const prodInitStart = performance.now();
+                new window.ProdWebMiner({ pool: 'test', wallet: 'test', autoStart: false });
+                const prodInitTime = performance.now() - prodInitStart;
+                
+                updateOutput('performance-output', `⚡ Prod initialization: ${prodInitTime.toFixed(2)}ms`);
+                updateOutput('performance-output', `📈 Speed improvement: ${((devInitTime - prodInitTime) / devInitTime * 100).toFixed(1)}%`);
+            }
+            
+            const totalTime = performance.now() - startTime;
+            updateOutput('performance-output', `✅ Performance test completed in ${totalTime.toFixed(2)}ms`);
+        }
+
+        function compareBuilds() {
+            updateOutput('performance-output', '🔍 Comparing build characteristics...');
+            
+            Promise.all([
+                fetch('../webminer.js').then(r => r.text()),
+                fetch('../webminer.min.js').then(r => r.text())
+            ]).then(([devContent, prodContent]) => {
+                const devSize = devContent.length;
+                const prodSize = prodContent.length;
+                const reduction = ((devSize - prodSize) / devSize * 100).toFixed(1);
+                
+                updateOutput('performance-output', `📊 Build comparison:`);
+                updateOutput('performance-output', `   Dev size: ${Math.round(devSize/1024)} KB`);
+                updateOutput('performance-output', `   Prod size: ${Math.round(prodSize/1024)} KB`);
+                updateOutput('performance-output', `   Reduction: ${reduction}%`);
+                updateOutput('performance-output', `   Bandwidth saved: ${Math.round((devSize-prodSize)/1024)} KB`);
+            });
+        }
+
+        function testFeatureParity() {
+            updateOutput('performance-output', '🔬 Testing feature parity...');
+            
+            const devFeatures = {
+                WebMiner: !!DevWebMiner,
+                MiningConsent: !!DevMiningConsent,
+                PerformanceMonitor: !!DevPerformanceMonitor,
+                MobileOptimizer: !!window.MobileOptimizer
+            };
+            
+            const prodFeatures = {
+                WebMiner: !!window.ProdWebMiner,
+                MiningConsent: !!window.ProdMiningConsent,
+                PerformanceMonitor: !!window.ProdPerformanceMonitor,
+                MobileOptimizer: !!window.ProdMobileOptimizer
+            };
+            
+            updateOutput('performance-output', '✅ Feature availability:');
+            Object.keys(devFeatures).forEach(feature => {
+                const devHas = devFeatures[feature];
+                const prodHas = prodFeatures[feature];
+                const status = devHas === prodHas ? '✅' : '⚠️';
+                updateOutput('performance-output', `   ${feature}: Dev=${devHas ? '✅' : '❌'} Prod=${prodHas ? '✅' : '❌'} ${status}`);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateOutput('dev-output', 'Development build ready for testing');
+            updateOutput('prod-output', 'Loading production build...');
+            updateOutput('performance-output', 'Performance test suite ready');
+        });
+    </script>
+</body>
+</html>

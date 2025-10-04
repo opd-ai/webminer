@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner Method Verification</title>
+    <style>
+        body {
+            font-family: monospace;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .pass {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        .fail {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        #results {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 WebMiner Method Verification</h1>
+    <p>This page tests if all required optimization methods are properly implemented.</p>
+    
+    <div id="results">
+        <p>Loading and testing methods...</p>
+    </div>
+
+    <script src="../webminer.js"></script>
+    <script>
+        function addResult(message, isPass) {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `test-result ${isPass ? 'pass' : 'fail'}`;
+            div.textContent = (isPass ? '✅ ' : '❌ ') + message;
+            results.appendChild(div);
+        }
+
+        function runTests() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>🔍 Testing WebMiner Optimization Methods</h2>';
+
+            // Test PerformanceMonitor
+            addResult('Testing PerformanceMonitor module...', true);
+            
+            if (typeof PerformanceMonitor !== 'undefined') {
+                addResult('PerformanceMonitor module exists', true);
+                
+                // Test required methods
+                const perfMethods = ['startMonitoring', 'stopMonitoring', 'getRecommendedThrottle', 'getPerformanceReport'];
+                perfMethods.forEach(method => {
+                    if (typeof PerformanceMonitor[method] === 'function') {
+                        addResult(`PerformanceMonitor.${method} method exists`, true);
+                    } else {
+                        addResult(`PerformanceMonitor.${method} method missing`, false);
+                    }
+                });
+                
+                // Test getRecommendedThrottle functionality
+                try {
+                    const throttle = PerformanceMonitor.getRecommendedThrottle();
+                    if (typeof throttle === 'number' && throttle >= 0 && throttle <= 1) {
+                        addResult(`getRecommendedThrottle returns valid value: ${(throttle * 100).toFixed(1)}%`, true);
+                    } else {
+                        addResult(`getRecommendedThrottle returns invalid value: ${throttle}`, false);
+                    }
+                } catch (error) {
+                    addResult(`getRecommendedThrottle throws error: ${error.message}`, false);
+                }
+                
+                // Test getPerformanceReport functionality
+                try {
+                    const report = PerformanceMonitor.getPerformanceReport();
+                    if (report && typeof report === 'object') {
+                        addResult('getPerformanceReport returns valid object', true);
+                        if (report.deviceCapabilities) {
+                            addResult('Report includes device capabilities', true);
+                        }
+                        if (typeof report.healthScore === 'number') {
+                            addResult(`Report includes health score: ${report.healthScore}`, true);
+                        }
+                    } else {
+                        addResult('getPerformanceReport returns invalid object', false);
+                    }
+                } catch (error) {
+                    addResult(`getPerformanceReport throws error: ${error.message}`, false);
+                }
+            } else {
+                addResult('PerformanceMonitor module not found', false);
+            }
+
+            // Test MobileOptimizer
+            addResult('Testing MobileOptimizer module...', true);
+            
+            if (typeof MobileOptimizer !== 'undefined') {
+                addResult('MobileOptimizer module exists', true);
+                
+                // Test required methods
+                const mobileMethods = ['init', 'getOptimizationStatus'];
+                mobileMethods.forEach(method => {
+                    if (typeof MobileOptimizer[method] === 'function') {
+                        addResult(`MobileOptimizer.${method} method exists`, true);
+                    } else {
+                        addResult(`MobileOptimizer.${method} method missing`, false);
+                    }
+                });
+                
+                // Test getOptimizationStatus functionality
+                try {
+                    const status = MobileOptimizer.getOptimizationStatus();
+                    if (status && typeof status === 'object') {
+                        addResult('getOptimizationStatus returns valid object', true);
+                        if (status.capabilities) {
+                            addResult('Status includes capabilities', true);
+                        }
+                        if (status.optimizations) {
+                            addResult('Status includes optimizations', true);
+                        }
+                    } else {
+                        addResult('getOptimizationStatus returns invalid object', false);
+                    }
+                } catch (error) {
+                    addResult(`getOptimizationStatus throws error: ${error.message}`, false);
+                }
+            } else {
+                addResult('MobileOptimizer module not found', false);
+            }
+
+            // Test WebMiner class
+            addResult('Testing WebMiner class...', true);
+            
+            if (typeof WebMiner !== 'undefined') {
+                addResult('WebMiner class exists', true);
+                
+                try {
+                    const miner = new WebMiner();
+                    addResult('WebMiner instance created successfully', true);
+                } catch (error) {
+                    addResult(`WebMiner instantiation failed: ${error.message}`, false);
+                }
+            } else {
+                addResult('WebMiner class not found', false);
+            }
+
+            // Test MiningConsent
+            addResult('Testing MiningConsent module...', true);
+            
+            if (typeof MiningConsent !== 'undefined') {
+                addResult('MiningConsent module exists', true);
+            } else {
+                addResult('MiningConsent module not found', false);
+            }
+
+            addResult('All method verification tests completed!', true);
+        }
+
+        // Run tests when page loads
+        window.addEventListener('load', () => {
+            setTimeout(runTests, 100); // Small delay to ensure everything is loaded
+        });
+    </script>
+</body>
+</html>

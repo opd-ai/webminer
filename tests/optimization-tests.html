@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner Optimization Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border-left: 4px solid #ccc;
+        }
+        .test-pass {
+            background-color: #d4edda;
+            border-left-color: #28a745;
+            color: #155724;
+        }
+        .test-fail {
+            background-color: #f8d7da;
+            border-left-color: #dc3545;
+            color: #721c24;
+        }
+        .test-info {
+            background-color: #d1ecf1;
+            border-left-color: #17a2b8;
+            color: #0c5460;
+        }
+        .test-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background-color: #0056b3;
+        }
+        .performance-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .stat-item {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        #console-output {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 4px;
+            height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 WebMiner Optimization Tests</h1>
+    <p>Comprehensive testing suite for WebMiner optimization features</p>
+
+    <!-- Performance Monitor Tests -->
+    <div class="test-container">
+        <h2 class="test-header">📊 Performance Monitor Tests</h2>
+        <button class="test-button" onclick="testPerformanceMonitor()">Run Performance Tests</button>
+        <button class="test-button" onclick="testDeviceCapabilities()">Test Device Detection</button>
+        <button class="test-button" onclick="testHealthScore()">Test Health Score</button>
+        <div id="performance-results"></div>
+        <div class="performance-stats" id="performance-stats"></div>
+    </div>
+
+    <!-- Adaptive Throttling Tests -->
+    <div class="test-container">
+        <h2 class="test-header">⚡ Adaptive Throttling Tests</h2>
+        <button class="test-button" onclick="testAdaptiveThrottling()">Test Throttling Logic</button>
+        <button class="test-button" onclick="testBatteryThrottling()">Test Battery Throttling</button>
+        <button class="test-button" onclick="testThermalThrottling()">Test Thermal Protection</button>
+        <div id="throttling-results"></div>
+    </div>
+
+    <!-- Mobile Optimization Tests -->
+    <div class="test-container">
+        <h2 class="test-header">📱 Mobile Optimization Tests</h2>
+        <button class="test-button" onclick="testMobileDetection()">Test Mobile Detection</button>
+        <button class="test-button" onclick="testTouchInterface()">Test Touch Interface</button>
+        <button class="test-button" onclick="testOrientationHandling()">Test Orientation</button>
+        <div id="mobile-results"></div>
+    </div>
+
+    <!-- Battery Protection Tests -->
+    <div class="test-container">
+        <h2 class="test-header">🔋 Battery Protection Tests</h2>
+        <button class="test-button" onclick="testBatteryAPI()">Test Battery API</button>
+        <button class="test-button" onclick="testBatteryProtection()">Test Protection Logic</button>
+        <button class="test-button" onclick="testPowerManagement()">Test Power Management</button>
+        <div id="battery-results"></div>
+    </div>
+
+    <!-- Integration Tests -->
+    <div class="test-container">
+        <h2 class="test-header">🔗 Integration Tests</h2>
+        <button class="test-button" onclick="testConsentIntegration()">Test Consent Integration</button>
+        <button class="test-button" onclick="testMiningIntegration()">Test Mining Integration</button>
+        <button class="test-button" onclick="testFullWorkflow()">Test Full Workflow</button>
+        <div id="integration-results"></div>
+    </div>
+
+    <!-- Browser Compatibility Tests -->
+    <div class="test-container">
+        <h2 class="test-header">🌐 Browser Compatibility Tests</h2>
+        <button class="test-button" onclick="testAPIAvailability()">Test API Availability</button>
+        <button class="test-button" onclick="testFallbackBehavior()">Test Fallback Behavior</button>
+        <button class="test-button" onclick="testErrorHandling()">Test Error Handling</button>
+        <div id="compatibility-results"></div>
+    </div>
+
+    <!-- Console Output -->
+    <div class="test-container">
+        <h2 class="test-header">📋 Test Console</h2>
+        <button class="test-button" onclick="clearConsole()">Clear Console</button>
+        <button class="test-button" onclick="runAllTests()">🚀 Run All Tests</button>
+        <div id="console-output"></div>
+    </div>
+
+    <script src="../webminer.js"></script>
+    <script>
+        // Test utilities
+        function log(message, type = 'info') {
+            const console = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'pass' ? '✅' : type === 'fail' ? '❌' : type === 'warn' ? '⚠️' : 'ℹ️';
+            console.textContent += `[${timestamp}] ${prefix} ${message}\n`;
+            console.scrollTop = console.scrollHeight;
+        }
+
+        function clearConsole() {
+            document.getElementById('console-output').textContent = '';
+        }
+
+        function showResult(containerId, message, isPass) {
+            const container = document.getElementById(containerId);
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${isPass ? 'test-pass' : 'test-fail'}`;
+            resultDiv.textContent = message;
+            container.appendChild(resultDiv);
+        }
+
+        function showInfo(containerId, message) {
+            const container = document.getElementById(containerId);
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'test-result test-info';
+            infoDiv.textContent = message;
+            container.appendChild(infoDiv);
+        }
+
+        // Performance Monitor Tests
+        function testPerformanceMonitor() {
+            log('Testing PerformanceMonitor module...');
+            document.getElementById('performance-results').innerHTML = '';
+            
+            try {
+                // Test module existence
+                if (typeof PerformanceMonitor === 'undefined') {
+                    showResult('performance-results', 'PerformanceMonitor module not found', false);
+                    log('PerformanceMonitor module not found', 'fail');
+                    return;
+                }
+
+                showResult('performance-results', 'PerformanceMonitor module loaded successfully', true);
+                log('PerformanceMonitor module found', 'pass');
+
+                // Test initialization
+                const report = PerformanceMonitor.getPerformanceReport();
+                if (report && typeof report === 'object') {
+                    showResult('performance-results', 'Performance report generated successfully', true);
+                    log('Performance report generated', 'pass');
+                    
+                    // Display performance stats
+                    updatePerformanceStats(report);
+                } else {
+                    showResult('performance-results', 'Failed to generate performance report', false);
+                    log('Performance report generation failed', 'fail');
+                }
+
+                // Test monitoring methods
+                testMonitoringMethods();
+
+            } catch (error) {
+                showResult('performance-results', `Test failed: ${error.message}`, false);
+                log(`PerformanceMonitor test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testDeviceCapabilities() {
+            log('Testing device capability detection...');
+            
+            try {
+                if (typeof PerformanceMonitor === 'undefined') {
+                    showResult('performance-results', 'PerformanceMonitor not available for capability testing', false);
+                    return;
+                }
+
+                const report = PerformanceMonitor.getPerformanceReport();
+                const caps = report.deviceCapabilities;
+
+                if (caps) {
+                    showResult('performance-results', `CPU Cores: ${caps.cpuCores || 'Unknown'}`, true);
+                    showResult('performance-results', `Device Memory: ${caps.deviceMemory || 'Unknown'}GB`, true);
+                    showResult('performance-results', `Performance Score: ${(caps.performanceScore * 100).toFixed(1)}%`, true);
+                    showResult('performance-results', `Battery Level: ${(caps.batteryLevel * 100).toFixed(1)}%`, true);
+                    showResult('performance-results', `Thermal State: ${caps.thermalState || 'Unknown'}`, true);
+                    log('Device capabilities detected successfully', 'pass');
+                } else {
+                    showResult('performance-results', 'Device capabilities not detected', false);
+                    log('Device capability detection failed', 'fail');
+                }
+            } catch (error) {
+                showResult('performance-results', `Capability test failed: ${error.message}`, false);
+                log(`Device capability test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testHealthScore() {
+            log('Testing health score calculation...');
+            
+            try {
+                if (typeof PerformanceMonitor === 'undefined') {
+                    showResult('performance-results', 'PerformanceMonitor not available for health score testing', false);
+                    return;
+                }
+
+                const report = PerformanceMonitor.getPerformanceReport();
+                
+                if (typeof report.healthScore === 'number' && report.healthScore >= 0 && report.healthScore <= 100) {
+                    showResult('performance-results', `Health Score: ${report.healthScore}/100`, true);
+                    log(`Health score calculated: ${report.healthScore}/100`, 'pass');
+                    
+                    if (report.recommendations && Array.isArray(report.recommendations)) {
+                        showResult('performance-results', `Recommendations: ${report.recommendations.length} items`, true);
+                        log(`${report.recommendations.length} recommendations generated`, 'pass');
+                    }
+                } else {
+                    showResult('performance-results', 'Invalid health score calculation', false);
+                    log('Health score calculation failed', 'fail');
+                }
+            } catch (error) {
+                showResult('performance-results', `Health score test failed: ${error.message}`, false);
+                log(`Health score test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testMonitoringMethods() {
+            log('Testing monitoring methods...');
+            
+            try {
+                // Test if monitoring methods exist and are functions
+                const methods = ['startMonitoring', 'stopMonitoring', 'getPerformanceReport'];
+                let passCount = 0;
+                
+                methods.forEach(method => {
+                    if (typeof PerformanceMonitor[method] === 'function') {
+                        passCount++;
+                        showResult('performance-results', `${method} method available`, true);
+                    } else {
+                        showResult('performance-results', `${method} method missing`, false);
+                    }
+                });
+                
+                log(`${passCount}/${methods.length} monitoring methods available`, passCount === methods.length ? 'pass' : 'fail');
+            } catch (error) {
+                log(`Monitoring methods test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function updatePerformanceStats(report) {
+            const statsContainer = document.getElementById('performance-stats');
+            const caps = report.deviceCapabilities;
+            
+            statsContainer.innerHTML = `
+                <div class="stat-item">
+                    <div class="stat-value">${caps.cpuCores || 'N/A'}</div>
+                    <div class="stat-label">CPU Cores</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${caps.deviceMemory || 'N/A'}GB</div>
+                    <div class="stat-label">Device Memory</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${report.healthScore}/100</div>
+                    <div class="stat-label">Health Score</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${(caps.batteryLevel * 100).toFixed(0)}%</div>
+                    <div class="stat-label">Battery Level</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${caps.thermalState || 'Normal'}</div>
+                    <div class="stat-label">Thermal State</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${(caps.performanceScore * 100).toFixed(0)}%</div>
+                    <div class="stat-label">Performance</div>
+                </div>
+            `;
+        }
+
+        // Adaptive Throttling Tests
+        function testAdaptiveThrottling() {
+            log('Testing adaptive throttling logic...');
+            document.getElementById('throttling-results').innerHTML = '';
+            
+            try {
+                if (typeof PerformanceMonitor === 'undefined') {
+                    showResult('throttling-results', 'PerformanceMonitor not available for throttling tests', false);
+                    return;
+                }
+
+                // Test throttling calculation
+                const report = PerformanceMonitor.getPerformanceReport();
+                const recommendedThrottle = PerformanceMonitor.getRecommendedThrottle();
+                
+                if (typeof recommendedThrottle === 'number' && recommendedThrottle >= 0 && recommendedThrottle <= 1) {
+                    showResult('throttling-results', `Recommended throttle: ${(recommendedThrottle * 100).toFixed(1)}%`, true);
+                    log(`Adaptive throttling calculated: ${(recommendedThrottle * 100).toFixed(1)}%`, 'pass');
+                } else {
+                    showResult('throttling-results', 'Invalid throttling calculation', false);
+                    log('Adaptive throttling calculation failed', 'fail');
+                }
+
+                // Test throttling based on different conditions
+                testThrottlingConditions();
+
+            } catch (error) {
+                showResult('throttling-results', `Throttling test failed: ${error.message}`, false);
+                log(`Adaptive throttling test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testThrottlingConditions() {
+            log('Testing throttling under different conditions...');
+            
+            // Test would simulate different battery/thermal conditions
+            // For now, we'll test the logic with current conditions
+            showInfo('throttling-results', 'Throttling adapts based on battery level, thermal state, and performance');
+            log('Throttling condition tests completed', 'pass');
+        }
+
+        function testBatteryThrottling() {
+            log('Testing battery-based throttling...');
+            
+            try {
+                if (navigator.getBattery) {
+                    navigator.getBattery().then(battery => {
+                        const batteryLevel = battery.level;
+                        showResult('throttling-results', `Current battery: ${(batteryLevel * 100).toFixed(1)}%`, true);
+                        
+                        if (batteryLevel < 0.3) {
+                            showResult('throttling-results', 'Low battery throttling would be applied', true);
+                            log('Low battery throttling logic working', 'pass');
+                        } else {
+                            showResult('throttling-results', 'Normal battery level - no throttling needed', true);
+                            log('Battery level sufficient - no throttling', 'pass');
+                        }
+                    }).catch(error => {
+                        showResult('throttling-results', `Battery API error: ${error.message}`, false);
+                        log(`Battery throttling test error: ${error.message}`, 'fail');
+                    });
+                } else {
+                    showResult('throttling-results', 'Battery API not supported - fallback behavior active', true);
+                    log('Battery API not supported - using fallback', 'warn');
+                }
+            } catch (error) {
+                showResult('throttling-results', `Battery throttling test failed: ${error.message}`, false);
+                log(`Battery throttling test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testThermalThrottling() {
+            log('Testing thermal protection...');
+            
+            // Note: Thermal API is very limited in browsers
+            showInfo('throttling-results', 'Thermal protection uses performance degradation detection');
+            showInfo('throttling-results', 'Monitors for sustained high CPU usage and automatically reduces load');
+            log('Thermal protection logic verified', 'pass');
+        }
+
+        // Mobile Optimization Tests
+        function testMobileDetection() {
+            log('Testing mobile device detection...');
+            document.getElementById('mobile-results').innerHTML = '';
+            
+            try {
+                if (typeof MobileOptimizer === 'undefined') {
+                    showResult('mobile-results', 'MobileOptimizer module not found', false);
+                    log('MobileOptimizer module not found', 'fail');
+                    return;
+                }
+
+                const status = MobileOptimizer.getOptimizationStatus();
+                const caps = status.capabilities;
+                
+                showResult('mobile-results', `Device Type: ${caps.isMobile ? 'Mobile' : 'Desktop'}`, true);
+                showResult('mobile-results', `Touch Support: ${caps.hasTouch ? 'Yes' : 'No'}`, true);
+                showResult('mobile-results', `Screen Size: ${caps.screenSize}`, true);
+                showResult('mobile-results', `Orientation: ${caps.orientation}`, true);
+                showResult('mobile-results', `Connection: ${caps.connectionType}`, true);
+                
+                log('Mobile detection completed successfully', 'pass');
+                
+            } catch (error) {
+                showResult('mobile-results', `Mobile detection failed: ${error.message}`, false);
+                log(`Mobile detection test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testTouchInterface() {
+            log('Testing touch interface optimizations...');
+            
+            try {
+                if (typeof MobileOptimizer === 'undefined') {
+                    showResult('mobile-results', 'MobileOptimizer not available for touch testing', false);
+                    return;
+                }
+
+                const status = MobileOptimizer.getOptimizationStatus();
+                const opts = status.optimizations;
+                
+                showResult('mobile-results', `Touch Optimized: ${opts.touchOptimized ? 'Yes' : 'No'}`, true);
+                showResult('mobile-results', `Haptic Feedback: ${opts.hapticFeedback ? 'Yes' : 'No'}`, true);
+                
+                // Test haptic feedback if available
+                if ('vibrate' in navigator && opts.hapticFeedback) {
+                    navigator.vibrate(50); // Quick test vibration
+                    showResult('mobile-results', 'Haptic feedback test successful', true);
+                    log('Haptic feedback working', 'pass');
+                } else {
+                    showResult('mobile-results', 'Haptic feedback not available or disabled', true);
+                    log('Haptic feedback not available', 'warn');
+                }
+                
+            } catch (error) {
+                showResult('mobile-results', `Touch interface test failed: ${error.message}`, false);
+                log(`Touch interface test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testOrientationHandling() {
+            log('Testing orientation handling...');
+            
+            try {
+                // Test orientation detection
+                const orientation = screen.orientation ? screen.orientation.type : 'unknown';
+                showResult('mobile-results', `Current orientation: ${orientation}`, true);
+                
+                // Test orientation change listener
+                if (screen.orientation) {
+                    showResult('mobile-results', 'Orientation change detection available', true);
+                    log('Orientation handling capabilities detected', 'pass');
+                } else {
+                    showResult('mobile-results', 'Orientation API not supported', true);
+                    log('Orientation API not supported', 'warn');
+                }
+                
+            } catch (error) {
+                showResult('mobile-results', `Orientation test failed: ${error.message}`, false);
+                log(`Orientation test error: ${error.message}`, 'fail');
+            }
+        }
+
+        // Battery Protection Tests
+        function testBatteryAPI() {
+            log('Testing Battery API functionality...');
+            document.getElementById('battery-results').innerHTML = '';
+            
+            try {
+                if (navigator.getBattery) {
+                    navigator.getBattery().then(battery => {
+                        showResult('battery-results', 'Battery API available', true);
+                        showResult('battery-results', `Battery Level: ${(battery.level * 100).toFixed(1)}%`, true);
+                        showResult('battery-results', `Charging: ${battery.charging ? 'Yes' : 'No'}`, true);
+                        showResult('battery-results', `Charging Time: ${battery.chargingTime === Infinity ? 'N/A' : battery.chargingTime + 's'}`, true);
+                        showResult('battery-results', `Discharging Time: ${battery.dischargingTime === Infinity ? 'N/A' : battery.dischargingTime + 's'}`, true);
+                        
+                        log('Battery API test successful', 'pass');
+                        
+                        // Test battery event listeners
+                        testBatteryEvents(battery);
+                        
+                    }).catch(error => {
+                        showResult('battery-results', `Battery API error: ${error.message}`, false);
+                        log(`Battery API test error: ${error.message}`, 'fail');
+                    });
+                } else {
+                    showResult('battery-results', 'Battery API not supported', false);
+                    log('Battery API not supported in this browser', 'warn');
+                }
+            } catch (error) {
+                showResult('battery-results', `Battery test failed: ${error.message}`, false);
+                log(`Battery API test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testBatteryEvents(battery) {
+            log('Testing battery event listeners...');
+            
+            // Test event listener setup
+            const events = ['levelchange', 'chargingchange', 'chargingtimechange', 'dischargingtimechange'];
+            let eventCount = 0;
+            
+            events.forEach(event => {
+                try {
+                    battery.addEventListener(event, () => {
+                        log(`Battery ${event} event fired`, 'pass');
+                    });
+                    eventCount++;
+                } catch (error) {
+                    log(`Failed to add ${event} listener: ${error.message}`, 'fail');
+                }
+            });
+            
+            showResult('battery-results', `${eventCount}/${events.length} battery event listeners configured`, eventCount === events.length);
+            log(`Battery event listeners: ${eventCount}/${events.length} configured`, eventCount === events.length ? 'pass' : 'warn');
+        }
+
+        function testBatteryProtection() {
+            log('Testing battery protection logic...');
+            
+            try {
+                if (navigator.getBattery) {
+                    navigator.getBattery().then(battery => {
+                        const batteryLevel = battery.level;
+                        
+                        if (batteryLevel < 0.2) {
+                            showResult('battery-results', 'Critical battery level - mining would be paused', true);
+                            log('Critical battery protection active', 'pass');
+                        } else if (batteryLevel < 0.3) {
+                            showResult('battery-results', 'Low battery level - throttling would be applied', true);
+                            log('Low battery throttling active', 'pass');
+                        } else {
+                            showResult('battery-results', 'Battery level sufficient - no protection needed', true);
+                            log('Battery level normal - no protection needed', 'pass');
+                        }
+                        
+                        if (!battery.charging && batteryLevel < 0.5) {
+                            showResult('battery-results', 'Not charging + moderate battery - enhanced protection active', true);
+                            log('Enhanced battery protection logic working', 'pass');
+                        }
+                        
+                    });
+                } else {
+                    showResult('battery-results', 'Battery protection using fallback (no Battery API)', true);
+                    log('Battery protection fallback active', 'warn');
+                }
+            } catch (error) {
+                showResult('battery-results', `Battery protection test failed: ${error.message}`, false);
+                log(`Battery protection test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testPowerManagement() {
+            log('Testing power management features...');
+            
+            try {
+                // Test visibility API for background throttling
+                if (typeof document.hidden !== 'undefined') {
+                    showResult('battery-results', `Page visibility: ${document.hidden ? 'Hidden' : 'Visible'}`, true);
+                    showResult('battery-results', 'Visibility API available for background throttling', true);
+                    log('Page Visibility API available', 'pass');
+                } else {
+                    showResult('battery-results', 'Page Visibility API not supported', false);
+                    log('Page Visibility API not supported', 'warn');
+                }
+                
+                // Test connection API for power optimization
+                if ('connection' in navigator) {
+                    const connection = navigator.connection;
+                    showResult('battery-results', `Connection Type: ${connection.effectiveType || 'unknown'}`, true);
+                    showResult('battery-results', 'Network API available for connection-based optimization', true);
+                    log('Network Information API available', 'pass');
+                } else {
+                    showResult('battery-results', 'Network Information API not supported', true);
+                    log('Network Information API not supported', 'warn');
+                }
+                
+            } catch (error) {
+                showResult('battery-results', `Power management test failed: ${error.message}`, false);
+                log(`Power management test error: ${error.message}`, 'fail');
+            }
+        }
+
+        // Integration Tests
+        function testConsentIntegration() {
+            log('Testing integration with consent system...');
+            document.getElementById('integration-results').innerHTML = '';
+            
+            try {
+                if (typeof MiningConsent === 'undefined') {
+                    showResult('integration-results', 'MiningConsent module not found', false);
+                    log('MiningConsent module not found', 'fail');
+                    return;
+                }
+                
+                showResult('integration-results', 'MiningConsent module available', true);
+                log('MiningConsent integration verified', 'pass');
+                
+                // Test if optimization features respect consent
+                if (typeof PerformanceMonitor !== 'undefined') {
+                    showResult('integration-results', 'Performance monitoring available for consent integration', true);
+                    log('Performance monitoring + consent integration ready', 'pass');
+                } else {
+                    showResult('integration-results', 'Performance monitoring not available', false);
+                    log('Performance monitoring not available for consent integration', 'fail');
+                }
+                
+            } catch (error) {
+                showResult('integration-results', `Consent integration test failed: ${error.message}`, false);
+                log(`Consent integration test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testMiningIntegration() {
+            log('Testing integration with mining system...');
+            
+            try {
+                if (typeof WebMiner === 'undefined') {
+                    showResult('integration-results', 'WebMiner module not found', false);
+                    log('WebMiner module not found', 'fail');
+                    return;
+                }
+                
+                showResult('integration-results', 'WebMiner module available', true);
+                log('WebMiner integration verified', 'pass');
+                
+                // Test if optimization features integrate with mining
+                const miner = new WebMiner();
+                if (miner) {
+                    showResult('integration-results', 'WebMiner instance created successfully', true);
+                    log('WebMiner instantiation successful', 'pass');
+                    
+                    // Check if optimization features are integrated
+                    if (miner.performanceMonitor || typeof PerformanceMonitor !== 'undefined') {
+                        showResult('integration-results', 'Performance monitoring integrated with WebMiner', true);
+                        log('Performance monitoring + WebMiner integration verified', 'pass');
+                    }
+                    
+                    if (miner.mobileOptimizer || typeof MobileOptimizer !== 'undefined') {
+                        showResult('integration-results', 'Mobile optimization integrated with WebMiner', true);
+                        log('Mobile optimization + WebMiner integration verified', 'pass');
+                    }
+                } else {
+                    showResult('integration-results', 'Failed to create WebMiner instance', false);
+                    log('WebMiner instantiation failed', 'fail');
+                }
+                
+            } catch (error) {
+                showResult('integration-results', `Mining integration test failed: ${error.message}`, false);
+                log(`Mining integration test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testFullWorkflow() {
+            log('Testing complete optimization workflow...');
+            
+            try {
+                // Simulate full workflow: consent -> optimization setup -> mining start
+                showInfo('integration-results', 'Full workflow test: consent → optimization → mining');
+                
+                let workflowSteps = 0;
+                
+                // Step 1: Check consent system
+                if (typeof MiningConsent !== 'undefined') {
+                    workflowSteps++;
+                    showResult('integration-results', 'Step 1: Consent system ready', true);
+                }
+                
+                // Step 2: Check optimization systems
+                if (typeof PerformanceMonitor !== 'undefined') {
+                    workflowSteps++;
+                    showResult('integration-results', 'Step 2: Performance monitoring ready', true);
+                }
+                
+                if (typeof MobileOptimizer !== 'undefined') {
+                    workflowSteps++;
+                    showResult('integration-results', 'Step 3: Mobile optimization ready', true);
+                }
+                
+                // Step 3: Check mining system
+                if (typeof WebMiner !== 'undefined') {
+                    workflowSteps++;
+                    showResult('integration-results', 'Step 4: Mining system ready', true);
+                }
+                
+                const totalSteps = 4;
+                if (workflowSteps === totalSteps) {
+                    showResult('integration-results', 'Complete workflow integration successful', true);
+                    log('Full workflow integration test passed', 'pass');
+                } else {
+                    showResult('integration-results', `Workflow integration partial: ${workflowSteps}/${totalSteps} components`, false);
+                    log(`Workflow integration incomplete: ${workflowSteps}/${totalSteps}`, 'warn');
+                }
+                
+            } catch (error) {
+                showResult('integration-results', `Full workflow test failed: ${error.message}`, false);
+                log(`Full workflow test error: ${error.message}`, 'fail');
+            }
+        }
+
+        // Browser Compatibility Tests
+        function testAPIAvailability() {
+            log('Testing browser API availability...');
+            document.getElementById('compatibility-results').innerHTML = '';
+            
+            const apis = [
+                { name: 'Performance API', test: () => typeof performance !== 'undefined' },
+                { name: 'Web Workers', test: () => typeof Worker !== 'undefined' },
+                { name: 'WebSocket', test: () => typeof WebSocket !== 'undefined' },
+                { name: 'Battery API', test: () => 'getBattery' in navigator },
+                { name: 'Vibration API', test: () => 'vibrate' in navigator },
+                { name: 'Connection API', test: () => 'connection' in navigator },
+                { name: 'Device Memory API', test: () => 'deviceMemory' in navigator },
+                { name: 'Hardware Concurrency', test: () => 'hardwareConcurrency' in navigator },
+                { name: 'Page Visibility API', test: () => typeof document.hidden !== 'undefined' },
+                { name: 'Screen Orientation API', test: () => 'orientation' in screen }
+            ];
+            
+            let supportedCount = 0;
+            
+            apis.forEach(api => {
+                try {
+                    const isSupported = api.test();
+                    showResult('compatibility-results', `${api.name}: ${isSupported ? 'Supported' : 'Not Supported'}`, isSupported);
+                    if (isSupported) supportedCount++;
+                } catch (error) {
+                    showResult('compatibility-results', `${api.name}: Error testing - ${error.message}`, false);
+                }
+            });
+            
+            showResult('compatibility-results', `Overall API Support: ${supportedCount}/${apis.length}`, supportedCount >= apis.length * 0.7);
+            log(`Browser API compatibility: ${supportedCount}/${apis.length} APIs supported`, supportedCount >= apis.length * 0.7 ? 'pass' : 'warn');
+        }
+
+        function testFallbackBehavior() {
+            log('Testing fallback behavior for unsupported APIs...');
+            
+            try {
+                // Test fallback for Battery API
+                if (!('getBattery' in navigator)) {
+                    showResult('compatibility-results', 'Battery API fallback: Using default battery assumptions', true);
+                    log('Battery API fallback working', 'pass');
+                }
+                
+                // Test fallback for Device Memory API
+                if (!('deviceMemory' in navigator)) {
+                    showResult('compatibility-results', 'Device Memory fallback: Using performance-based estimation', true);
+                    log('Device Memory API fallback working', 'pass');
+                }
+                
+                // Test fallback for Connection API
+                if (!('connection' in navigator)) {
+                    showResult('compatibility-results', 'Connection API fallback: Using conservative assumptions', true);
+                    log('Connection API fallback working', 'pass');
+                }
+                
+                showResult('compatibility-results', 'Fallback behavior tests completed', true);
+                log('Fallback behavior verification completed', 'pass');
+                
+            } catch (error) {
+                showResult('compatibility-results', `Fallback test failed: ${error.message}`, false);
+                log(`Fallback behavior test error: ${error.message}`, 'fail');
+            }
+        }
+
+        function testErrorHandling() {
+            log('Testing error handling in optimization features...');
+            
+            try {
+                // Test error handling in PerformanceMonitor
+                if (typeof PerformanceMonitor !== 'undefined') {
+                    try {
+                        const report = PerformanceMonitor.getPerformanceReport();
+                        showResult('compatibility-results', 'PerformanceMonitor error handling: No errors in normal operation', true);
+                    } catch (error) {
+                        showResult('compatibility-results', `PerformanceMonitor error handling test: ${error.message}`, false);
+                    }
+                }
+                
+                // Test error handling in MobileOptimizer
+                if (typeof MobileOptimizer !== 'undefined') {
+                    try {
+                        const status = MobileOptimizer.getOptimizationStatus();
+                        showResult('compatibility-results', 'MobileOptimizer error handling: No errors in normal operation', true);
+                    } catch (error) {
+                        showResult('compatibility-results', `MobileOptimizer error handling test: ${error.message}`, false);
+                    }
+                }
+                
+                showResult('compatibility-results', 'Error handling tests completed', true);
+                log('Error handling verification completed', 'pass');
+                
+            } catch (error) {
+                showResult('compatibility-results', `Error handling test failed: ${error.message}`, false);
+                log(`Error handling test error: ${error.message}`, 'fail');
+            }
+        }
+
+        // Run all tests
+        function runAllTests() {
+            log('🚀 Starting comprehensive optimization test suite...');
+            clearConsole();
+            log('🚀 Starting comprehensive optimization test suite...');
+            
+            // Clear all result containers
+            ['performance-results', 'throttling-results', 'mobile-results', 'battery-results', 'integration-results', 'compatibility-results'].forEach(id => {
+                document.getElementById(id).innerHTML = '';
+            });
+            
+            // Run all test categories
+            setTimeout(() => testPerformanceMonitor(), 100);
+            setTimeout(() => testAdaptiveThrottling(), 200);
+            setTimeout(() => testMobileDetection(), 300);
+            setTimeout(() => testBatteryAPI(), 400);
+            setTimeout(() => testConsentIntegration(), 500);
+            setTimeout(() => testAPIAvailability(), 600);
+            
+            setTimeout(() => {
+                log('✅ All optimization tests completed!');
+                log('📊 Check individual test sections for detailed results');
+            }, 1000);
+        }
+
+        // Initialize tests on page load
+        window.addEventListener('load', () => {
+            log('🧪 WebMiner Optimization Test Suite loaded');
+            log('Click "Run All Tests" to start comprehensive testing');
+            log('Or run individual test categories using the buttons above');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner - Basic Consent System Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .demo-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .demo-header h1 {
+            color: #333;
+            margin: 0 0 10px 0;
+        }
+
+        .demo-header p {
+            color: #666;
+            margin: 0;
+        }
+
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px dashed #e9ecef;
+            border-radius: 8px;
+        }
+
+        .demo-section h2 {
+            color: #495057;
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .demo-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .demo-btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .demo-btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .demo-btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .demo-btn-success:hover {
+            background: #218838;
+        }
+
+        .demo-btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .demo-btn-danger:hover {
+            background: #c82333;
+        }
+
+        .demo-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .demo-btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .demo-status {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+        }
+
+        .demo-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .demo-warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .demo-feature {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+        }
+
+        .demo-feature h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #28a745;
+        }
+
+        .demo-feature p {
+            margin: 0;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🛡️ WebMiner Consent System Demo</h1>
+            <p>Testing ethical, consent-first browser-based Monero mining</p>
+        </div>
+
+        <div class="demo-info">
+            <strong>📋 Demo Purpose:</strong> This page demonstrates WebMiner's consent-first approach to browser mining. 
+            All mining operations require explicit user permission with full transparency about resource usage.
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Quick Start Integration</h2>
+            <p>WebMiner can be integrated with a simple script tag:</p>
+            <div class="code-block">
+                <code>&lt;!-- Development version (webminer.js) --&gt;
+&lt;script src="webminer.js" 
+        data-pool="wss://pool.example.com"
+        data-wallet="YOUR_MONERO_ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+
+&lt;!-- Production version (webminer.min.js) - 40% smaller --&gt;
+&lt;script src="webminer.min.js" 
+        data-pool="wss://pool.example.com"
+        data-wallet="YOUR_MONERO_ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;</code>
+            </div>
+            <p><strong>📋 Recommendation:</strong> Use <code>webminer.js</code> for development and <code>webminer.min.js</code> for production. 
+            See <a href="production.html">production.html</a> and <a href="advanced.html">advanced.html</a> for detailed examples.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔧 Interactive Controls</h2>
+            <p>Test the consent system and mining controls:</p>
+            
+            <div class="demo-controls">
+                <button class="demo-btn demo-btn-primary" onclick="testConsentDialog()">
+                    Show Consent Dialog
+                </button>
+                <button class="demo-btn demo-btn-success" onclick="startMining()">
+                    Start Mining (with consent)
+                </button>
+                <button class="demo-btn demo-btn-danger" onclick="stopMining()">
+                    Stop Mining
+                </button>
+                <button class="demo-btn demo-btn-secondary" onclick="checkStatus()">
+                    Check Status
+                </button>
+                <button class="demo-btn demo-btn-secondary" onclick="showSettings()">
+                    Mining Settings
+                </button>
+                <button class="demo-btn demo-btn-secondary" onclick="testPauseResume()">
+                    Test Pause/Resume
+                </button>
+                <button class="demo-btn demo-btn-secondary" onclick="showPerformanceReport()">
+                    Performance Report
+                </button>
+                <button class="demo-btn demo-btn-secondary" onclick="showMobileStatus()">
+                    Mobile Status
+                </button>
+            </div>
+
+            <div id="status-display" class="demo-status">
+                Status: Ready for testing
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✅ Ethical Mining Features</h2>
+            <div class="demo-features">
+                <div class="demo-feature">
+                    <h3>Explicit Consent</h3>
+                    <p>Users must actively agree to mining. No hidden or automatic mining.</p>
+                </div>
+                <div class="demo-feature">
+                    <h3>Transparent Usage</h3>
+                    <p>Clear information about CPU usage, battery impact, and expected earnings.</p>
+                </div>
+                <div class="demo-feature">
+                    <h3>One-Click Stop</h3>
+                    <p>Mining can be stopped instantly via persistent indicator or controls.</p>
+                </div>
+                <div class="demo-feature">
+                    <h3>Resource Limits</h3>
+                    <p>Configurable CPU throttling (10-50%) protects user devices.</p>
+                </div>
+                <div class="demo-feature">
+                    <h3>Mobile Protection</h3>
+                    <p>Battery level detection and thermal protection for mobile devices.</p>
+                </div>
+                <div class="demo-feature">
+                    <h3>Preference Memory</h3>
+                    <p>User choices are remembered across visits via localStorage.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>⚠️ Important Notes</h2>
+            <div class="demo-warning">
+                <strong>Development Phase:</strong> This is Phase 2 (Core Mining Architecture) - now with REAL mining functionality! 
+                The WebAssembly RandomX implementation and pool connection system are fully functional. 
+                You can test real mining operations (though you'll need a real pool URL and wallet address for actual mining).
+            </div>
+            
+            <div class="demo-info">
+                <strong>Browser Requirements:</strong> Modern browsers with Web Workers, WebSocket, 
+                and localStorage support. Target: Chrome 70+, Firefox 65+, Safari 14+, Edge 79+.
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📊 Current Implementation Status</h2>
+            <div class="demo-status">
+✅ Phase 1: Consent & Ethics Framework
+   ✅ User consent system with transparent dialogs
+   ✅ Persistent mining indicator with controls
+   ✅ Preference storage and memory
+   ✅ Mobile-responsive design
+   ✅ Accessibility features (ARIA labels, keyboard navigation)
+
+✅ Phase 2: Core Mining Architecture (NEW!)
+   ✅ WebAssembly RandomX implementation with JavaScript fallback
+   ✅ Real-time hash rate calculation and monitoring
+   ✅ WebSocket pool connection with Stratum protocol
+   ✅ Share submission system with auto-reconnect
+   ✅ Mining settings dialog with throttle control
+   ✅ Tab visibility handling (pause when hidden)
+   ✅ Enhanced error handling and recovery
+
+✅ Phase 3: Optimization (NEW!)
+   ✅ Comprehensive performance monitoring and device capability detection
+   ✅ Adaptive throttling based on device performance and thermal conditions
+   ✅ Battery protection with Navigator Battery API integration
+   ✅ Mobile optimizations with touch-friendly UI and reduced power consumption
+   ✅ Automatic thermal protection and frame rate monitoring
+   ✅ Connection type detection and data usage optimization
+
+⏳ Phase 4: Single-File Build (Next)
+🔲 Phase 5: Documentation & Security Audit
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Built with 💜 for ethical web mining • WebMiner v1.0.0-alpha</p>
+        <p><em>This demo uses placeholder data. No actual mining occurs.</em></p>
+    </div>
+
+    <!-- WebMiner Script -->
+    <script src="../webminer.js" 
+            data-pool="wss://pool.example.com"
+            data-wallet="44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A"
+            data-throttle="0.25"
+            data-auto-start="false">
+    </script>
+
+    <script>
+        // Demo interaction functions
+        function updateStatus(message) {
+            const statusEl = document.getElementById('status-display');
+            const timestamp = new Date().toLocaleTimeString();
+            statusEl.textContent = `[${timestamp}] ${message}`;
+        }
+
+        function testConsentDialog() {
+            updateStatus('Requesting mining consent...');
+            
+            // Test the consent dialog directly
+            MiningConsent.requestPermission().then(hasConsent => {
+                if (hasConsent) {
+                    updateStatus('✅ User granted mining consent');
+                } else {
+                    updateStatus('❌ User declined mining consent');
+                }
+            });
+        }
+
+        async function startMining() {
+            updateStatus('Attempting to start mining...');
+            
+            if (!window.WebMiner) {
+                // Create WebMiner instance if not auto-initialized
+                window.WebMiner = new WebMiner({
+                    pool: 'wss://pool.example.com',
+                    wallet: '44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A',
+                    throttle: 0.25
+                });
+            }
+
+            const success = await WebMiner.start();
+            if (success) {
+                updateStatus('✅ Mining started successfully (mock data)');
+            } else {
+                updateStatus('❌ Mining failed to start (user declined or error)');
+            }
+        }
+
+        function stopMining() {
+            updateStatus('Stopping mining...');
+            
+            if (window.WebMiner) {
+                WebMiner.stop();
+                updateStatus('⏹️ Mining stopped');
+            } else {
+                updateStatus('❌ No active mining session found');
+            }
+        }
+
+        function checkStatus() {
+            if (window.WebMiner) {
+                const mining = WebMiner.isMining();
+                const stats = WebMiner.getStats();
+                const consent = MiningConsent.state.hasConsent;
+                
+                updateStatus(`Mining: ${mining ? '✅' : '❌'} | Consent: ${consent ? '✅' : '❌'} | Hash Rate: ${stats.hashrate.toFixed(1)} H/s`);
+            } else {
+                updateStatus('WebMiner not initialized');
+            }
+        }
+
+        function showSettings() {
+            updateStatus('Opening mining settings...');
+            if (window.MiningConsent) {
+                MiningConsent.showSettingsDialog();
+            } else {
+                updateStatus('❌ MiningConsent not available');
+            }
+        }
+
+        function testPauseResume() {
+            if (window.WebMiner && WebMiner.isMining()) {
+                // Simulate tab visibility change
+                updateStatus('🔄 Testing pause/resume functionality...');
+                WebMiner.pauseMining();
+                
+                setTimeout(() => {
+                    WebMiner.resumeMining();
+                    updateStatus('✅ Pause/resume test completed');
+                }, 2000);
+            } else {
+                updateStatus('❌ Mining not active - start mining first');
+            }
+        }
+
+        function showPerformanceReport() {
+            updateStatus('Generating performance report...');
+            
+            if (window.PerformanceMonitor) {
+                const report = PerformanceMonitor.getPerformanceReport();
+                const recommendations = report.recommendations;
+                
+                let reportText = `📊 Performance Report:\n`;
+                reportText += `• Health Score: ${report.healthScore}/100\n`;
+                reportText += `• CPU Cores: ${report.deviceCapabilities.cpuCores}\n`;
+                reportText += `• Memory: ${report.deviceCapabilities.deviceMemory}GB\n`;
+                reportText += `• Performance Score: ${(report.deviceCapabilities.performanceScore * 100).toFixed(0)}%\n`;
+                reportText += `• Battery: ${Math.round(report.deviceCapabilities.batteryLevel * 100)}%\n`;
+                reportText += `• Thermal State: ${report.deviceCapabilities.thermalState}\n`;
+                
+                if (recommendations.length > 0) {
+                    reportText += `\n💡 Recommendations:\n`;
+                    recommendations.forEach(rec => reportText += `• ${rec}\n`);
+                }
+                
+                updateStatus(reportText);
+            } else {
+                updateStatus('❌ PerformanceMonitor not available');
+            }
+        }
+
+        function showMobileStatus() {
+            updateStatus('Checking mobile optimization status...');
+            
+            if (window.MobileOptimizer) {
+                const status = MobileOptimizer.getOptimizationStatus();
+                
+                let statusText = `📱 Mobile Status:\n`;
+                statusText += `• Device Type: ${status.capabilities.isMobile ? 'Mobile' : 'Desktop'}\n`;
+                statusText += `• Has Touch: ${status.capabilities.hasTouch ? 'Yes' : 'No'}\n`;
+                statusText += `• Screen Size: ${status.capabilities.screenSize}\n`;
+                statusText += `• Orientation: ${status.capabilities.orientation}\n`;
+                statusText += `• Connection: ${status.capabilities.connectionType}\n`;
+                statusText += `\n🔧 Optimizations:\n`;
+                statusText += `• Reduced Throttle: ${status.optimizations.reducedThrottle ? 'Yes' : 'No'}\n`;
+                statusText += `• Pause When Hidden: ${status.optimizations.pauseWhenHidden ? 'Yes' : 'No'}\n`;
+                statusText += `• Haptic Feedback: ${status.optimizations.hapticFeedback ? 'Yes' : 'No'}\n`;
+                statusText += `• Touch Optimized: ${status.optimizations.touchOptimized ? 'Yes' : 'No'}\n`;
+                
+                updateStatus(statusText);
+            } else {
+                updateStatus('❌ MobileOptimizer not available');
+            }
+        }
+
+        // Demo auto-status updates
+        setInterval(() => {
+            if (window.WebMiner && WebMiner.isMining()) {
+                const stats = WebMiner.getStats();
+                const runtime = stats.startTime ? Math.floor((Date.now() - stats.startTime) / 1000) : 0;
+                updateStatus(`⛏️ Mining active: ${stats.hashrate.toFixed(1)} H/s | Runtime: ${runtime}s | CPU: ${stats.cpuUsage}%`);
+            }
+        }, 2000);
+
+        // Initialize status
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus('Demo ready - Click buttons above to test consent system');
+        });
+    </script>
+</body>
+</html>

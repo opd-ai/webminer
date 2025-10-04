@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner Test Suite</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px dashed #e9ecef;
+            border-radius: 8px;
+        }
+
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+
+        .test-pass {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .test-fail {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .test-pending {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+
+        .test-controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .test-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .test-btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .test-btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .test-btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .test-btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .test-stats {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .test-progress {
+            width: 100%;
+            height: 20px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .test-progress-bar {
+            height: 100%;
+            background: #28a745;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>🧪 WebMiner Test Suite</h1>
+            <p>Comprehensive testing for ethical browser-based mining</p>
+        </div>
+
+        <div class="test-section">
+            <h2>Test Controls</h2>
+            <div class="test-controls">
+                <button class="test-btn test-btn-primary" onclick="runAllTests()">
+                    Run All Tests
+                </button>
+                <button class="test-btn test-btn-secondary" onclick="runConsentTests()">
+                    Consent Tests
+                </button>
+                <button class="test-btn test-btn-secondary" onclick="runMiningTests()">
+                    Mining Tests
+                </button>
+                <button class="test-btn test-btn-secondary" onclick="runPerformanceTests()">
+                    Performance Tests
+                </button>
+                <button class="test-btn test-btn-secondary" onclick="clearResults()">
+                    Clear Results
+                </button>
+            </div>
+            
+            <div class="test-stats">
+                <div id="test-progress-container">
+                    <div>Progress: <span id="test-progress-text">0/0 tests completed</span></div>
+                    <div class="test-progress">
+                        <div id="test-progress-bar" class="test-progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div id="test-summary">Ready to run tests</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>Test Results</h2>
+            <div id="test-results">
+                <div class="test-pending">No tests run yet. Click "Run All Tests" to begin.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load WebMiner for testing -->
+    <script src="../webminer.js"></script>
+
+    <script>
+        // Test Suite Implementation
+        class WebMinerTestSuite {
+            constructor() {
+                this.tests = [];
+                this.results = [];
+                this.currentTest = 0;
+                this.testElement = document.getElementById('test-results');
+                this.progressElement = document.getElementById('test-progress-bar');
+                this.progressTextElement = document.getElementById('test-progress-text');
+                this.summaryElement = document.getElementById('test-summary');
+            }
+
+            addTest(name, description, testFunction) {
+                this.tests.push({
+                    name,
+                    description,
+                    test: testFunction,
+                    category: 'general'
+                });
+            }
+
+            addConsentTest(name, description, testFunction) {
+                this.tests.push({
+                    name,
+                    description,
+                    test: testFunction,
+                    category: 'consent'
+                });
+            }
+
+            addMiningTest(name, description, testFunction) {
+                this.tests.push({
+                    name,
+                    description,
+                    test: testFunction,
+                    category: 'mining'
+                });
+            }
+
+            addPerformanceTest(name, description, testFunction) {
+                this.tests.push({
+                    name,
+                    description,
+                    test: testFunction,
+                    category: 'performance'
+                });
+            }
+
+            async runTests(category = null) {
+                this.results = [];
+                this.currentTest = 0;
+                this.testElement.innerHTML = '';
+
+                const testsToRun = category ? 
+                    this.tests.filter(test => test.category === category) : 
+                    this.tests;
+
+                for (const test of testsToRun) {
+                    await this.runSingleTest(test);
+                }
+
+                this.showSummary();
+            }
+
+            async runSingleTest(test) {
+                this.currentTest++;
+                this.updateProgress();
+
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'test-pending';
+                resultDiv.textContent = `Running: ${test.name} - ${test.description}`;
+                this.testElement.appendChild(resultDiv);
+
+                try {
+                    const startTime = Date.now();
+                    const result = await test.test();
+                    const duration = Date.now() - startTime;
+
+                    resultDiv.className = result ? 'test-pass' : 'test-fail';
+                    resultDiv.textContent = `${result ? '✅ PASS' : '❌ FAIL'}: ${test.name} (${duration}ms)`;
+                    
+                    this.results.push({
+                        name: test.name,
+                        passed: result,
+                        duration,
+                        category: test.category
+                    });
+                } catch (error) {
+                    resultDiv.className = 'test-fail';
+                    resultDiv.textContent = `❌ ERROR: ${test.name} - ${error.message}`;
+                    
+                    this.results.push({
+                        name: test.name,
+                        passed: false,
+                        error: error.message,
+                        category: test.category
+                    });
+                }
+
+                // Small delay for visibility
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+
+            updateProgress() {
+                const progress = (this.currentTest / this.tests.length) * 100;
+                this.progressElement.style.width = progress + '%';
+                this.progressTextElement.textContent = `${this.currentTest}/${this.tests.length} tests completed`;
+            }
+
+            showSummary() {
+                const passed = this.results.filter(r => r.passed).length;
+                const failed = this.results.filter(r => !r.passed).length;
+                const total = this.results.length;
+
+                this.summaryElement.innerHTML = `
+                    Tests Complete: ${passed}/${total} passed, ${failed} failed
+                    <br>Success Rate: ${total > 0 ? Math.round((passed / total) * 100) : 0}%
+                `;
+            }
+
+            clear() {
+                this.testElement.innerHTML = '<div class="test-pending">No tests run yet. Click "Run All Tests" to begin.</div>';
+                this.progressElement.style.width = '0%';
+                this.progressTextElement.textContent = '0/0 tests completed';
+                this.summaryElement.textContent = 'Ready to run tests';
+                this.results = [];
+                this.currentTest = 0;
+            }
+        }
+
+        // Initialize test suite
+        const testSuite = new WebMinerTestSuite();
+
+        // Consent Tests
+        testSuite.addConsentTest(
+            'MiningConsent Object Exists',
+            'Verify MiningConsent is available globally',
+            async () => {
+                return typeof window.MiningConsent !== 'undefined';
+            }
+        );
+
+        testSuite.addConsentTest(
+            'Consent State Initialization',
+            'Check that consent state is properly initialized',
+            async () => {
+                return MiningConsent.state && 
+                       typeof MiningConsent.state.hasConsent === 'boolean' &&
+                       typeof MiningConsent.state.throttleLevel === 'number';
+            }
+        );
+
+        testSuite.addConsentTest(
+            'Settings Dialog Creation',
+            'Test that settings dialog can be created and shown',
+            async () => {
+                try {
+                    MiningConsent.showSettingsDialog();
+                    const dialog = document.getElementById('webminer-settings-dialog');
+                    const exists = dialog !== null;
+                    if (dialog) dialog.remove(); // Clean up
+                    return exists;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        testSuite.addConsentTest(
+            'Notification System',
+            'Test notification display functionality',
+            async () => {
+                try {
+                    MiningConsent.showNotification('Test notification', 'info');
+                    // Wait for notification to appear
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    const notification = document.querySelector('.webminer-notification');
+                    const exists = notification !== null;
+                    if (notification) notification.remove(); // Clean up
+                    return exists;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        // Mining Tests
+        testSuite.addMiningTest(
+            'WebMiner Class Exists',
+            'Verify WebMiner class is available globally',
+            async () => {
+                return typeof window.WebMiner !== 'undefined';
+            }
+        );
+
+        testSuite.addMiningTest(
+            'WebMiner Instance Creation',
+            'Test WebMiner can be instantiated with config',
+            async () => {
+                try {
+                    const miner = new WebMiner({
+                        pool: 'wss://test.pool.com',
+                        wallet: 'test_wallet_address',
+                        throttle: 0.25
+                    });
+                    return miner instanceof WebMiner;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        testSuite.addMiningTest(
+            'Mining Worker Generation',
+            'Test that mining worker code can be generated',
+            async () => {
+                try {
+                    const miner = new WebMiner({
+                        pool: 'wss://test.pool.com',
+                        wallet: 'test_wallet_address',
+                        throttle: 0.25
+                    });
+                    const workerCode = miner.generateMiningWorkerCode();
+                    return typeof workerCode === 'string' && workerCode.length > 1000;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        testSuite.addMiningTest(
+            'Stats Object Structure',
+            'Test that stats object has correct structure',
+            async () => {
+                try {
+                    const miner = new WebMiner({
+                        pool: 'wss://test.pool.com',
+                        wallet: 'test_wallet_address',
+                        throttle: 0.25
+                    });
+                    const stats = miner.getStats();
+                    return stats.hasOwnProperty('hashrate') &&
+                           stats.hasOwnProperty('cpuUsage') &&
+                           stats.hasOwnProperty('acceptedShares') &&
+                           stats.hasOwnProperty('startTime');
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        // Performance Tests
+        testSuite.addPerformanceTest(
+            'WebAssembly Support Detection',
+            'Check if WebAssembly is available in browser',
+            async () => {
+                return typeof WebAssembly !== 'undefined';
+            }
+        );
+
+        testSuite.addPerformanceTest(
+            'Web Workers Support',
+            'Check if Web Workers are available',
+            async () => {
+                return typeof Worker !== 'undefined';
+            }
+        );
+
+        testSuite.addPerformanceTest(
+            'WebSocket Support',
+            'Check if WebSocket is available for pool connections',
+            async () => {
+                return typeof WebSocket !== 'undefined';
+            }
+        );
+
+        testSuite.addPerformanceTest(
+            'LocalStorage Support',
+            'Check if localStorage is available for preferences',
+            async () => {
+                try {
+                    localStorage.setItem('webminer_test', 'test');
+                    const result = localStorage.getItem('webminer_test') === 'test';
+                    localStorage.removeItem('webminer_test');
+                    return result;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        testSuite.addPerformanceTest(
+            'CSS Styles Injection',
+            'Test that WebMiner can inject CSS styles',
+            async () => {
+                try {
+                    MiningConsent.createStyles();
+                    const styleElement = document.getElementById('webminer-styles');
+                    return styleElement !== null && styleElement.textContent.length > 100;
+                } catch (error) {
+                    return false;
+                }
+            }
+        );
+
+        // Test Control Functions
+        async function runAllTests() {
+            await testSuite.runTests();
+        }
+
+        async function runConsentTests() {
+            await testSuite.runTests('consent');
+        }
+
+        async function runMiningTests() {
+            await testSuite.runTests('mining');
+        }
+
+        async function runPerformanceTests() {
+            await testSuite.runTests('performance');
+        }
+
+        function clearResults() {
+            testSuite.clear();
+        }
+
+        // Auto-run basic compatibility tests on load
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('WebMiner Test Suite loaded');
+            // Automatically run performance tests to check browser compatibility
+            setTimeout(() => {
+                runPerformanceTests();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
