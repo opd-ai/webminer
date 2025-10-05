@@ -57,12 +57,19 @@
         },
 
         /**
-         * Initialize performance monitoring
+         * Initialize performance monitoring system
+         * 
+         * Async method that detects device capabilities and starts monitoring.
+         * Note: setupBatteryMonitoring() is async but intentionally not awaited
+         * (fire-and-forget pattern) to avoid blocking initialization.
+         * 
+         * @async
+         * @returns {Promise<void>}
          */
         async init() {
             await this.detectDeviceCapabilities();
             this.startPerformanceMonitoring();
-            this.setupBatteryMonitoring();
+            this.setupBatteryMonitoring(); // Fire-and-forget: async but not awaited
             this.setupThermalMonitoring();
             this.setupConnectionMonitoring();
         },
@@ -155,6 +162,9 @@
 
         /**
          * Start continuous performance monitoring
+         * 
+         * Synchronous method that sets up interval-based metric collection.
+         * Runs every 2 seconds to collect CPU, memory, and frame rate data.
          */
         startPerformanceMonitoring() {
             this.stats.startTime = Date.now();
@@ -338,7 +348,16 @@
         },
 
         /**
-         * Setup battery monitoring
+         * Setup battery monitoring using Navigator Battery API
+         * 
+         * Async method that queries battery status and sets up event listeners.
+         * Gracefully handles browsers without Battery API support.
+         * 
+         * Note: Called with fire-and-forget pattern from init() - not awaited
+         * to avoid blocking initialization if battery API is slow/unavailable.
+         * 
+         * @async
+         * @returns {Promise<void>}
          */
         async setupBatteryMonitoring() {
             if ('getBattery' in navigator) {
