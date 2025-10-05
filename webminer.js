@@ -1837,6 +1837,34 @@
         }
 
         /**
+         * Static factory method for WebMiner initialization
+         * 
+         * Creates and returns a new WebMiner instance with the provided configuration.
+         * This method matches the documented API pattern from README.md and allows
+         * users to initialize WebMiner without using the 'new' keyword.
+         * 
+         * @param {Object} config - Configuration object for WebMiner
+         * @param {string} config.pool - WebSocket pool URL (e.g., 'wss://pool.example.com')
+         * @param {string} config.wallet - Monero wallet address
+         * @param {number} [config.throttle=0.25] - CPU throttle level (0.1-1.0)
+         * @param {boolean} [config.autoStart=false] - Start mining automatically if consent exists
+         * @param {boolean} [config.enablePerformanceMonitoring=true] - Enable performance monitoring
+         * @param {boolean} [config.pauseWhenHidden] - Pause mining when tab is hidden
+         * @returns {WebMiner} New WebMiner instance
+         * 
+         * @example
+         * const miner = WebMiner.init({
+         *     pool: 'wss://pool.example.com',
+         *     wallet: 'YOUR_MONERO_ADDRESS',
+         *     throttle: 0.25,
+         *     autoStart: false
+         * });
+         */
+        static init(config = {}) {
+            return new WebMiner(config);
+        }
+
+        /**
          * Initialize performance monitoring system
          */
         async initializePerformanceMonitoring() {
