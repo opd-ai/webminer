@@ -2515,8 +2515,9 @@ self.onmessage = function(e) {
             };
 
             // Initialize WebMiner if configuration is complete
+            // Store instance as webminer (lowercase) to preserve WebMiner class
             if (config.pool && config.wallet) {
-                global.WebMiner = new WebMiner(config);
+                global.webminer = new WebMiner(config);
             }
         }
     }
