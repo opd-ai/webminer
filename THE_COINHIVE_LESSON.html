@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coinhive Lesson: How Ethical Web Mining Learned from Cryptojacking's Catastrophic Failure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about 25% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="MINER_UI.html">Miner Ui</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_COINHIVE_LESSON.html" class="active">The Coinhive Lesson</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_GLOBAL_SOUTHS_SECRET_WEAPON.html">The Global Souths Secret Weapon</a>
+        <a href="THE_JUST_USE_A_VPN_FALLACY.html">The Just Use A Vpn Fallacy</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_POWER_CONSUMPTION_RED_HERRING.html">The Power Consumption Red Herring</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="THE_TRUST_PROBLEM.html">The Trust Problem</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>The Coinhive Lesson: How Ethical Web Mining Learned from Cryptojacking's Catastrophic Failure</h1>
+
+<blockquote><em>"The difference between ethical web mining and what Coinhive enabled isn't just better marketing—it's fundamentally different architecture. One makes consent optional; the other makes it impossible to bypass."</em></blockquote>
+
+<hr>
+
+You know that feeling when you're reading an article and suddenly your laptop fan sounds like a jet engine taking off? Your browser starts crawling, your battery indicator drops like a stone, and you have no idea why?
+
+That's what happened to millions of people starting in September 2017. They'd visit The Pirate Bay to check torrent listings, or browse a government website in the UK, or read a blog post—and their computers would start secretly mining cryptocurrency for complete strangers. No warning. No permission. No explanation. Just their devices working overtime for someone else's profit while they wondered why their laptop was trying to achieve liftoff.
+
+This was Coinhive. And its catastrophic failure teaches us everything about why web mining got banned, why people are rightfully suspicious, and why building ethical alternatives requires learning from that disaster rather than pretending it didn't happen.
+
+<hr>
+
+<h2>🚨 The Coinhive Story: What Actually Went Wrong</h2>
+
+Let's start with what Coinhive actually was, because understanding the technical reality matters more than the headlines.
+
+<h3><strong>What Coinhive Claimed to Be</strong></h3>
+
+In September 2017, a company called Coinhive launched a JavaScript library that let websites mine Monero cryptocurrency using visitors' CPU power. The pitch was compelling:
+
+<strong>The Promise:</strong>
+<ul><li>💰 "Monetize your content without annoying ads"</li>
+<li>🔓 "Give users an alternative to viewing advertisements"</li>
+<li>⚖️ "Let visitors pay with CPU cycles instead of attention"</li>
+<li>🌐 "Create a new internet business model based on contribution"</li>
+</ul>
+<p>Sounds familiar, right? Because that's basically what ethical web mining advocates say today.</p>
+<strong>So what went catastrophically wrong?</strong>
+<h3><strong>The Fatal Design Flaw</strong></h3>
+
+Here's the critical technical detail that doomed Coinhive: <strong>consent was a suggestion, not a requirement.</strong>
+
+The Coinhive JavaScript library had two modes:
+
+<pre><code class="language-javascript">// "Ethical" mode (the suggestion nobody followed)
+var miner = new CoinHive.User('YOUR-SITE-KEY', 'username');
+// This mode showed an opt-in dialog and required user permission
+
+// "Silent" mode (what 98% of implementers actually used)  
+var miner = new CoinHive.Anonymous('YOUR-SITE-KEY');
+miner.start();
+// This mode just... started mining. No dialog. No permission. Nothing.
+</code></pre>
+
+<strong>Guess which one almost everyone chose?</strong>
+
+The "silent" mode required exactly three lines of code. Copy, paste, profit. No need to build a consent interface. No risk that users might say no. Just instant mining the moment someone loaded your page.
+
+<h3><strong>How It Spread Like Wildfire (The Bad Kind)</strong></h3>
+
+<strong>Legitimate use cases</strong> (the ~2% who tried to do it right):
+<ul><li>A few websites showed opt-in dialogs offering ad-free experiences</li>
+<li>Some experiments with "mine while you watch" video players</li>
+<li>Tiny handful of sites with transparent "support us by mining" campaigns</li>
+</ul>
+<strong>How it was actually used</strong> (the ~98% that poisoned the well):
+<strong>Website Compromises:</strong>
+<ul><li>Hackers injected Coinhive scripts into thousands of WordPress sites</li>
+<li>Browser extensions were modified to include hidden mining code</li>
+<li>Ad networks were compromised to serve mining scripts</li>
+<li>Even government websites (UK, Australia) were unwittingly mining for attackers</li>
+</ul>
+<strong>Intentional Abuse:</strong>
+<ul><li>The Pirate Bay embedded Coinhive without disclosure (claimed it was a "test")</li>
+<li>Sketchy streaming sites mined aggressively with no throttling</li>
+<li>Some sites hid miners in invisible iframes to keep running after you left</li>
+<li>Mobile sites destroyed phone batteries with zero warning</li>
+</ul>
+<strong>The Worst Examples:</strong>
+<p>| Site/Incident | What Happened | User Impact | |---|---|---| | <strong>The Pirate Bay (Sept 2017)</strong> | Embedded Coinhive without notification | Users reported 80-100% CPU usage, massive battery drain | | <strong>UK Government Sites</strong> | 4,000+ sites compromised via BrowseAloud plugin | Citizens mining for attackers while accessing public services | | <strong>YouTube Ads (Jan 2018)</strong> | Malicious ads contained Coinhive code | Regular video viewers unknowingly mining | | <strong>Politifact (Oct 2017)</strong> | Fact-checking site compromised | Readers investigating truth were secretly mining |</p>
+<hr>
+
+<h2>🔍 Why It Failed: The Technical and Ethical Autopsy</h2>
+
+Coinhive shut down in March 2019, citing Monero's price crash and "increase in ad blockers." But that's like saying the Titanic sank because of "unfavorable water conditions." Let's examine the real reasons.
+
+<h3><strong>Technical Failures</strong></h3>
+
+<strong>1. No Consent Enforcement at the Code Level</strong>
+
+<pre><code class="language-javascript">// Coinhive made consent completely optional
+// This code would run even if users said "no" elsewhere:
+var miner = new CoinHive.Anonymous('key');
+miner.start(); // That's it. Mining happens.
+
+// There was literally no technical barrier to silent mining
+// No pop-up to dismiss, no permission to request
+// Just instant, silent resource extraction
+</code></pre>
+
+<strong>2. No Default Throttling or Resource Protection</strong>
+
+Coinhive defaulted to using <strong>100% of available CPU threads</strong> unless developers manually throttled it. Most didn't bother.
+
+<pre><code class="language-javascript">// What responsible developers should have done:
+miner.setNumThreads(2);
+miner.setThrottle(0.5); // Use 50% of CPU
+
+// What 98% actually did:
+miner.start(); // Whelp, full throttle it is!
+</code></pre>
+
+Result: Users' computers would overheat, batteries would drain in minutes on mobile, and browsers would become completely unresponsive.
+
+<strong>3. No Built-in Visibility or User Controls</strong>
+
+Coinhive provided no standard UI for:
+<ul><li>Showing users that mining was happening</li>
+<li>Displaying current hash rate or resource usage  </li>
+<li>Allowing users to pause or stop mining</li>
+<li>Indicating how long mining would continue</li>
+</ul>
+<p>This meant even "ethical" implementations had to build everything from scratch. Most didn't bother.</p>
+<h3><strong>Ethical Failures</strong></h3>
+
+<strong>The Incentive Problem:</strong>
+
+Coinhive created a perverse economic incentive structure:
+
+<pre><code>Silent Mining = Maximum Revenue
+    ↓
+(No opt-in dialog = No one can decline)
+    ↓  
+(No throttling = Maximum hash rate)
+    ↓
+(No UI = Users don't know to close tab)
+    ↓
+More profit for the site, at users' expense
+</code></pre>
+
+<strong>The Accountability Vacuum:</strong>
+
+<ul><li>Coinhive took 30% of all mining revenue (their business model)</li>
+<li>They had financial incentive for mining to be as widespread as possible</li>
+<li>They provided plausible deniability: "We offer an ethical opt-in mode!"</li>
+<li>When abuse was rampant, they could say, "That's the developers' choice"</li>
+</ul>
+<h3><strong>The Regulatory and Technical Response</strong></h3>
+
+Once the abuse became undeniable, the response was swift and total:
+
+<strong>Browser Vendors:</strong>
+<ul><li>Chrome added Coinhive domains to Safe Browsing blocklist (February 2018)</li>
+<li>Firefox Enhanced Tracking Protection blocked mining scripts (September 2018)</li>
+<li>Opera added mining blocker directly into the browser (January 2018)</li>
+<li>Safari Intelligent Tracking Prevention caught most mining attempts</li>
+</ul>
+<strong>Security Software:</strong>
+<ul><li>Antivirus programs flagged ALL mining scripts as malware</li>
+<li>Corporate firewalls blocked mining domains by default</li>
+<li>Ad blockers added "cryptojacking" filter lists</li>
+<li>Browser extensions specifically to block mining appeared</li>
+</ul>
+<strong>The Nuclear Option:</strong>
+<p>The response wasn't "regulate mining" or "require consent." It was <strong>"ban all browser-based cryptocurrency mining, period."</strong></p>
+<p>And honestly? Given what Coinhive enabled, it's hard to argue they were wrong.</p>
+<hr>
+
+<h2>✅ What WebMiner Does Differently: Learning from Catastrophic Failure</h2>
+
+Here's where we get to the critical question: Is ethical web mining actually different from Coinhive, or is it just the same thing with better PR?
+
+The answer depends entirely on technical architecture, not promises. Let me show you the specific differences.
+
+<h3><strong>Architectural Consent Enforcement</strong></h3>
+
+<strong>Coinhive's approach (optional consent):</strong>
+<pre><code class="language-javascript">// Mining could start without any consent check:
+var miner = new CoinHive.Anonymous('key');
+miner.start(); // No permission required
+</code></pre>
+
+<strong>WebMiner's approach (mandatory consent):</strong>
+<pre><code class="language-javascript">// Mining literally cannot start without explicit permission
+async start() {
+    // This check CANNOT be bypassed
+    if (!MiningConsent.state.hasConsent) {
+        const hasConsent = await MiningConsent.requestPermission();
+        if (!hasConsent) {
+            return false; // Mining won't start. Period.
+        }
+    }
+    this.startMiningWorker();
+}
+</code></pre>
+
+<strong>The critical difference:</strong> In WebMiner's architecture, the consent check happens <em>before</em> the mining worker is even created. There's no "silent mode" to choose. The code structure makes non-consensual mining impossible.
+
+<h3><strong>Default Resource Protection</strong></h3>
+
+<strong>Coinhive's defaults:</strong>
+<ul><li>100% CPU utilization (all available threads)</li>
+<li>No thermal monitoring</li>
+<li>No battery protection</li>
+<li>No performance degradation detection</li>
+</ul>
+<strong>WebMiner's defaults:</strong>
+<ul><li>25% of one CPU core (configurable 10-50%)</li>
+<li>Automatic battery status monitoring (pauses if battery < 20%)</li>
+<li>Thermal throttling (reduces load if device temperature spikes)</li>
+<li>Frame rate monitoring (stops if UI becomes unresponsive)</li>
+</ul>
+<pre><code class="language-javascript">// This protection runs constantly in WebMiner:
+if (batteryLevel &lt; 0.20 &amp;&amp; !isCharging) {
+    this.pauseMining();
+    MiningConsent.showNotification('Mining paused - low battery');
+}
+
+if (deviceTemperature &gt; THERMAL_THRESHOLD) {
+    this.throttle = Math.max(0.1, this.throttle * 0.5);
+}
+</code></pre>
+
+<h3><strong>Required Transparency and Controls</strong></h3>
+
+<strong>Coinhive provided:</strong>
+<ul><li>Nothing by default</li>
+<li>Developers had to build their own UI (most didn't)</li>
+<li>No standard way to show mining status</li>
+<li>No built-in stop functionality</li>
+</ul>
+<strong>WebMiner provides:</strong>
+<ul><li>Automatic persistent mining indicator (can't be hidden)</li>
+<li>Real-time hash rate display</li>
+<li>One-click stop button (always visible)</li>
+<li>Settings dialog for throttle adjustment</li>
+<li>Battery and performance warnings</li>
+</ul>
+<strong>You can't turn these off.</strong> They're part of the core architecture, not optional features.
+<h3><strong>Technical Transparency</strong></h3>
+
+<strong>Coinhive's opacity:</strong>
+<ul><li>Closed-source code</li>
+<li>No way to verify what mining script actually did</li>
+<li>Could be modified by Coinhive without notice</li>
+<li>Developers and users had to "trust us"</li>
+</ul>
+<strong>WebMiner's transparency:</strong>
+<ul><li>Fully open source (inspect on GitHub)</li>
+<li>No minification in development build (89KB readable code)</li>
+<li>Can be audited in browser DevTools in real-time</li>
+<li>Network traffic is visible (WebSocket pool connections)</li>
+<li>Community can fork and verify</li>
+</ul>
+<hr>
+
+<h2>🌉 Why This Distinction Actually Matters</h2>
+
+I know what you're thinking: "Sure, your intentions are better. But Coinhive probably started with good intentions too."
+
+Fair point. So let's talk about why architectural differences matter more than promises.
+
+<h3><strong>The "But This Time It's Different" Problem</strong></h3>
+
+Every tech scandal follows the same pattern:
+<li>Company: "We're building an ethical alternative to [bad thing]"</li>
+<li>Critics: "But what about [obvious abuse vector]?"</li>
+<li>Company: "We'll prevent that through policy and good actors"</li>
+<li><em>Time passes</em></li>
+<li>Massive abuse happens exactly as predicted</li>
+<li>Company: "We're shocked! We never intended this!"</li>
+
+<strong>With Coinhive:</strong>
+<ul><li>Policy: "Please use our opt-in mode"</li>
+<li>Reality: 98% used silent mode</li>
+<li>Result: Everyone rightfully angry</li>
+</ul>
+<strong>Why WebMiner's approach is fundamentally different:</strong>
+<p>It's not about policy or intentions—it's about <strong>what the code makes possible</strong>.</p>
+<pre><code>Coinhive Architecture:
+Consent = Optional feature developers can skip
+    ↓
+Silent mining is technically easy
+    ↓  
+Economic incentive favors silent mining
+    ↓
+98% of implementations are exploitative
+    ↓
+Catastrophic failure
+
+WebMiner Architecture:
+Consent = Required by core code architecture  
+    ↓
+Silent mining is technically impossible
+    ↓
+Economic incentive aligned with user experience
+    ↓
+Only consensual implementations possible
+    ↓
+Ethical mining actually works
+</code></pre>
+
+<h3><strong>The Trust But Verify Principle</strong></h3>
+
+You shouldn't have to trust that WebMiner is different from Coinhive. You can verify it:
+
+<strong>Technical Verification:</strong>
+<li>Open browser DevTools (F12)</li>
+<li>Go to Network tab, filter for WebSocket connections</li>
+<li>Watch the mining traffic in real-time</li>
+<li>Inspect the consent dialog code in the Sources tab</li>
+<li>See exactly what's happening</li>
+
+<strong>Try This Experiment:</strong>
+
+Visit a site using WebMiner and try to start mining without clicking "Yes" in the consent dialog. You can't. The worker won't initialize. The WebSocket won't connect. Nothing happens.
+
+Now imagine trying that with Coinhive's "silent mode." The mining would already be running before you even opened DevTools.
+
+<h3><strong>Learning from History Instead of Repeating It</strong></h3>
+
+Here's what makes me confident this isn't just "Coinhive 2.0":
+
+<strong>Coinhive's mistakes we explicitly address:</strong>
+<ul><li>✅ Consent is architecturally required, not optional</li>
+<li>✅ Resource protection is built-in, not suggested</li>
+<li>✅ Transparency is unavoidable, not a feature to skip</li>
+<li>✅ Code is open source, not a black box</li>
+<li>✅ User controls are permanent, not hidden</li>
+</ul>
+<strong>The proof is in trying to abuse it:</strong>
+<p>With Coinhive, malicious implementation took 3 lines:</p>
+<pre><code class="language-javascript">var miner = new CoinHive.Anonymous('key');
+miner.start(); // Done. Silent mining active.
+</code></pre>
+
+With WebMiner, there's no equivalent. You can't skip the consent dialog. You can't hide the indicator. You can't disable the throttling safety limits. The architecture makes exploitation significantly harder.
+
+<strong>Is it perfect?</strong> No. Determined bad actors can always find ways to abuse technology.
+
+<strong>Is it the same fundamental design flaw?</strong> Absolutely not.
+
+<hr>
+
+<h2>💭 The Honest Conversation We Need to Have</h2>
+
+Look, I understand why "but this time it's different" sounds hollow after Coinhive. The crypto industry has earned its skepticism through countless pump-and-dump schemes, rug pulls, and broken promises.
+
+But here's the thing: <strong>refusing to learn from Coinhive means letting their failure define the entire possibility space forever.</strong>
+
+<h3><strong>The Questions Worth Asking</strong></h3>
+
+Instead of "Is this exactly like Coinhive?" (it's architecturally not), maybe we should be asking:
+
+<strong>1. "Can bad actors bypass the consent system?"</strong>
+<ul><li>Technically: No, consent check is before worker initialization</li>
+<li>Practically: They could hide the consent dialog, but mining still won't start without clicking "yes"</li>
+<li>Mitigation: Browser vendors could require visible consent UI as condition for not blocking</li>
+</ul>
+<strong>2. "Will some sites still try to manipulate consent?"</strong>
+<ul><li>Probably. Dark patterns are everywhere (looking at you, cookie banners)</li>
+<li>Difference: WebMiner consent is binary (yes/no), not 17 pages of toggles</li>
+<li>You can see the mining indicator and click stop immediately</li>
+</ul>
+<strong>3. "What if adoption leads to same arms race?"</strong>
+<ul><li>Risk: If widespread, bad implementations could emerge</li>
+<li>Protection: Open source code means community can audit and fork</li>
+<li>Evolution: Browser vendors now have experience recognizing abuse patterns</li>
+</ul>
+<strong>4. "Why should we believe this won't be exploited?"</strong>
+<ul><li>You shouldn't just believe—you should verify</li>
+<li>That's why the code is open source  </li>
+<li>That's why the consent system is architecturally enforced</li>
+<li>Trust is earned through transparency, not promises</li>
+</ul>
+<h3><strong>What We Owe to Coinhive's Victims</strong></h3>
+
+The millions of people whose computers were hijacked by Coinhive deserve more than hand-waving. They deserve acknowledgment:
+
+<strong>What they experienced was real:</strong>
+<ul><li>✅ Their devices were exploited without permission</li>
+<li>✅ Their batteries died mysteriously</li>
+<li>✅ Their electricity bills subsidized strangers' profit</li>
+<li>✅ Their trust in web technology was violated</li>
+</ul>
+<strong>What they deserve now:</strong>
+<ul><li>✅ Technology designed so that can't happen again</li>
+<li>✅ Architectural safeguards, not just policy promises</li>
+<li>✅ Ability to verify claims through open source code</li>
+<li>✅ Easy, permanent opt-out that actually works</li>
+</ul>
+<strong>The ethical obligation:</strong>
+<p>Building web mining right means respecting that Coinhive's failure created legitimate trauma. It means designing systems where consent can't be an afterthought because the architecture won't allow it.</p>
+<hr>
+
+<h2>🚀 Moving Forward: What Regulation Should Look Like</h2>
+
+The current response to Coinhive—blanket bans on all browser mining—is understandable but ultimately counterproductive. It's like banning all cars because some people drove drunk.
+
+<h3><strong>Implementation-Based Regulation</strong></h3>
+
+What if browsers and regulators distinguished between Coinhive-style exploitation and WebMiner-style transparency?
+
+<strong>Red Flags to Block:</strong>
+<ul><li>❌ No consent dialog shown within 3 seconds of mining start</li>
+<li>❌ No visible mining indicator while active</li>
+<li>❌ No one-click stop functionality</li>
+<li>❌ CPU usage above 50% of single core without explicit user setting</li>
+<li>❌ No battery status checks on mobile devices</li>
+</ul>
+<strong>Green Flags to Allow:</strong>
+<ul><li>✅ Consent dialog with clear language before any mining</li>
+<li>✅ Persistent indicator showing mining status</li>
+<li>✅ One-click stop button always visible</li>
+<li>✅ Default throttling below 30%</li>
+<li>✅ Automatic pause on low battery</li>
+</ul>
+<strong>Browser vendors could enforce this technically:</strong>
+<pre><code class="language-javascript">// Browsers could require this pattern:
+if (mining.active &amp;&amp; !mining.hasVisibleIndicator()) {
+    console.error('Mining without indicator - blocking');
+    mining.terminate();
+}
+
+if (mining.cpuUsage &gt; 0.5 &amp;&amp; !mining.userApprovedHighUsage) {
+    console.warn('Excessive CPU without approval - throttling');
+    mining.throttle = 0.25;
+}
+</code></pre>
+
+This would make Coinhive-style abuse technically impossible while allowing ethical implementations to exist.
+
+<hr>
+
+<h2>🎯 The Bottom Line</h2>
+
+The difference between Coinhive and ethical web mining isn't marketing. It's architecture.
+
+<strong>Coinhive failed because:</strong>
+<ul><li>Consent was optional (developers could skip it)</li>
+<li>Resource protection was optional (most used full throttle)</li>
+<li>Transparency was optional (silent mode was easiest)</li>
+<li>Code was closed (couldn't verify behavior)</li>
+<li>Economic incentives favored exploitation</li>
+</ul>
+<strong>WebMiner succeeds by making those failures impossible:</strong>
+<ul><li>Consent is required (code won't mine without it)</li>
+<li>Resource protection is built-in (battery, thermal, throttling)</li>
+<li>Transparency is unavoidable (indicator, one-click stop, open source)</li>
+<li>Code is verifiable (inspect on GitHub or in DevTools)</li>
+<li>Economic incentives align with user experience (bad experience = users leave)</li>
+</ul>
+<strong>The question isn't "Do you trust us?"</strong>
+<p>The question is <strong>"Can you verify that we're different?"</strong></p>
+<p>And the answer, thankfully, is yes. Check the code. Inspect the browser behavior. Try to mine without consent. You'll find it's architecturally impossible.</p>
+<p>That's not just "better than Coinhive." That's learning from catastrophic failure and building something fundamentally different.</p>
+<hr>
+
+<em>💡 Want to see the technical differences for yourself? Check out the <a href="https://github.com/opd-ai/webminer">WebMiner project</a> where you can inspect the consent system architecture, review the open source code, and verify that ethical web mining isn't just a promise—it's a technical reality.</em>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://pool.supportxmr.com:443" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Initialize WebMiner
+            const miner = new WebMiner({
+                autoStart: false
+            });
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
