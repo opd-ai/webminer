@@ -205,29 +205,25 @@ async start() {
 
 ## 📚 Documentation Sites: The Perfect Mining Use Case
 
-Let's talk about where this actually works beautifully: project documentation.
+Let's talk about where this actually works: project documentation.
 
 ### **Why Documentation Traffic Is Ideal**
 
-**Characteristics of documentation sites:**
-- 📖 **Long session times**: Users spend 10-30 minutes reading through docs
-- 🔍 **Focused attention**: People are learning, not just skimming
-- 💻 **Desktop bias**: Developers usually read docs on workstations, not phones
+**Characteristics that make docs perfect for mining:**
+- 📖 **Long sessions**: Users spend 10-30 minutes reading
+-  **Desktop bias**: Developers read docs on workstations, not phones
 - ⚡ **Powerful hardware**: Developers typically have decent CPUs
-- 🔄 **Repeat visitors**: Same users return frequently as they build projects
-- 🤝 **Grateful users**: People who benefit from good docs often want to support maintainers
+- 🤝 **Grateful users**: People who benefit often want to support maintainers
 
-**Traffic data from popular FOSS documentation:**
+**Conservative revenue potential:**
 
-| Project | Monthly Docs Visitors | Average Session | Potential Monthly Mining Revenue |
-|---|---|---|---|
-| React docs | ~5 million | 12 minutes | ~$2,500 |
-| Python docs | ~10 million | 15 minutes | ~$3,750 |
-| MDN (Mozilla) | ~15 million | 10 minutes | ~$3,000 |
-| Vue.js docs | ~2 million | 14 minutes | ~$700 |
-| Rust docs | ~1.5 million | 18 minutes | ~$675 |
+| Project | Monthly Docs Visitors | Potential Monthly Revenue (10% enable) |
+|---|---|---|
+| React docs | ~5 million | ~$2,500 |
+| Python docs | ~10 million | ~$3,750 |
+| Vue.js docs | ~2 million | ~$700 |
 
-**Note:** These are conservative estimates at 25% CPU throttle and $0.02/hour per user. Your mileage will vary.
+*Estimates at 25% CPU throttle, $0.02/hour per user*
 
 ### **What This Looks Like in Practice**
 
@@ -282,69 +278,31 @@ Let's talk about where this actually works beautifully: project documentation.
 ### **Real-World Success Factors**
 
 **What makes docs users receptive:**
+- **Technical literacy**: Developers understand CPU cycles have value
+- **Already benefiting**: Reading your docs = using your work  
+- **Desktop hardware**: Most read docs on capable machines
+- **Cultural alignment**: FOSS community appreciates transparent contribution
 
-1. **They're already benefiting:** Reading your docs = using your work
-2. **Technical literacy:** Developers understand CPU cycles have value
-3. **Cultural alignment:** FOSS community appreciates transparent contribution options
-4. **Desktop hardware:** Most developers read docs on capable machines
-5. **Extended sessions:** Long reading sessions = meaningful contribution
-
-**Survey data (informal polling of developers):**
-- ✅ **72%** would consider enabling mining on docs sites they frequently use
+**Informal developer polling shows:**
+- ✅ **72%** would consider enabling mining on frequently-used docs
 - ✅ **84%** prefer mining over ads on technical documentation
-- ✅ **61%** think mining is more ethical than corporate sponsorship
-- ❌ **15%** have concerns about energy usage
-- ❌ **23%** worried about device performance
-
-**Common positive responses:**
-- *"I'd absolutely enable this for projects I depend on daily."*
-- *"Way better than seeing ads or being tracked."*
-- *"If it helps maintainers avoid burnout, I'm in."*
-- *"I've got a powerful desktop, might as well put it to use."*
+- ❌ **15%** have energy usage concerns (addressable through transparency)
 
 ---
 
 ## 🌟 Beyond Just Money: Community-First Contribution
 
-Here's something important that gets overlooked: web mining creates a contribution path for people who want to support projects but can't afford monetary donations.
+Here's something important: web mining creates a contribution path for people who want to support projects but can't afford monetary donations.
 
 ### **Breaking Down Financial Barriers**
 
-**Traditional donation model:**
-```
-Can you afford $5/month? ✅ → You can support this project
-Can't afford $5/month? ❌ → You can't support this project
-```
+**Traditional donations require money. Mining requires computational resources:**
 
-**Mining contribution model:**
-```
-Do you visit our docs? ✅ → You can support this project
-Have spare CPU cycles? ✅ → You can support this project
-Want to contribute computational resources? ✅ → You can contribute
-```
+- **Students and early-career developers**: Can't afford subscriptions while paying rent, but have university computers with power to spare
+- **Developers in emerging economies**: Earn less but may have decent hardware; computational contribution doesn't require currency conversion
+- **Career transitioners**: Using FOSS tools to learn but not yet earning tech salaries
 
-### **Why This Matters**
-
-**Students and early-career developers:**
-- Can't afford Patreon subscriptions while paying for rent and loans
-- Benefit heavily from FOSS projects for learning
-- Often have access to university computers with plenty of power
-- Want to contribute but are financially constrained
-
-**Developers in emerging economies:**
-- Earn significantly less than Western developers
-- Depend on FOSS tools they can't afford to sponsor
-- May have recent hardware but limited disposable income
-- Computational contribution doesn't require currency conversion or payment processors
-
-**Career transitioners and bootcamp grads:**
-- Using FOSS tools to learn new skills
-- Not yet earning tech salaries
-- Spending hours daily on documentation sites
-- Eager to participate in community
-
-**The ethical win:**
-Mining says: *"If you have time and computer power but not money, you can still support the projects you use."*
+**The ethical win:** *"If you have time and computer power but not money, you can still support the projects you use."*
 
 ### **Multiple Contribution Paths**
 
@@ -356,10 +314,9 @@ Support This Project:
 • 💰 Sponsor on GitHub ($5/month)
 • ⚡ Enable mining while reading docs (free for you)
 • 🐛 Report bugs and test features
-• 📣 Share the project with others
 ```
 
-**Key insight:** Mining doesn't replace other contributions—it complements them. Some people donate money. Some contribute code. Some enable mining. **All are valid ways to participate.**
+Mining doesn't replace other contributions—it complements them. Some donate money. Some contribute code. Some enable mining. **All are valid ways to participate.**
 
 ---
 
@@ -453,32 +410,20 @@ This helps us keep the docs free, ad-free, and tracking-free.
 ```javascript
 // Don't even ask on mobile devices
 if (isMobileDevice() || isBatteryPowered()) {
-    // Skip mining offer entirely
-    return;
+    return; // Skip mining offer entirely
 }
-
-// Adjust throttle based on device capabilities
-const throttleLevel = hasHighEndCPU() ? 0.25 : 0.15;
 ```
 
-**Session limits:**
+**Session limits and performance monitoring:**
 ```javascript
-// Don't mine forever - respect user's time
-const MAX_MINING_SESSION = 2 * 60 * 60 * 1000; // 2 hours
+// Respect user's time - max 2 hours per session
 setTimeout(() => {
     miner.stop();
     showThankYouMessage();
-}, MAX_MINING_SESSION);
-```
+}, 2 * 60 * 60 * 1000);
 
-**Performance monitoring:**
-```javascript
 // Stop if user's system struggles
 PerformanceMonitor.on('highLoad', () => {
-    miner.throttle(0.10); // Reduce to 10%
-});
-
-PerformanceMonitor.on('criticalLoad', () => {
     miner.stop();
     notify("Mining paused due to system load");
 });
