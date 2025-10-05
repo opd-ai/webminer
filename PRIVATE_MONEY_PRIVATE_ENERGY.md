@@ -152,4 +152,4 @@ And maybe that's worth thinking about, whether you're ready to install solar pan
 
 ---
 
-**About This Document:** This article explores the intersection of decentralized cryptocurrency and personal energy independence, arguing that truly decentralized systems create better incentives for individual sustainability than centralized alternatives. Written for the WebMiner project, which implements ethical browser-based cryptocurrency mining with explicit user consent and transparent resource usage.
+*💡 Want to explore the intersection of energy independence and ethical cryptocurrency? Check out the [WebMiner project](https://github.com/opd-ai/webminer) for transparent, consent-first browser-based mining that aligns individual benefit with decentralization.*
