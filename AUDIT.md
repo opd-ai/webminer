@@ -127,6 +127,7 @@ class WebMiner {
 
 ### 2. MISSING FEATURE: pauseWhenHidden Configuration Option Not Accepted by Constructor
 
+**Status:** ✅ Resolved (2025-10-05, commit 2490163)  
 **Location:** webminer.js:1797-1810 (WebMiner constructor) - docs/API.md:47  
 **Severity:** High  
 **Verification Status:** ✅ Confirmed through:
