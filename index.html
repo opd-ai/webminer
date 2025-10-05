@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner 🚀</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>WebMiner 🚀</h1>
+
+<h2>Simple Standalone Static Monero Webminer</h2>
+
+<blockquote>🚧 <strong>Coming Soon</strong> - Currently in active development</blockquote>
+
+A lightweight, ethical, consent-based Monero webminer that runs entirely in modern browsers. Built as a single JavaScript file with no external dependencies for easy self-hosting and integration.
+
+<h2>✨ Key Features (Planned)</h2>
+
+<ul><li><strong>🛡️ Consent-First</strong>: Explicit user permission required - no dark patterns</li>
+<li><strong>📱 Universal Compatibility</strong>: Works in all modern browsers (Chrome 70+, Firefox 65+, Safari 14+, Edge 79+)</li>
+<li><strong>⚡ Single File Deployment</strong>: One JavaScript file < 200KB (including embedded WebAssembly)</li>
+<li><strong>🔧 Self-Hostable</strong>: Deploy on any standard web server</li>
+<li><strong>🎛️ Configurable Resource Usage</strong>: 10-50% CPU throttling options</li>
+<li><strong>🔒 Secure</strong>: No eval(), CSP compatible, secure WebSocket connections</li>
+<li><strong>📊 Transparent</strong>: Real-time performance monitoring and earnings estimates</li>
+<li><strong>🔋 Device-Friendly</strong>: Intelligent battery protection, thermal throttling, and adaptive performance optimization</li>
+<li><strong>📊 Smart Monitoring</strong>: Real-time performance tracking with health scoring and optimization recommendations</li>
+<li><strong>📱 Mobile-Optimized</strong>: Touch-friendly interface, orientation handling, and mobile-specific power management</li>
+</ul>
+<h2>🎯 Philosophy</h2>
+
+WebMiner prioritizes ethical implementation over mining efficiency. Every design decision puts user consent, transparent communication, and maintainable code first. Mining should never happen without explicit user permission, and users should always understand exactly what their browsers are doing.
+
+<h2>🚀 Quick Integration (Preview)</h2>
+
+Once released, integration will be as simple as:
+
+<pre><code class="language-html">&lt;!-- Development Version (webminer.js) - Full documentation, 88KB --&gt;
+&lt;script src="webminer.js" 
+        data-pool="wss://pool.example.com"
+        data-wallet="YOUR<em>MONERO</em>ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+
+&lt;!-- Production Version (webminer.min.js) - Optimized, 53KB --&gt;
+&lt;script src="webminer.min.js" 
+        data-pool="wss://pool.example.com"
+        data-wallet="YOUR<em>MONERO</em>ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+</code></pre>
+
+Or programmatic control:
+
+<pre><code class="language-javascript">WebMiner.init({
+  pool: 'wss://pool.example.com',
+  wallet: 'YOUR<em>MONERO</em>ADDRESS',
+  autoStart: false,
+  throttle: 0.25
+});
+</code></pre>
+
+<h3>📦 Build Options</h3>
+
+| Build | File | Size | Use Case |
+|-------|------|------|----------|
+| <strong>Development</strong> | <code>webminer.js</code> | ~88 KB | Development, debugging, customization |
+| <strong>Production</strong> | <code>webminer.min.js</code> | ~53 KB | Live websites, CDN deployment |
+
+Both builds include identical functionality - use development for debugging and production for deployment.
+
+<h2>🛠️ Technical Approach</h2>
+
+<ul><li><strong>Mining Algorithm</strong>: Monero's RandomX (CPU-optimized)</li>
+<li><strong>Performance</strong>: WebAssembly + JavaScript fallback</li>
+<li><strong>Architecture</strong>: Web Workers to prevent UI blocking</li>
+<li><strong>Connection</strong>: WebSocket pool protocol</li>
+<li><strong>Compatibility</strong>: Progressive enhancement with graceful degradation</li>
+</ul>
+<h2>🧪 Testing Current Implementation</h2>
+
+<strong>Phase 1 is now complete!</strong> You can test the consent system and UI components:
+
+<li><strong>Local Testing:</strong></li>
+
+   <pre><code class="language-bash">   # Clone and serve locally
+   python3 -m http.server 9000
+      # Open http://localhost:9000/examples/basic.html
+   </code></pre>
+
+<li><strong>Try the Demo:</strong></li>
+   - Click "Show Consent Dialog" to test the consent system
+   - Click "Start Mining" to test the complete flow
+   - Observe the persistent mining indicator (now with real mining!)
+   - Test the one-click stop functionality
+   - Try the mining settings dialog for throttle adjustment
+
+<li><strong>Run Tests:</strong></li>
+
+   <pre><code class="language-bash">   # Open the comprehensive test suite
+   # http://localhost:9000/tests/test-suite.html
+   </code></pre>
+
+<li><strong>Integration Testing:</strong></li>
+
+   <pre><code class="language-html">   &lt;script src="webminer.js" 
+           data-pool="wss://pool.example.com"
+           data-wallet="YOUR<em>MONERO</em>ADDRESS"
+           data-throttle="0.25"&gt;
+   &lt;/script&gt;
+   </code></pre>
+
+<li><strong>Test Optimization Features:</strong></li>
+
+   <pre><code class="language-bash">   # Open the optimization test suite
+   # http://localhost:9000/tests/optimization-tests.html
+   # Test performance monitoring, adaptive throttling, mobile optimizations
+   </code></pre>
+
+<strong>Note:</strong> Current implementation includes full mining functionality with WebAssembly RandomX, pool connections, real hash calculations, and comprehensive optimization features. The system now intelligently adapts to device capabilities, protects battery life, and provides mobile-optimized experiences. Ready for production use with real pool URLs and wallet addresses.
+
+<h2>📚 Documentation</h2>
+
+<ul><li><strong>API Reference:</strong> <a href="docs/API.md"><code>docs/API.md</code></a></li>
+<li><strong>Demo Page:</strong> <a href="examples/basic.html"><code>examples/basic.html</code></a></li>
+<li><strong>Test Suite:</strong> <a href="tests/test-suite.html"><code>tests/test-suite.html</code></a></li>
+<li><strong>Implementation Plan:</strong> <a href="PLAN.md"><code>PLAN.md</code></a></li>
+</ul>
+<h2>📋 Development Progress</h2>
+
+<h3>Milestone 1: Basic Framework ✅</h3>
+
+<ul><li>[x] Consent system implementation</li>
+<li>[x] Basic mining worker structure</li>
+<li>[x] Pool connection prototype</li>
+<li>[x] Simple UI controls</li>
+</ul>
+<h3>Milestone 2: Core Mining ✅</h3>
+
+<ul><li>[x] WebAssembly RandomX integration</li>
+<li>[x] JavaScript fallback implementation</li>
+<li>[x] Hash rate calculation</li>
+<li>[x] Share submission system</li>
+</ul>
+<h3>Milestone 3: Optimization ✅</h3>
+
+<ul><li>[x] Performance monitoring - Real-time device capability detection and health scoring</li>
+<li>[x] Adaptive throttling - Dynamic CPU usage adjustment based on device conditions  </li>
+<li>[x] Mobile optimizations - Touch-friendly UI and mobile-specific power management</li>
+<li>[x] Battery protection - Navigator Battery API integration with automatic mining pause</li>
+</ul>
+<h3>Milestone 4: Single-File Build 📅</h3>
+
+<ul><li>[ ] Build system for concatenation</li>
+<li>[ ] WebAssembly embedding</li>
+<li>[ ] Minification and optimization</li>
+<li>[ ] Browser compatibility testing</li>
+</ul>
+<h3>Milestone 5: Documentation 📅</h3>
+
+<ul><li>[ ] Complete API documentation</li>
+<li>[ ] Integration examples</li>
+<li>[ ] Performance benchmarks</li>
+<li>[ ] Security audit</li>
+</ul>
+<h2>🎮 Use Cases</h2>
+
+<ul><li><strong>Content Creators</strong>: Monetize websites with user consent</li>
+<li><strong>Developers</strong>: Easy integration into web applications</li>
+<li><strong>Organizations</strong>: Alternative revenue streams with transparency</li>
+<li><strong>Researchers</strong>: Browser-based mining experimentation</li>
+</ul>
+<h2>🔒 Security & Ethics</h2>
+
+<ul><li><strong>User Control</strong>: One-click stop functionality</li>
+<li><strong>Resource Limits</strong>: Hard CPU usage caps</li>
+<li><strong>Privacy</strong>: No personal data collection</li>
+<li><strong>Transparency</strong>: Clear earnings expectations</li>
+<li><strong>Mobile Protection</strong>: Battery and thermal safeguards</li>
+</ul>
+<h2>📚 Documentation (Coming Soon)</h2>
+
+<ul><li>API Reference</li>
+<li>Integration Guide</li>
+<li>Security Best Practices</li>
+<li>Performance Benchmarks</li>
+<li>Mobile Device Guidelines</li>
+</ul>
+<h2>🤝 Contributing</h2>
+
+This project is in early development. Contribution guidelines will be available once the core framework is complete.
+
+<h2>⚖️ License</h2>
+
+License information will be provided with the initial release.
+
+<h2>🎯 Project Goals</h2>
+
+<li><strong>Single file < 200KB</strong> (including embedded WebAssembly)</li>
+<li><strong>Works in 95%+ of browsers</strong> accessing the web</li>
+<li><strong>Consent-first approach</strong> - no mining without explicit permission</li>
+<li><strong>Configurable resource usage</strong> - 10-50% CPU throttling options</li>
+<li><strong>Production-ready reliability</strong> - handles network failures gracefully</li>
+<li><strong>Clear documentation</strong> - developers can integrate in < 5 minutes</li>
+<li><strong>Ethical implementation</strong> - transparent about earnings and impact</li>
+
+<hr>
+
+<strong>Stay tuned for updates!</strong> This project aims to set a new standard for ethical browser-based cryptocurrency mining.
+
+<hr>
+
+Built with 💜 for the open web
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+</body>
+</html>
