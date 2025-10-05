@@ -1758,7 +1758,13 @@
 
             // Enable mobile-specific warnings
             MiningConsent.state.showMobileWarning = true;
-            MiningConsent.state.pauseWhenHidden = true; // Default to pause on mobile
+            
+            // Only set pauseWhenHidden default if user hasn't explicitly configured it
+            // This preserves user preferences from constructor config
+            if (MiningConsent.state.pauseWhenHidden === undefined) {
+                MiningConsent.state.pauseWhenHidden = true; // Default to pause on mobile
+            }
+            
             MiningConsent.savePreference();
 
             // Show mobile-specific guidance
@@ -1821,6 +1827,13 @@
 
             // Initialize consent system
             MiningConsent.init();
+
+            // Transfer pauseWhenHidden config to consent state if provided
+            // This allows users to programmatically control auto-pause behavior
+            if (config.pauseWhenHidden !== undefined) {
+                MiningConsent.state.pauseWhenHidden = config.pauseWhenHidden;
+                MiningConsent.savePreference();
+            }
 
             // Initialize mobile optimizations
             if (this.config.enableMobileOptimizations !== false) {
