@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebMiner 🚀</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -98,37 +99,32 @@ WebMiner prioritizes ethical implementation over mining efficiency. Every design
 
 Integration is simple using data attributes or programmatic control:
 
-<pre><code class="language-html">&lt;!-- Development Version (webminer.js) - Full documentation, 88KB --&gt;
-&lt;h2&gt;🚀 Quick Integration&lt;/h2&gt;
-
-Integration is simple using data attributes or programmatic control:
-
-</code></pre>html
-<!-- Development Version (webminer.js) - Full documentation, 89KB -->
-<script src="webminer.js" 
+<pre><code class="language-html">&lt;!-- Development Version (webminer.js) - Full documentation, 89KB --&gt;
+&lt;script src="webminer.js" 
         data-pool="wss://pool.example.com"
         data-wallet="YOUR<em>MONERO</em>ADDRESS"
-        data-throttle="0.25">
-</script>
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
 
-<!-- Production Version (webminer.min.js) - Optimized, 54KB -->
-<script src="webminer.min.js" 
+&lt;!-- Production Version (webminer.min.js) - Optimized, 54KB --&gt;
+&lt;script src="webminer.min.js" 
         data-pool="wss://pool.example.com"
         data-wallet="YOUR<em>MONERO</em>ADDRESS"
-        data-throttle="0.25">
-</script>
-<pre><code>
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+</code></pre>
+
 Or programmatic control:
 
-</code></pre>javascript
-WebMiner.init({
+<pre><code class="language-javascript">WebMiner.init({
   pool: 'wss://pool.example.com',
   wallet: 'YOUR<em>MONERO</em>ADDRESS',
   autoStart: false,
   throttle: 0.25
 });
-<pre><code>
-&lt;h3&gt;📦 Build Options&lt;/h3&gt;
+</code></pre>
+
+<h3>📦 Build Options</h3>
 
 | Build | File | Size | Use Case |
 |-------|------|------|----------|
@@ -137,7 +133,7 @@ WebMiner.init({
 
 Both builds include identical functionality - use development for debugging and production for deployment.
 
-&lt;h2&gt;🛠️ Technical Approach&lt;/h2&gt;
+<h2>🛠️ Technical Approach</h2>
 
 <ul><li><strong>Mining Algorithm</strong>: Monero's RandomX (CPU-optimized)</li>
 <li><strong>Performance</strong>: WebAssembly + JavaScript fallback</li>
@@ -145,12 +141,17 @@ Both builds include identical functionality - use development for debugging and 
 <li><strong>Connection</strong>: WebSocket pool protocol</li>
 <li><strong>Compatibility</strong>: Progressive enhancement with graceful degradation</li>
 </ul>
-<p>&lt;h2&gt;🧪 Testing the Implementation&lt;/h2&gt;</p>
+<h2>🧪 Testing the Implementation</h2>
+
 <strong>All core features are complete!</strong> Test the full mining system with consent management and adaptive optimizations:
+
 <li><strong>Local Testing:</strong></li>
-   </code></pre>bash
-<p># Clone and serve locally python3 -m http.server 9000 # Open http://localhost:9000/examples/basic.html</p>
-   <pre><code>
+
+   <pre><code class="language-bash">   # Clone and serve locally
+   python3 -m http.server 9000
+      # Open http://localhost:9000/examples/basic.html
+   </code></pre>
+
 <li><strong>Try the Demo:</strong></li>
    - Click "Show Consent Dialog" to test the consent system
    - Click "Start Mining" to test the complete flow
@@ -160,54 +161,55 @@ Both builds include identical functionality - use development for debugging and 
 
 <li><strong>Run Tests:</strong></li>
 
-   </code></pre>bash
-   # Open the comprehensive test suite
+   <pre><code class="language-bash">   # Open the comprehensive test suite
    # http://localhost:9000/tests/test-suite.html
-   <pre><code>
+   </code></pre>
+
 <li><strong>Integration Testing:</strong></li>
 
-   </code></pre>html
-   <script src="webminer.js" 
+   <pre><code class="language-html">   &lt;script src="webminer.js" 
            data-pool="wss://pool.example.com"
            data-wallet="YOUR<em>MONERO</em>ADDRESS"
-           data-throttle="0.25">
-   </script>
-   <pre><code>
+           data-throttle="0.25"&gt;
+   &lt;/script&gt;
+   </code></pre>
+
 <li><strong>Test Optimization Features:</strong></li>
 
-   </code></pre>bash
-   # Open the optimization test suite
+   <pre><code class="language-bash">   # Open the optimization test suite
    # http://localhost:9000/tests/optimization-tests.html
    # Test performance monitoring, adaptive throttling, mobile optimizations
-   <pre><code>
+   </code></pre>
+
 <strong>Note:</strong> The implementation includes complete mining functionality with WebAssembly RandomX, pool connections, real hash calculations, and comprehensive optimization features. The system intelligently adapts to device capabilities, protects battery life, and provides mobile-optimized experiences. Ready for production use with real pool URLs and wallet addresses.
 
-&lt;h2&gt;📚 Documentation&lt;/h2&gt;
+<h2>📚 Documentation</h2>
 
 <ul><li><strong>API Reference:</strong> <a href="docs/API.md"><code>docs/API.md</code></a></li>
 <li><strong>Build Guide:</strong> <a href="docs/BUILD.md"><code>docs/BUILD.md</code></a></li>
 <li><strong>Demo Page:</strong> <a href="examples/basic.html"><code>examples/basic.html</code></a></li>
 <li><strong>Test Suite:</strong> <a href="tests/test-suite.html"><code>tests/test-suite.html</code></a></li>
 </ul>
-<p>&lt;h3&gt;🌐 Static Site Generator&lt;/h3&gt;</p>
-<p>WebMiner includes a Node.js static site generator that converts markdown documentation to a navigable HTML website with <strong>built-in consensual mining UI</strong>:</p>
-</code></pre>bash
-<h1>Generate HTML site from markdown files</h1>
+<h3>🌐 Static Site Generator</h3>
+
+WebMiner includes a Node.js static site generator that converts markdown documentation to a navigable HTML website with <strong>built-in consensual mining UI</strong>:
+
+<pre><code class="language-bash">&lt;h1&gt;Generate HTML site from markdown files&lt;/h1&gt;
 node generate-site.js
 
-<h1>Generate with WebMiner integration (optional)</h1>
+&lt;h1&gt;Generate with WebMiner integration (optional)&lt;/h1&gt;
 node generate-site.js \
   --pool="wss://pool.supportxmr.com:443" \
   --wallet="YOUR<em>MONERO</em>ADDRESS" \
   --throttle="0.25"
-``<code>
+</code></pre>
 
 <strong>Features:</strong>
-<ul><li>Converts all </code>.md<code> files to </code>.html<code> (README.md → index.html)</li>
-<li>Automatically excludes files with </code>REVIEW<code> or </code>PLAN<code> in the name</li>
-<li>Respects </code>.gitignore<code> patterns</li>
+<ul><li>Converts all <code>.md</code> files to <code>.html</code> (README.md → index.html)</li>
+<li>Automatically excludes files with <code>REVIEW</code> or <code>PLAN</code> in the name</li>
+<li>Respects <code>.gitignore</code> patterns</li>
 <li>Generates navigation bar with current page highlighting</li>
-<li>Creates responsive </code>styles.css<code> stylesheet</li>
+<li>Creates responsive <code>styles.css</code> stylesheet</li>
 <li>Produces clean, accessible HTML5 documents</li>
 <li><strong>Optional:</strong> Embeds webminer.js script with pool/wallet configuration</li>
 <li><strong>Consensual UI:</strong> Beautiful banner asking for user permission before mining</li>
@@ -268,10 +270,10 @@ node generate-site.js \
 </ul>
 <h2>📚 Available Documentation</h2>
 
-<ul><li><strong>API Reference</strong> - Complete documentation in </code>docs/API.md<code></li>
-<li><strong>Build Guide</strong> - Build system details in </code>docs/BUILD.md<code></li>
-<li><strong>Integration Examples</strong> - Working demos in </code>examples/<code> directory</li>
-<li><strong>Test Suites</strong> - Comprehensive tests in </code>tests/` directory</li>
+<ul><li><strong>API Reference</strong> - Complete documentation in <code>docs/API.md</code></li>
+<li><strong>Build Guide</strong> - Build system details in <code>docs/BUILD.md</code></li>
+<li><strong>Integration Examples</strong> - Working demos in <code>examples/</code> directory</li>
+<li><strong>Test Suites</strong> - Comprehensive tests in <code>tests/</code> directory</li>
 <li><strong>Security Best Practices</strong> - Documented in API reference</li>
 <li><strong>Mobile Device Guidelines</strong> - Included in API documentation</li>
 </ul>

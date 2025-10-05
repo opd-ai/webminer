@@ -29,12 +29,6 @@ WebMiner prioritizes ethical implementation over mining efficiency. Every design
 Integration is simple using data attributes or programmatic control:
 
 ```html
-<!-- Development Version (webminer.js) - Full documentation, 88KB -->
-## 🚀 Quick Integration
-
-Integration is simple using data attributes or programmatic control:
-
-```html
 <!-- Development Version (webminer.js) - Full documentation, 89KB -->
 <script src="webminer.js" 
         data-pool="wss://pool.example.com"
