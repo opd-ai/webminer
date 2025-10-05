@@ -1,0 +1,37 @@
+nohup: ignoring input
+═══════════════════════════════════════════════════
+  WebMiner WebSocket-to-Stratum Proxy
+═══════════════════════════════════════════════════
+  WebSocket: ws://localhost:8080
+  Pool: gulf.moneroocean.stream:10128
+  Started: 2025-10-05T21:30:33.181Z
+═══════════════════════════════════════════════════
+
+Uncaught exception: Error: listen EADDRINUSE: address already in use :::8080
+    at Server.setupListenHandle [as _listen2] (node:net:1912:16)
+    at listenInCluster (node:net:1969:12)
+    at Server.listen (node:net:2074:7)
+    at new WebSocketServer (/home/user/go/src/github.com/opd-ai/webminer/node_modules/ws/lib/websocket-server.js:102:20)
+    at Object.<anonymous> (/home/user/go/src/github.com/opd-ai/webminer/proxy-server.js:33:13)
+    at Module._compile (node:internal/modules/cjs/loader:1565:14)
+    at Object..js (node:internal/modules/cjs/loader:1708:10)
+    at Module.load (node:internal/modules/cjs/loader:1318:32)
+    at Function._load (node:internal/modules/cjs/loader:1128:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 8080
+}
+
+═══════════════════════════════════════════════════
+  Proxy Statistics
+═══════════════════════════════════════════════════
+  Uptime: 0h 1m
+  Active connections: 0
+  Total connections: 0
+  Shares submitted: 0
+  Errors: 1
+═══════════════════════════════════════════════════
+

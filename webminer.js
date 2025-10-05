@@ -2181,10 +2181,13 @@ class RandomXMiner {
     async connectToPool(poolUrl, walletAddress) {
         return new Promise((resolve, reject) => {
             try {
+                // Important: Most Monero pools use TCP Stratum protocol, not WebSocket
+                // You need a WebSocket-to-Stratum proxy to bridge the connection
+                // Example: wss://your-proxy.example.com?pool=gulf.moneroocean.stream&port=10128
                 this.socket = new WebSocket(poolUrl);
                 
                 this.socket.onopen = () => {
-                    // Send login request to pool
+                    // Send login request to pool (Stratum protocol)
                     const loginRequest = {
                         id: 1,
                         jsonrpc: '2.0',
@@ -2230,7 +2233,8 @@ class RandomXMiner {
                 };
                 
                 this.socket.onerror = (error) => {
-                    reject(new Error('Pool connection failed'));
+                    const errorMsg = 'Pool connection failed. Most Monero pools use TCP Stratum protocol which browsers cannot access directly. You need a WebSocket-to-Stratum proxy. See documentation for setup instructions.';
+                    reject(new Error(errorMsg));
                 };
                 
                 // Resolve after connection attempt

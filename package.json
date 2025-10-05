@@ -1,0 +1,27 @@
+{
+  "name": "webminer-proxy",
+  "version": "1.0.0",
+  "description": "WebSocket-to-Stratum proxy for WebMiner browser-based Monero mining",
+  "main": "proxy-server.js",
+  "scripts": {
+    "start": "node proxy-server.js",
+    "proxy": "node proxy-server.js",
+    "test": "node test-methods.js"
+  },
+  "keywords": [
+    "monero",
+    "mining",
+    "websocket",
+    "stratum",
+    "proxy",
+    "webminer"
+  ],
+  "author": "WebMiner Team",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.14.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

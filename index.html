@@ -95,20 +95,29 @@ A lightweight, ethical, consent-based Monero webminer that runs entirely in mode
 
 WebMiner prioritizes ethical implementation over mining efficiency. Every design decision puts user consent, transparent communication, and maintainable code first. Mining should never happen without explicit user permission, and users should always understand exactly what their browsers are doing.
 
+<h2>⚠️ WebSocket-to-Stratum Proxy Required</h2>
+
+<strong>Important</strong>: Most Monero pools use TCP Stratum protocol, which browsers cannot access directly. You need a WebSocket-to-Stratum proxy server to bridge the connection.
+
+📖 <strong><a href="docs/WEBSOCKET_PROXY.md">Complete Proxy Setup Guide</a></strong> - Includes Node.js proxy server code, Docker deployment, and production configuration.
+
+<pre><code>Browser (WebMiner) --[WebSocket]--&gt; Proxy Server --[TCP Stratum]--&gt; Mining Pool
+</code></pre>
+
 <h2>🚀 Quick Integration</h2>
 
-Integration is simple using data attributes or programmatic control:
+Once your proxy is running, integration is simple:
 
 <pre><code class="language-html">&lt;!-- Development Version (webminer.js) - Full documentation, 89KB --&gt;
 &lt;script src="webminer.js" 
-        data-pool="wss://pool.example.com"
+        data-pool="wss://your-proxy.example.com"
         data-wallet="YOUR<em>MONERO</em>ADDRESS"
         data-throttle="0.25"&gt;
 &lt;/script&gt;
 
 &lt;!-- Production Version (webminer.min.js) - Optimized, 54KB --&gt;
 &lt;script src="webminer.min.js" 
-        data-pool="wss://pool.example.com"
+        data-pool="wss://your-proxy.example.com"
         data-wallet="YOUR<em>MONERO</em>ADDRESS"
         data-throttle="0.25"&gt;
 &lt;/script&gt;
@@ -117,7 +126,7 @@ Integration is simple using data attributes or programmatic control:
 Or programmatic control:
 
 <pre><code class="language-javascript">WebMiner.init({
-  pool: 'wss://pool.example.com',
+  pool: 'wss://your-proxy.example.com',
   wallet: 'YOUR<em>MONERO</em>ADDRESS',
   autoStart: false,
   throttle: 0.25
@@ -307,7 +316,7 @@ Built with 💜 for the open web
     <footer class="site-footer">
         <p>Generated with WebMiner Static Site Generator</p>
     </footer>
-    <script src="webminer.js" data-pool="wss://pool.supportxmr.com:443" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script src="webminer.js" data-pool="ws://localhost:8080" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
     <script>
         // Consensual miner UI controls
         document.addEventListener('DOMContentLoaded', function() {

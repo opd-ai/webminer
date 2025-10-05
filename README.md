@@ -24,21 +24,31 @@ A lightweight, ethical, consent-based Monero webminer that runs entirely in mode
 
 WebMiner prioritizes ethical implementation over mining efficiency. Every design decision puts user consent, transparent communication, and maintainable code first. Mining should never happen without explicit user permission, and users should always understand exactly what their browsers are doing.
 
+## ⚠️ WebSocket-to-Stratum Proxy Required
+
+**Important**: Most Monero pools use TCP Stratum protocol, which browsers cannot access directly. You need a WebSocket-to-Stratum proxy server to bridge the connection.
+
+📖 **[Complete Proxy Setup Guide](docs/WEBSOCKET_PROXY.md)** - Includes Node.js proxy server code, Docker deployment, and production configuration.
+
+```
+Browser (WebMiner) --[WebSocket]--> Proxy Server --[TCP Stratum]--> Mining Pool
+```
+
 ## 🚀 Quick Integration
 
-Integration is simple using data attributes or programmatic control:
+Once your proxy is running, integration is simple:
 
 ```html
 <!-- Development Version (webminer.js) - Full documentation, 89KB -->
 <script src="webminer.js" 
-        data-pool="wss://pool.example.com"
+        data-pool="wss://your-proxy.example.com"
         data-wallet="YOUR_MONERO_ADDRESS"
         data-throttle="0.25">
 </script>
 
 <!-- Production Version (webminer.min.js) - Optimized, 54KB -->
 <script src="webminer.min.js" 
-        data-pool="wss://pool.example.com"
+        data-pool="wss://your-proxy.example.com"
         data-wallet="YOUR_MONERO_ADDRESS"
         data-throttle="0.25">
 </script>
@@ -48,7 +58,7 @@ Or programmatic control:
 
 ```javascript
 WebMiner.init({
-  pool: 'wss://pool.example.com',
+  pool: 'wss://your-proxy.example.com',
   wallet: 'YOUR_MONERO_ADDRESS',
   autoStart: false,
   throttle: 0.25
