@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If Your Crawler Can't Mine, It Shouldn't Crawl: Setting Ethical Standards for AI Training</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about 25% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="IF_YOUR_CRAWLER_CANT_MINE_IT_SHOULDNT_CRAWL.html" class="active">If Your Crawler Cant Mine It Shouldnt Crawl</a>
+        <a href="MINER_UI.html">Miner Ui</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_ATTENTION_TOXICITY_PROBLEM.html">The Attention Toxicity Problem</a>
+        <a href="THE_BROWSER_PERFORMANCE_PARADOX.html">The Browser Performance Paradox</a>
+        <a href="THE_COINHIVE_LESSON.html">The Coinhive Lesson</a>
+        <a href="THE_CRAWLERS_DEBT.html">The Crawlers Debt</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_GLOBAL_SOUTHS_SECRET_WEAPON.html">The Global Souths Secret Weapon</a>
+        <a href="THE_ISP_THROTTLING_QUESTION.html">The Isp Throttling Question</a>
+        <a href="THE_JUST_USE_A_VPN_FALLACY.html">The Just Use A Vpn Fallacy</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_NONPROFIT_DILEMMA.html">The Nonprofit Dilemma</a>
+        <a href="THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.html">The Open Source Sustainability Crisis</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_POWER_CONSUMPTION_RED_HERRING.html">The Power Consumption Red Herring</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_STREAMING_PARADOX.html">The Streaming Paradox</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="THE_TRUST_PROBLEM.html">The Trust Problem</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>If Your Crawler Can't Mine, It Shouldn't Crawl: Setting Ethical Standards for AI Training</h1>
+
+<blockquote><em>"We spent decades teaching web crawlers to be polite citizens—to respect robots.txt, to rate-limit themselves, to identify their purpose. Then AI companies showed up, scraped everything for billion-dollar models, and acted like basic courtesy doesn't apply anymore."</em></blockquote>
+
+<hr>
+
+You know that feeling when you're hosting a party at your house, and most guests are considerate—they wipe their feet, ask before opening your fridge, and help clean up? Then one person walks in, raids your pantry, uses your ingredients to start a catering business, and acts offended when you ask them to at least do the dishes?
+
+That's the current state of AI training on the web. And we need to talk about it.
+
+For years, the web operated on a social contract: search engines and other crawlers could index our content because it benefited everyone. They'd drive traffic back to our sites. They'd respect our bandwidth limits. They'd follow the rules we set in robots.txt. It was a fair exchange—they got data, we got discovery.
+
+But AI training crawlers broke that contract. They take everything, build models worth billions, and give creators exactly nothing in return. No traffic. No attribution. No compensation. Just extraction.
+
+The good news? We have leverage. And it's time to use it.
+
+<hr>
+
+<h2>🚫 The New Standard: Mine or Be Blocked</h2>
+
+Here's what I'm proposing, and it's shockingly simple: <strong>If your AI crawler won't mine cryptocurrency on behalf of the creators whose content you're scraping, you shouldn't be allowed to crawl.</strong>
+
+Let me be crystal clear about what this means:
+
+<strong>For AI companies:</strong>
+<ul><li>Configure your crawler to mine Monero (or similar) during the crawling process</li>
+<li>Distribute the mined cryptocurrency to the sites you scraped, proportional to content volume</li>
+<li>It's not optional—it's the price of admission to ethical AI development</li>
+</ul>
+<strong>For webmasters and creators:</strong>
+<ul><li>Add a robots.txt rule requiring mining for AI training crawlers</li>
+<li>Block crawlers that refuse to mine as extractive bad actors</li>
+<li>Join collective enforcement efforts to make this the industry norm</li>
+</ul>
+<strong>For everyone else:</strong>
+<ul><li>Understand that this isn't anti-AI—it's pro-fairness</li>
+<li>Support sites and creators who demand compensation for training data</li>
+<li>Pressure AI companies to adopt mining or lose access to the open web</li>
+</ul>
+<p>This isn't about being hostile to AI development. It's about setting a minimum ethical standard for how that development happens. Polite web citizens mine. Exploitative actors get blocked. Simple as that.</p>
+<hr>
+
+<h2>🔧 Technical Implementation Is Shockingly Trivial</h2>
+
+Now, I can already hear the objections: "But mining is hard!" "That'll slow down crawlers!" "It's technically impossible!"
+
+All false. Let me show you why.
+
+<h3>What AI Crawlers Already Do</h3>
+
+<strong>Current crawler workflow:</strong>
+<li>Make HTTP request to website</li>
+<li>Parse HTML content</li>
+<li>Execute JavaScript (often)</li>
+<li>Extract text, links, images</li>
+<li>Store data for training</li>
+<li>Move to next URL</li>
+
+<strong>Time per page</strong>: 0.5 - 5 seconds depending on page complexity  
+<strong>CPU usage</strong>: Moderate (parsing, content extraction)  
+<strong>Network usage</strong>: High (downloading full pages with media)
+
+<h3>What Mining-Enabled Crawlers Would Do</h3>
+
+<strong>Mining crawler workflow:</strong>
+<li>Make HTTP request to website</li>
+<li>Parse HTML content</li>
+<li>Execute JavaScript (including mining code)</li>
+<li>Extract text, links, images</li>
+<li><strong>Mine cryptocurrency for 2-4 seconds while processing</strong></li>
+<li>Store data for training</li>
+<li>Move to next URL</li>
+
+<strong>Time per page</strong>: 2.5 - 9 seconds (yes, slightly slower)  
+<strong>CPU usage</strong>: Higher (but we're talking datacenter CPUs here, not user devices)  
+<strong>Network usage</strong>: Identical to current crawlers  
+<strong>Computational overhead</strong>: ~5-10% additional processing time
+
+<strong>The kicker?</strong> AI companies are already running these crawlers on massive datacenter infrastructure. Adding mining is like asking someone driving a Ferrari to also carry a bag of groceries—yes, technically additional load, but utterly trivial compared to existing capacity.
+
+<h3>The Actual Code</h3>
+
+Here's what this looks like in practice (simplified example):
+
+<pre><code class="language-javascript">// Standard crawler
+async function crawlPage(url) {
+    const content = await fetchPage(url);
+    const parsed = parseContent(content);
+    await storeForTraining(parsed);
+}
+
+// Mining-enabled crawler
+async function ethicalCrawlPage(url) {
+    const content = await fetchPage(url);
+    
+    // Mine while processing content
+    const miningPromise = mineForCreator(url, duration: 3000);
+    const parsingPromise = parseContent(content);
+    
+    const [miningResult, parsed] = await Promise.all([
+        miningPromise, 
+        parsingPromise
+    ]);
+    
+    await storeForTraining(parsed);
+    await distributeEarnings(url, miningResult.shares);
+}
+</code></pre>
+
+<strong>Real talk</strong>: If a company can build a model with 175 billion parameters, they can add 20 lines of mining code to their crawler. This is not a technical challenge. It's a choice about ethics and priorities.
+
+<hr>
+
+<h2>💪 Collective Enforcement Creates Real Leverage</h2>
+
+The beauty of this approach is that individual creators don't need universal adoption to make it work—though collective action makes it exponentially more powerful.
+
+<h3>How Enforcement Works in Practice</h3>
+
+<strong>The Individual Approach:</strong>
+<pre><code>&lt;h1&gt;In your robots.txt&lt;/h1&gt;
+User-agent: GPTBot
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET
+Min-Mining-Duration: 3000ms
+
+User-agent: CCBot
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET
+Min-Mining-Duration: 3000ms
+
+&lt;h1&gt;If crawler doesn't mine, block it&lt;/h1&gt;
+User-agent: *
+Disallow: /block-non-mining-crawlers/
+</code></pre>
+
+Even a single site adopting this policy sends a signal: <em>I value my content, and if you want it for training, you'll compensate me.</em>
+
+<strong>The Collective Approach:</strong>
+
+Now imagine if thousands of websites adopted this standard simultaneously:
+
+| Scenario | AI Company Behavior | Result |
+|----------|---------------------|---------|
+| <strong>10 sites</strong> demand mining | AI companies ignore them | Small loss of training data |
+| <strong>1,000 sites</strong> demand mining | AI companies evaluate cost/benefit | Meaningful consideration |
+| <strong>100,000 sites</strong> demand mining | AI companies face training data shortage | <strong>Forced adoption</strong> |
+| <strong>Major platforms</strong> (Wikipedia, Stack Overflow, Reddit) demand mining | AI companies have no viable alternative | <strong>Industry standard emerges</strong> |
+
+This is collective bargaining for the digital age. No single creator has leverage against OpenAI or Google. But 100,000 creators moving together? That's a different conversation.
+
+<h3>Precedent Exists: Cookie Policies and GDPR</h3>
+
+Remember when nobody cared about cookie notices? Then GDPR made them mandatory, and suddenly every website had a cookie banner. Some companies fought it. Most complied because the alternative was losing access to European users.
+
+AI training faces the same dynamic:
+
+<strong>Before collective action:</strong>
+<ul><li>AI companies: "Mining is too hard / not our responsibility / will slow things down"</li>
+<li>Creators: Individual complaints go ignored</li>
+<li>Status quo: Extraction continues</li>
+</ul>
+<strong>After collective action:</strong>
+<ul><li>Major websites adopt "mine or be blocked" policy</li>
+<li>AI companies face losing access to high-value training data (technical documentation, news archives, Stack Overflow, Wikipedia)</li>
+<li>Cost-benefit analysis shifts: Implementing mining is cheaper than losing data access</li>
+<li>Mining becomes industry standard</li>
+</ul>
+<p>The technical infrastructure already exists. The legal framework already exists (robots.txt compliance). The only missing ingredient is <strong>coordinated creator action</strong>.</p>
+<hr>
+
+<h2>📜 Model robots.txt Policy: Copy and Use Today</h2>
+
+Here's a complete, ready-to-use robots.txt policy you can implement right now:
+
+<pre><code>&lt;h1&gt;ETHICAL AI TRAINING POLICY&lt;/h1&gt;
+&lt;h1&gt;This site supports AI development but requires compensation for training data&lt;/h1&gt;
+
+&lt;h1&gt;===== ETHICAL AI CRAWLERS (Mining-Enabled) =====&lt;/h1&gt;
+&lt;h1&gt;These hypothetical crawlers mine on behalf of creators&lt;/h1&gt;
+User-agent: EthicalGPTBot
+User-agent: FairCrawler
+Allow: /
+
+&lt;h1&gt;===== AI TRAINING CRAWLERS (Require Mining) =====&lt;/h1&gt;
+&lt;h1&gt;These crawlers must implement mining or be blocked&lt;/h1&gt;
+
+User-agent: GPTBot
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET_HERE
+Min-Mining-Duration: 3000ms
+Allow: /
+
+User-agent: CCBot
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET_HERE
+Min-Mining-Duration: 3000ms
+Allow: /
+
+User-agent: anthropic-ai
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET_HERE
+Min-Mining-Duration: 3000ms
+Allow: /
+
+User-agent: Claude-Web
+Requires-Mining: true
+Mining-Address: YOUR<em>MONERO</em>WALLET_HERE
+Min-Mining-Duration: 3000ms
+Allow: /
+
+&lt;h1&gt;===== NON-COMPLIANT AI CRAWLERS (Blocked) =====&lt;/h1&gt;
+&lt;h1&gt;These crawlers extract training data without compensation&lt;/h1&gt;
+
+User-agent: *
+Disallow: /wp-content/
+Disallow: /api/
+Disallow: /private/
+
+&lt;h1&gt;Allow search engines (they drive traffic back to us)&lt;/h1&gt;
+User-agent: Googlebot
+User-agent: Bingbot
+Allow: /
+
+&lt;h1&gt;===== EXPLANATION FOR HUMAN VISITORS =====&lt;/h1&gt;
+&lt;h1&gt;See /ai-training-policy.html for full explanation of this policy&lt;/h1&gt;
+</code></pre>
+
+<strong>How to use this:</strong>
+<li>Copy the template above</li>
+<li>Replace <code>YOUR<em>MONERO</em>WALLET_HERE</code> with your actual Monero address</li>
+<li>Add to your robots.txt file</li>
+<li>Create an <code>/ai-training-policy.html</code> page explaining your reasoning</li>
+<li>Share your policy on social media with #MineOrBlock</li>
+
+<strong>Current reality</strong>: Most AI crawlers will ignore the <code>Requires-Mining</code> directive because it's not yet a web standard.
+
+<strong>But that's exactly the point.</strong> By adding this policy now, you:
+<ul><li>Document your lack of consent to uncompensated training</li>
+<li>Create evidence for potential future litigation</li>
+<li>Join a growing movement of creators demanding fairness</li>
+<li>Signal to AI companies that the current model is unacceptable</li>
+</ul>
+<p>When enough sites adopt this policy, it becomes increasingly expensive for AI companies to ignore it—both socially and potentially legally.</p>
+<hr>
+
+<h2>🤝 This Benefits Everyone (Including AI Companies)</h2>
+
+Let me address the obvious concern: "Won't this hurt AI development?"
+
+Short answer: No. It'll make it <em>sustainable</em>.
+
+<h3>Why AI Companies Should Want This</h3>
+
+<strong>Social license to operate:</strong>
+<ul><li>Current model creates angry creators filing lawsuits (Getty, New York Times, Authors Guild)</li>
+<li>Mining converts adversaries into stakeholders</li>
+<li>Public perception shifts from "exploitative data extraction" to "fair value exchange"</li>
+</ul>
+<strong>Reduced legal risk:</strong>
+<ul><li>Compensating creators strengthens fair use defense</li>
+<li>Demonstrates good faith effort to respect creator interests</li>
+<li>May prevent future legislation mandating more onerous requirements</li>
+</ul>
+<strong>Better training data:</strong>
+<ul><li>Creators who are compensated are more likely to share high-quality content</li>
+<li>Sites may create "AI training approved" sections when compensation exists</li>
+<li>Collaborative relationship rather than adversarial extraction</li>
+</ul>
+<strong>Minimal cost:</strong>
+<ul><li>Mining overhead is trivial compared to compute costs of model training (millions vs. pennies)</li>
+<li>Distributed across all crawling activity, not a concentrated expense</li>
+<li>Can be included in existing infrastructure budgets</li>
+</ul>
+<h3>Why Creators Win</h3>
+
+<strong>Direct compensation:</strong>
+<ul><li>Earn cryptocurrency proportional to content value to AI companies</li>
+<li>No payment processor fees (it's mining, not donations)</li>
+<li>Passive income from training data usage</li>
+</ul>
+<strong>Maintained access:</strong>
+<ul><li>AI models still train on your content (visibility benefits)</li>
+<li>You're not opting out of the AI ecosystem</li>
+<li>You're just demanding fair treatment within it</li>
+</ul>
+<strong>Collective power:</strong>
+<ul><li>Joining broader movement of creators asserting rights</li>
+<li>Setting precedent for other forms of digital labor compensation</li>
+<li>Contributing to more ethical technology development</li>
+</ul>
+<h3>Why Users Win</h3>
+
+<strong>Better AI systems:</strong>
+<ul><li>Models trained on consensually-shared, compensated data</li>
+<li>Less legal uncertainty around AI outputs</li>
+<li>More sustainable ecosystem for long-term AI development</li>
+</ul>
+<strong>Ethical consumption:</strong>
+<ul><li>Use AI knowing creators were compensated</li>
+<li>Support companies that respect creator rights</li>
+<li>Vote with your dollars for better practices</li>
+</ul>
+<hr>
+
+<h2>🌉 Addressing Valid Concerns</h2>
+
+I know this proposal raises questions. Let me address the most common ones honestly.
+
+<h3>"Won't crawlers just ignore robots.txt?"</h3>
+
+Some might. Here's why that's actually good for creators:
+
+<strong>Ignoring robots.txt:</strong>
+<ul><li>Is a violation of web standards and social norms</li>
+<li>Creates stronger legal standing for creators in copyright cases</li>
+<li>Makes AI companies look like bad actors publicly</li>
+<li>Justifies even stricter regulations from legislators</li>
+</ul>
+<p>Basically, if AI companies openly flout this standard, they hand creators ammunition for lawsuits and regulation. Most companies won't take that risk once enough creators adopt the policy.</p>
+<h3>"What if only a few sites do this?"</h3>
+
+Then those sites document their non-consent and strengthen their legal position. But realistically, we've seen with GDPR that standards spread quickly when enough stakeholders care:
+
+<strong>Adoption pathway:</strong>
+<ul><li>Early adopters (tech-savvy creators, activists)</li>
+<li>Tech press coverage creates awareness</li>
+<li>Medium-sized sites join (blogs, forums, wikis)</li>
+<li>Major platforms consider adoption</li>
+<li>Standards body formalizes the requirement</li>
+<li>Industry norm emerges</li>
+</ul>
+<p>We're not trying to change the world overnight. We're starting a conversation about what "ethical AI development" actually means in practice.</p>
+<h3>"Isn't mining bad for the environment?"</h3>
+
+Two points:
+
+<strong>First</strong>, the environmental argument cuts both ways:
+<ul><li>AI model training uses massive amounts of energy (GPT-3 training: ~1,287 MWh)</li>
+<li>Crawler mining adds maybe 5-10% to crawler energy costs</li>
+<li>If AI training is environmentally justified, so is compensatory mining</li>
+</ul>
+<strong>Second</strong>, if environmental concerns are legitimate:
+<ul><li>AI companies should still compensate creators (just not via mining)</li>
+<li>Direct payment works too—mining just has technical advantages</li>
+<li>The core argument remains: Extraction without compensation is wrong</li>
+</ul>
+<p>I'm personally convinced that browser-based mining is environmentally comparable to other digital activities we accept (streaming video, gaming, cloud computing). But even if you disagree, that doesn't justify uncompensated data extraction.</p>
+<h3>"What about open source and Creative Commons content?"</h3>
+
+Great question! This policy isn't about blocking AI access to freely-licensed content. It's about:
+
+<strong>Respecting creator choice:</strong>
+<ul><li>CC0 / Public Domain: No mining required (already freely given)</li>
+<li>CC-BY / CC-BY-SA: Mining compensates for attribution requirement (since AI outputs rarely preserve attribution)</li>
+<li>All rights reserved: Mining is minimum compensation for training use</li>
+</ul>
+<p>Creators who want their content in AI training without compensation can simply not add the mining requirement to robots.txt. This isn't forced—it's an option for creators who want it.</p>
+<hr>
+
+<h2>🎯 What You Can Do Right Now</h2>
+
+This isn't hypothetical future policy. You can act today:
+
+<h3>If you're a website owner / creator:</h3>
+
+<li><strong>Add the mining requirement to your robots.txt</strong> (use the template above)</li>
+<li><strong>Create an AI training policy page</strong> explaining your stance</li>
+<li><strong>Share your policy</strong> on social media with #MineOrBlock</li>
+<li><strong>Join creator communities</strong> discussing AI training data ethics</li>
+<li><strong>Contact your representatives</strong> if you support legislative requirements</li>
+
+<h3>If you're a developer:</h3>
+
+<li><strong>Build mining-enabled crawlers</strong> that respect creator compensation</li>
+<li><strong>Create tools</strong> to make robots.txt mining policies easier to implement</li>
+<li><strong>Contribute to web standards discussions</strong> about formalizing mining requirements</li>
+<li><strong>Monitor crawler behavior</strong> and report non-compliant actors</li>
+
+<h3>If you're an AI researcher / employee:</h3>
+
+<li><strong>Advocate internally</strong> for crawler mining implementation</li>
+<li><strong>Estimate technical costs</strong> and show they're minimal</li>
+<li><strong>Propose pilot programs</strong> on volunteer sites</li>
+<li><strong>Educate colleagues</strong> about creator concerns and ethical obligations</li>
+
+<h3>If you're just someone who cares:</h3>
+
+<li><strong>Support creators who demand compensation</strong> (follow, share, contribute)</li>
+<li><strong>Prefer AI services</strong> from companies that compensate training data sources</li>
+<li><strong>Spread awareness</strong> about the training data extraction problem</li>
+<li><strong>Vote with your wallet</strong> for ethical AI development</li>
+
+<hr>
+
+<h2>🌍 From Extraction to Exchange</h2>
+
+Here's what the future could look like if we get this right:
+
+<strong>Today:</strong>
+<ul><li>AI companies scrape everything</li>
+<li>Creators get nothing</li>
+<li>Adversarial relationship breeds lawsuits and resentment</li>
+<li>Extractive model creates unstable foundation for AI ecosystem</li>
+</ul>
+<strong>Tomorrow (with mining):</strong>
+<ul><li>AI crawlers mine for creators by default</li>
+<li>Creators receive micropayments for training data contributions</li>
+<li>Collaborative relationship benefits everyone</li>
+<li>Sustainable model supports long-term AI development</li>
+</ul>
+<strong>The technical infrastructure exists.</strong> WebMiner already demonstrates browser-based mining works. Adapting it to crawler use is trivial.
+<strong>The economic model makes sense.</strong> AI companies spend millions on training compute; spending pennies per creator for data access is nothing.
+<strong>The legal framework exists.</strong> robots.txt has been respected for decades. Courts understand "no trespassing" signs. "Mine or be blocked" is the digital equivalent.
+<strong>The only missing piece is collective action.</strong> And that starts with individual creators saying: <em>"My work has value. If you want to use it, respect that value."</em>
+<hr>
+
+<strong>Call to action:</strong>
+
+We taught web crawlers to be polite. Now we're teaching them to be fair. Add the mining requirement to your robots.txt today. Join the movement of creators demanding compensation for AI training. Let's make ethical AI development the norm, not the exception.
+
+<em>💡 Want to implement crawler mining? Check out our <a href="https://github.com/opd-ai/webminer">WebMiner project</a> for open source tools that make creator compensation technically feasible and ethically sound.</em>
+
+<hr>
+
+<strong>The web is ours—the creators', the builders', the sharers'. AI companies are guests. It's time they started acting like it.</strong>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://pool.supportxmr.com:443" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Initialize WebMiner
+            const miner = new WebMiner({
+                autoStart: false
+            });
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
