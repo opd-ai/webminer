@@ -311,7 +311,8 @@
          * Trigger adaptive throttling based on performance conditions
          */
         triggerAdaptiveThrottling() {
-            if (!global.WebMiner || !global.WebMiner.isMining()) return;
+            // Check if there's an active miner instance that's currently mining
+            if (!global.WebMiner || !global.WebMiner.activeMiner || !global.WebMiner.activeMiner.isMining()) return;
 
             const currentThrottle = MiningConsent.state.throttleLevel;
             let newThrottle = currentThrottle;
@@ -1827,6 +1828,9 @@
      * Coordinates all mining operations with ethics-first approach
      */
     class WebMiner {
+        // Track active miner instance for performance monitoring
+        static activeMiner = null;
+
         constructor(config = {}) {
             this.config = {
                 pool: config.pool || '',
@@ -1847,6 +1851,9 @@
                 startTime: null,
                 currentJob: null
             };
+
+            // Register as active miner
+            WebMiner.activeMiner = this;
 
             // Initialize performance monitoring
             this.initializePerformanceMonitoring();
@@ -2010,6 +2017,11 @@
             // Stop performance monitoring if it was started
             if (this.config.enablePerformanceMonitoring) {
                 PerformanceMonitor.stop();
+            }
+            
+            // Clear active miner reference if this is the active instance
+            if (WebMiner.activeMiner === this) {
+                WebMiner.activeMiner = null;
             }
             
             // Reset stats
