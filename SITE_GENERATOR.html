@@ -39,6 +39,7 @@
         <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
         <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
         <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="MINER_UI.html">Miner Ui</a>
         <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
         <a href="SITE_GENERATOR.html" class="active">Site Generator</a>
         <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
@@ -78,7 +79,7 @@ python3 -m http.server 8080
 
 <h3>⚙️ WebMiner Integration</h3>
 
-The generator can automatically embed the WebMiner script into every generated HTML page with your pool and wallet configuration:
+The generator can automatically embed the WebMiner script into every generated HTML page with your pool and wallet configuration, <strong>plus a beautiful consensual miner UI at the top of each page</strong>.
 
 <pre><code class="language-bash">node generate-site.js \
   --pool="wss://pool.supportxmr.com:443" \
@@ -87,10 +88,25 @@ The generator can automatically embed the WebMiner script into every generated H
 </code></pre>
 
 <strong>Generated HTML includes:</strong>
+
+<li><strong>Consent Banner</strong> (shown on page load):</li>
+   - Attractive gradient background
+   - Clear explanation of CPU usage
+   - "Yes, I'll Help" button to start mining
+   - "No Thanks" button to decline
+   - User choice is remembered in localStorage
+
+<li><strong>Status Bar</strong> (shown when mining):</li>
+   - Real-time hash rate display
+   - Mining active indicator
+   - One-click "Stop Mining" button
+
+<li><strong>WebMiner Script</strong> (embedded at page bottom):</li>
 <pre><code class="language-html">&lt;script src="webminer.js" 
         data-pool="wss://pool.supportxmr.com:443"
         data-wallet="YOUR<em>MONERO</em>ADDRESS"
-        data-throttle="0.25"&gt;
+        data-throttle="0.25"
+        data-auto-start="false"&gt;
 &lt;/script&gt;
 </code></pre>
 
@@ -99,7 +115,7 @@ The generator can automatically embed the WebMiner script into every generated H
 <li><code>--wallet</code>: Your Monero wallet address</li>
 <li><code>--throttle</code>: CPU usage limit (0.1 = 10%, 0.5 = 50%, etc.)</li>
 </ul>
-<p>All three parameters are optional. Omit them to generate a site without the webminer script.</p>
+<p>All three parameters are optional. Omit them to generate a site without the webminer script or UI.</p>
 <h3>🔍 Smart File Filtering</h3>
 
 The generator automatically:

@@ -127,7 +127,7 @@ Both builds include identical functionality - use development for debugging and 
 
 ### 🌐 Static Site Generator
 
-WebMiner includes a Node.js static site generator that converts markdown documentation to a navigable HTML website:
+WebMiner includes a Node.js static site generator that converts markdown documentation to a navigable HTML website with **built-in consensual mining UI**:
 
 ```bash
 # Generate HTML site from markdown files
@@ -148,6 +148,8 @@ node generate-site.js \
 - Creates responsive `styles.css` stylesheet
 - Produces clean, accessible HTML5 documents
 - **Optional:** Embeds webminer.js script with pool/wallet configuration
+- **Consensual UI:** Beautiful banner asking for user permission before mining
+- **Status Display:** Real-time hash rate and one-click stop button
 
 **Output:** 17 HTML pages + styles.css ready for deployment
 

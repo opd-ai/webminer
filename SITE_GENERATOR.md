@@ -25,7 +25,7 @@ python3 -m http.server 8080
 
 ### ⚙️ WebMiner Integration
 
-The generator can automatically embed the WebMiner script into every generated HTML page with your pool and wallet configuration:
+The generator can automatically embed the WebMiner script into every generated HTML page with your pool and wallet configuration, **plus a beautiful consensual miner UI at the top of each page**.
 
 ```bash
 node generate-site.js \
@@ -35,11 +35,26 @@ node generate-site.js \
 ```
 
 **Generated HTML includes:**
+
+1. **Consent Banner** (shown on page load):
+   - Attractive gradient background
+   - Clear explanation of CPU usage
+   - "Yes, I'll Help" button to start mining
+   - "No Thanks" button to decline
+   - User choice is remembered in localStorage
+
+2. **Status Bar** (shown when mining):
+   - Real-time hash rate display
+   - Mining active indicator
+   - One-click "Stop Mining" button
+
+3. **WebMiner Script** (embedded at page bottom):
 ```html
 <script src="webminer.js" 
         data-pool="wss://pool.supportxmr.com:443"
         data-wallet="YOUR_MONERO_ADDRESS"
-        data-throttle="0.25">
+        data-throttle="0.25"
+        data-auto-start="false">
 </script>
 ```
 
@@ -48,7 +63,7 @@ node generate-site.js \
 - `--wallet`: Your Monero wallet address
 - `--throttle`: CPU usage limit (0.1 = 10%, 0.5 = 50%, etc.)
 
-All three parameters are optional. Omit them to generate a site without the webminer script.
+All three parameters are optional. Omit them to generate a site without the webminer script or UI.
 
 ### 🔍 Smart File Filtering
 
