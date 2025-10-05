@@ -1,0 +1,100 @@
+🚀 Starting WebMiner static site generation...
+
+⚙️  WebMiner configuration:
+   Pool: wss://8ba1e62fb30664.lhr.life
+   Wallet: 43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe
+   Throttle: 0.25
+
+📋 Loaded 6 .gitignore patterns
+📁 Found 45 markdown files
+
+⏭️  Skipping: AUDIT.md (excluded by filter)
+⏭️  Skipping: AUDIT_PROMPT.md (excluded by filter)
+⏭️  Skipping: ESSAY_PLANNING.md (excluded by filter)
+⏭️  Skipping: REVIEW.md (excluded by filter)
+⏭️  Skipping: REVIEW_AUDIT.md (excluded by filter)
+⏭️  Skipping: REVIEW_COMPARISON.md (excluded by filter)
+⏭️  Skipping: REVIEW_CONSISTENCY.md (excluded by filter)
+⏭️  Skipping: REVIEW_EXECUTE.md (excluded by filter)
+⏭️  Skipping: REVIEW_PLANNING.md (excluded by filter)
+⏭️  Skipping: WORKFLOW_PLAN.md (excluded by filter)
+
+✅ Processing 35 files after filtering
+
+🔄 Processing: ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.md
+   ✓ Generated: ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html
+🔄 Processing: ALL_ADVERTISING_IS_MALVERTISING.md
+   ✓ Generated: ALL_ADVERTISING_IS_MALVERTISING.html
+🔄 Processing: BEYOND_THE_CONSENT_THEATER.md
+   ✓ Generated: BEYOND_THE_CONSENT_THEATER.html
+🔄 Processing: FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.md
+   ✓ Generated: FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html
+🔄 Processing: FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.md
+   ✓ Generated: FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html
+🔄 Processing: IF_YOUR_CRAWLER_CANT_MINE_IT_SHOULDNT_CRAWL.md
+   ✓ Generated: IF_YOUR_CRAWLER_CANT_MINE_IT_SHOULDNT_CRAWL.html
+🔄 Processing: MINER_UI.md
+   ✓ Generated: MINER_UI.html
+🔄 Processing: PRIVATE_MONEY_PRIVATE_ENERGY.md
+   ✓ Generated: PRIVATE_MONEY_PRIVATE_ENERGY.html
+🔄 Processing: README.md
+   ✓ Generated: index.html
+🔄 Processing: SITE_GENERATOR.md
+   ✓ Generated: SITE_GENERATOR.html
+🔄 Processing: THE_ACCESSIBILITY_PARADOX.md
+   ✓ Generated: THE_ACCESSIBILITY_PARADOX.html
+🔄 Processing: THE_ATTENTION_TOXICITY_PROBLEM.md
+   ✓ Generated: THE_ATTENTION_TOXICITY_PROBLEM.html
+🔄 Processing: THE_BROWSER_PERFORMANCE_PARADOX.md
+   ✓ Generated: THE_BROWSER_PERFORMANCE_PARADOX.html
+🔄 Processing: THE_COINHIVE_LESSON.md
+   ✓ Generated: THE_COINHIVE_LESSON.html
+🔄 Processing: THE_COMPUTATIONAL_POLLUTION_PROBLEM.md
+   ✓ Generated: THE_COMPUTATIONAL_POLLUTION_PROBLEM.html
+🔄 Processing: THE_CONSENT_GAP.md
+   ✓ Generated: THE_CONSENT_GAP.html
+🔄 Processing: THE_CRAWLERS_DEBT.md
+   ✓ Generated: THE_CRAWLERS_DEBT.html
+🔄 Processing: THE_DEMOCRACY_OF_COMPUTING.md
+   ✓ Generated: THE_DEMOCRACY_OF_COMPUTING.html
+🔄 Processing: THE_ENVIRONMENTAL_FALSE_DILEMMA.md
+   ✓ Generated: THE_ENVIRONMENTAL_FALSE_DILEMMA.html
+🔄 Processing: THE_GLOBAL_SOUTHS_SECRET_WEAPON.md
+   ✓ Generated: THE_GLOBAL_SOUTHS_SECRET_WEAPON.html
+🔄 Processing: THE_ISP_THROTTLING_QUESTION.md
+   ✓ Generated: THE_ISP_THROTTLING_QUESTION.html
+🔄 Processing: THE_JUST_USE_A_VPN_FALLACY.md
+   ✓ Generated: THE_JUST_USE_A_VPN_FALLACY.html
+🔄 Processing: THE_LOCAL_BUSINESS_RENAISSANCE.md
+   ✓ Generated: THE_LOCAL_BUSINESS_RENAISSANCE.html
+🔄 Processing: THE_NONPROFIT_DILEMMA.md
+   ✓ Generated: THE_NONPROFIT_DILEMMA.html
+🔄 Processing: THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.md
+   ✓ Generated: THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.html
+🔄 Processing: THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.md
+   ✓ Generated: THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html
+🔄 Processing: THE_POWER_CONSUMPTION_RED_HERRING.md
+   ✓ Generated: THE_POWER_CONSUMPTION_RED_HERRING.html
+🔄 Processing: THE_REGULATION_RESPONSE.md
+   ✓ Generated: THE_REGULATION_RESPONSE.html
+🔄 Processing: THE_STREAMING_PARADOX.md
+   ✓ Generated: THE_STREAMING_PARADOX.html
+🔄 Processing: THE_SUBSCRIPTION_FATIGUE_SOLUTION.md
+   ✓ Generated: THE_SUBSCRIPTION_FATIGUE_SOLUTION.html
+🔄 Processing: THE_TRAINING_DATA_RECKONING.md
+   ✓ Generated: THE_TRAINING_DATA_RECKONING.html
+🔄 Processing: THE_TRUST_PROBLEM.md
+   ✓ Generated: THE_TRUST_PROBLEM.html
+🔄 Processing: WEBMINING_IS_NOT_EVIL.md
+   ✓ Generated: WEBMINING_IS_NOT_EVIL.html
+🔄 Processing: WEBSOCKET_PROXY.md
+   ✓ Generated: WEBSOCKET_PROXY.html
+🔄 Processing: YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.md
+   ✓ Generated: YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html
+
+🎨 Generating stylesheet...
+   ✓ Generated: styles.css
+
+✨ Site generation complete!
+📊 Generated 35 HTML pages + 1 CSS file
+
