@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hardware Privilege Problem: Addressing Inequality in Mining Returns</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about 25% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="IF_YOUR_CRAWLER_CANT_MINE_IT_SHOULDNT_CRAWL.html">If Your Crawler Cant Mine It Shouldnt Crawl</a>
+        <a href="MINER_UI.html">Miner Ui</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_ATTENTION_TOXICITY_PROBLEM.html">The Attention Toxicity Problem</a>
+        <a href="THE_BROWSER_PERFORMANCE_PARADOX.html">The Browser Performance Paradox</a>
+        <a href="THE_COINHIVE_LESSON.html">The Coinhive Lesson</a>
+        <a href="THE_COMPUTATIONAL_POLLUTION_PROBLEM.html">The Computational Pollution Problem</a>
+        <a href="THE_CONSENT_GAP.html">The Consent Gap</a>
+        <a href="THE_CRAWLERS_DEBT.html">The Crawlers Debt</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_GLOBAL_SOUTHS_SECRET_WEAPON.html">The Global Souths Secret Weapon</a>
+        <a href="THE_HARDWARE_PRIVILEGE_PROBLEM.html" class="active">The Hardware Privilege Problem</a>
+        <a href="THE_ISP_THROTTLING_QUESTION.html">The Isp Throttling Question</a>
+        <a href="THE_JUST_USE_A_VPN_FALLACY.html">The Just Use A Vpn Fallacy</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_NONPROFIT_DILEMMA.html">The Nonprofit Dilemma</a>
+        <a href="THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.html">The Open Source Sustainability Crisis</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_POWER_CONSUMPTION_RED_HERRING.html">The Power Consumption Red Herring</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_STREAMING_PARADOX.html">The Streaming Paradox</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="THE_TRAINING_DATA_RECKONING.html">The Training Data Reckoning</a>
+        <a href="THE_TRUST_PROBLEM.html">The Trust Problem</a>
+        <a href="THE_VOLATILITY_REALITY_CHECK.html">The Volatility Reality Check</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="WEBSOCKET_PROXY.html">Websocket Proxy</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>The Hardware Privilege Problem: Addressing Inequality in Mining Returns</h1>
+
+<blockquote><em>"You're right: someone with a $3,000 gaming rig will out-earn someone with a $300 laptop. That's real, and it sucks. But let's compare it to what we have now."</em></blockquote>
+
+<hr>
+
+You know that feeling when someone pitches a "financial opportunity" and your first thought is, <em>"Yeah, but who actually benefits from this?"</em> Maybe it's a side hustle that requires expensive equipment you can't afford. Or an investment opportunity that's only viable if you already have capital to risk. Or a "democratized" platform that somehow still manages to favor people with resources.
+
+If you've ever felt that skepticism when hearing about web mining as an income supplement, I completely get it. Because here's what's true: someone running a high-end gaming PC with a Ryzen 9 processor and liquid cooling will absolutely mine more cryptocurrency per hour than someone on a 2015 laptop barely keeping up with browser tabs. That's not propaganda—that's physics and economics.
+
+And I'm not here to gaslight you into thinking that's somehow fair or doesn't matter. Hardware privilege is real. Economic inequality is deeply unjust. And anyone offering you a "solution" that just replicates existing power structures deserves your skepticism.
+
+But here's what I want to talk about: how does web mining's inequality compare to the alternatives we're living with right now? Because if we're going to critique mining for benefiting people with better hardware, we need to apply that same lens to every other way the internet generates money.
+
+<hr>
+
+<h2>⚖️ Let's Be Honest About Mining's Inequality</h2>
+
+First, let me validate the concern directly—no deflection, no "well actually" nonsense.
+
+<h3><strong>The Hardware Advantage Is Real</strong></h3>
+
+<strong>Mining performance across different devices:</strong>
+
+| Device Type | Estimated Hashrate | Potential Daily Earnings |
+|-------------|-------------------|-------------------------|
+| High-end gaming PC (Ryzen 9, RTX 4090) | ~15,000 H/s | $0.40-0.60 |
+| Mid-range desktop (i5, modest GPU) | ~6,000 H/s | $0.15-0.25 |
+| Standard laptop (2-3 years old) | ~2,000 H/s | $0.05-0.08 |
+| Budget laptop (5+ years old) | ~500 H/s | $0.01-0.02 |
+| Mobile device (throttled for safety) | ~100 H/s | $0.002-0.005 |
+
+<strong>What this means in practice:</strong>
+<ul><li>🎮 <strong>Gaming rig owner</strong>: Could earn $12-18/month from casual browsing</li>
+<li>💻 <strong>Standard laptop user</strong>: Could earn $1.50-2.50/month from casual browsing  </li>
+<li>📱 <strong>Mobile-only user</strong>: Could earn basically nothing meaningful</li>
+</ul>
+<strong>The gap is real.</strong> Someone with a $3,000 computer can earn 10-15x what someone with a $300 laptop can. That's a genuine inequality that mining doesn't solve and arguably replicates.
+<h3><strong>Why Hardware Privilege Matters</strong></h3>
+
+This isn't just about hurt feelings—economic inequality has real consequences:
+
+<strong>Who has high-end hardware?</strong>
+<ul><li>✅ People with disposable income for gaming/creative work</li>
+<li>✅ Tech workers whose employers subsidize powerful equipment</li>
+<li>✅ People in wealthy countries with lower electronics costs</li>
+<li>✅ Folks with stable housing and reliable electricity</li>
+</ul>
+<strong>Who doesn't?</strong>
+<ul><li>❌ Students on tight budgets</li>
+<li>❌ People in developing nations facing import tariffs</li>
+<li>❌ Anyone juggling multiple precarious jobs</li>
+<li>❌ Communities with limited access to reliable power</li>
+</ul>
+<strong>Result?</strong> Mining could theoretically widen the gap between "tech haves" and "tech have-nots," allowing people who already have resources to monetize them while excluding those who don't.
+<hr>
+
+<h2>🔍 Comparing Inequality: Mining vs. The Alternatives</h2>
+
+Okay, so mining has a hardware inequality problem. But let's honestly assess whether that makes it worse than what we're already living with.
+
+<h3><strong>The Current Advertising System's Inequality</strong></h3>
+
+<strong>How ad-supported internet distributes value:</strong>
+
+| User Type | Value to Advertisers | Monetization Access | Actual Earnings |
+|-----------|---------------------|---------------------|----------------|
+| High-income users (25-54, urban, high spending) | $50-100/year per user | Premium ad-free subscriptions | $0 (can pay to opt out) |
+| Middle-income users (general demographics) | $20-40/year per user | Ad-blocking available | $0 (creates value, sees none) |
+| Low-income users (limited spending power) | $5-10/year per user | Forced to view ads | $0 (exploited for attention) |
+| Content creators (with audience) | N/A | Ad revenue sharing | $0.50-5 per 1,000 views |
+
+<strong>The bitter irony:</strong>
+<ul><li>💰 <strong>Wealthy users</strong> can pay $10-15/month to opt out entirely (YouTube Premium, news subscriptions, etc.)</li>
+<li>🎯 <strong>Poor users</strong> are forced to endure ads PLUS have less valuable data, so see more intrusive ads for less creator benefit</li>
+<li>📊 <strong>Nobody except platforms and advertisers</strong> actually captures the value their attention generates</li>
+</ul>
+<strong>Inequality score:</strong> ⭐⭐⭐⭐⭐ (Maximum)
+<p>Why? The people with the most resources can opt out entirely. The people with the least resources are trapped in the most exploitative version of the system. And nobody—rich or poor—gets direct economic participation except through platform gatekeepers.</p>
+<h3><strong>The Paywall System's Inequality</strong></h3>
+
+<strong>How subscription-based content distributes access:</strong>
+
+| Income Level | Monthly Budget for Content | Access Level | Exclusion Rate |
+|--------------|---------------------------|--------------|----------------|
+| High-income ($100k+) | $100-200/month | Everything they want | ~5% |
+| Middle-income ($50-75k) | $30-60/month | 3-5 key subscriptions | ~40% |
+| Low-income ($25-40k) | $5-15/month | Maybe Netflix + one other | ~70% |
+| Poverty-level (<$25k) | $0-5/month | Free content only | ~90% |
+
+<strong>What this creates:</strong>
+<ul><li>📰 <strong>Information inequality</strong>: Important journalism locked behind paywalls</li>
+<li>🎓 <strong>Educational inequality</strong>: Premium learning content only for those who can pay</li>
+<li>🎨 <strong>Cultural inequality</strong>: Art, music, and creative work becomes luxury goods</li>
+<li>🚫 <strong>Complete exclusion</strong>: Huge swaths of internet effectively invisible to people without disposable income</li>
+</ul>
+<strong>Inequality score:</strong> ⭐⭐⭐⭐⭐ (Maximum)
+<p>Why? This system doesn't just favor wealthy people—it explicitly excludes poor people. You can't "participate less" if you can't afford the entry fee. You're just locked out.</p>
+<h3><strong>Web Mining's Inequality</strong></h3>
+
+<strong>How consensual mining distributes participation:</strong>
+
+| Hardware Quality | Mining Capability | Participation Access | Earnings Potential |
+|-----------------|-------------------|---------------------|-------------------|
+| High-end gaming PC | Excellent | Full access | $10-20/month |
+| Mid-range desktop | Good | Full access | $4-8/month |
+| Standard laptop | Moderate | Full access | $1.50-2.50/month |
+| Older laptop | Low | Full access | $0.30-0.80/month |
+| Mobile device | Very low | Full access | $0.05-0.15/month |
+
+<strong>What this creates:</strong>
+<ul><li>✅ <strong>Universal participation</strong>: Anyone with any device can contribute something</li>
+<li>✅ <strong>No exclusion</strong>: Old hardware earns less, but isn't locked out entirely</li>
+<li>✅ <strong>Scalable engagement</strong>: Users can choose how much to contribute (throttle settings)</li>
+<li>⚠️ <strong>Unequal returns</strong>: Better hardware definitely earns more (this is the concern)</li>
+</ul>
+<strong>Inequality score:</strong> ⭐⭐⭐ (Moderate)
+<p>Why? There's absolutely a hardware advantage—someone with a gaming rig earns 10-15x more than someone with an old laptop. That sucks. But everyone can participate to some degree, nobody is completely excluded, and the person with the old laptop is earning something instead of nothing while being exploited by ads.</p>
+<hr>
+
+<h2>🎚️ How Throttling and Pool Economics Can Help (A Little)</h2>
+
+Let me be clear upfront: these mechanisms don't eliminate hardware inequality. They can't. Better hardware performs better—that's reality. But they can reduce the gap somewhat.
+
+<h3><strong>Throttling as an Equalizer</strong></h3>
+
+<strong>How throttling narrows absolute gaps:</strong>
+
+Without throttling (100% CPU usage):
+<ul><li>Gaming PC: 15,000 H/s → $0.60/day</li>
+<li>Old laptop: 500 H/s → $0.02/day</li>
+<li><strong>Gap: 30x difference</strong></li>
+</ul>
+<p>With modest throttling (25% CPU usage):</p>
+<ul><li>Gaming PC: 3,750 H/s → $0.15/day</li>
+<li>Old laptop: 125 H/s → $0.005/day</li>
+<li><strong>Gap: 30x difference (same ratio, smaller absolute numbers)</strong></li>
+</ul>
+<p>Hmm, that doesn't actually help much, does it?</p>
+<strong>But here's what DOES change:</strong>
+<p>With throttling, the floor matters more:</p>
+<ul><li>Gaming PC owner isn't motivated to run at 100% (diminishing returns vs. device wear)</li>
+<li>Old laptop owner CAN participate without destroying their device</li>
+<li>Both users are more likely to leave mining on casually rather than treating it like intensive work</li>
+</ul>
+<strong>The real benefit:</strong> Throttling makes mining practical for older hardware by reducing heat, power draw, and device stress—allowing participation that wouldn't otherwise be viable.
+<h3><strong>Mining Pool Reward Structures</strong></h3>
+
+<strong>Traditional pool economics (proportional):</strong>
+<pre><code>Your earnings = (Your hashrate / Total pool hashrate) × Block reward
+Result: Direct proportion—better hardware = more money
+</code></pre>
+
+<strong>Alternative pool models (somewhat more equitable):</strong>
+
+<strong>1. Participation bonuses:</strong>
+<pre><code>Your earnings = Base proportion + Consistency bonus
+Result: Rewards regular participation over raw power
+</code></pre>
+
+<strong>2. Tiered minimum guarantees:</strong>
+<pre><code>If hashrate &lt; 1,000 H/s: 1.2x multiplier
+If hashrate &lt; 5,000 H/s: 1.1x multiplier  
+If hashrate &gt; 10,000 H/s: 1.0x multiplier
+Result: Boosts returns for lower-end hardware slightly
+</code></pre>
+
+<strong>3. Time-weighted rewards:</strong>
+<pre><code>Your earnings = (Hashrate × Time active) / Total pool work
+Result: Values sustained contribution over brief high-power bursts
+</code></pre>
+
+<strong>Real talk:</strong> These adjustments can maybe reduce the gap from 30x to 20x or 15x. They're not revolutionary. But they show that mining pools COULD design economics to be less winner-take-all if they chose to prioritize equity.
+
+<hr>
+
+<h2>🎯 Who Benefits Most (And Why We Shouldn't Oversell)</h2>
+
+Let me be radically honest about who should and shouldn't consider web mining as an income supplement.
+
+<h3><strong>Mining Makes Most Sense For:</strong></h3>
+
+<strong>1. People with existing gaming/creative hardware</strong>
+<ul><li>✅ You already paid for powerful equipment for other purposes</li>
+<li>✅ Marginal cost of mining is just electricity (already sunk cost on hardware)</li>
+<li>✅ Device thermal management already robust (gaming PCs are built for sustained load)</li>
+<li>✅ Realistic earnings: $10-20/month for casual participation</li>
+</ul>
+<strong>2. People in regions with low electricity costs</strong>
+<ul><li>✅ Your actual cost per kWh makes mining energy-positive</li>
+<li>✅ Example: $0.08/kWh electricity can mine profitably at throttled levels</li>
+<li>✅ Particularly relevant in areas with solar/hydroelectric power</li>
+</ul>
+<strong>3. Content creators with engaged audiences</strong>
+<ul><li>✅ Your earnings come from YOUR audience contributing their hardware</li>
+<li>✅ Asymmetric benefit: Thousands of modest contributions aggregate to meaningful creator income</li>
+<li>✅ Hardware inequality matters less when you're the recipient, not the miner</li>
+</ul>
+<strong>4. People who want to support creators without monetary cost</strong>
+<ul><li>✅ Even low-end hardware contribution has value to creators you care about</li>
+<li>✅ Your $0.30/month across five websites = $1.50/month distributed support</li>
+<li>✅ Alternative to subscription fatigue or being ad-tracked</li>
+</ul>
+<h3><strong>Mining Makes LEAST Sense For:</strong></h3>
+
+<strong>1. People with old/mobile-only devices</strong>
+<ul><li>⚠️ Your earnings will be negligible (pennies per month)</li>
+<li>⚠️ Your device stress and electricity cost might exceed returns</li>
+<li>⚠️ Better options: Direct donations, ad-free subscriptions if affordable</li>
+</ul>
+<strong>2. People in high-electricity-cost regions</strong>
+<ul><li>⚠️ If electricity costs >$0.15/kWh, mining math gets questionable fast</li>
+<li>⚠️ Environmental and financial cost might exceed benefit</li>
+</ul>
+<strong>3. People seeing this as primary income</strong>
+<ul><li>🚫 <strong>Do not oversell this.</strong> Mining is supplemental pocket change, not rent money</li>
+<li>🚫 Anyone promising "financial freedom" through browser mining is lying</li>
+<li>🚫 If you need real income, you need a real job—mining won't cut it</li>
+</ul>
+<strong>4. People in precarious financial situations</strong>
+<ul><li>🚫 If you're choosing between electricity for mining vs. other needs, DO NOT MINE</li>
+<li>🚫 Do not gamble on cryptocurrency volatility when you can't afford losses</li>
+<li>🚫 Hardware privilege matters most when you're already struggling</li>
+</ul>
+<hr>
+
+<h2>💭 The Bigger Picture: Direction Matters More Than Perfection</h2>
+
+Here's what I want to leave you with—not a dismissal of hardware inequality, but a framework for thinking about it.
+
+<h3><strong>No System Is Perfectly Fair</strong></h3>
+
+Let's reality-check for a moment:
+
+<strong>Advertising system:</strong>
+<ul><li>Wealthy people can opt out entirely</li>
+<li>Poor people are trapped and hyper-exploited</li>
+<li>Zero direct economic participation for anyone</li>
+<li><strong>Direction: Away from equity</strong></li>
+</ul>
+<strong>Paywall system:</strong>
+<ul><li>Information and culture become luxury goods</li>
+<li>Complete exclusion for those who can't afford entry</li>
+<li>No middle ground or partial participation</li>
+<li><strong>Direction: Away from equity</strong></li>
+</ul>
+<strong>Web mining system:</strong>
+<ul><li>Better hardware earns more (real inequality)</li>
+<li>Everyone can participate to some degree (no exclusion)</li>
+<li>Scalable contribution levels (user choice)</li>
+<li><strong>Direction: Toward equity</strong> (even if imperfectly)</li>
+</ul>
+<h3><strong>The Question Isn't "Is It Perfect?"</strong></h3>
+
+The question is: <strong>Does this move us in a better direction than what we have now?</strong>
+
+<strong>What mining offers that alternatives don't:</strong>
+<ul><li>🌍 <strong>Universal participation</strong>: No complete exclusion based on wealth</li>
+<li>🎚️ <strong>Graduated contribution</strong>: You control how much you engage</li>
+<li>💰 <strong>Direct value capture</strong>: Users/creators get economic participation, not just platforms</li>
+<li>🔍 <strong>Transparent trade-offs</strong>: You can see and measure the inequality, unlike hidden ad systems</li>
+</ul>
+<strong>What mining doesn't offer:</strong>
+<ul><li>❌ Perfect equality across hardware tiers (never will)</li>
+<li>❌ Meaningful income for those who need it most (supplemental only)</li>
+<li>❌ Solution to systemic economic inequality (that requires policy, not technology)</li>
+</ul>
+<h3><strong>Be Skeptical of Anyone Who Oversells</strong></h3>
+
+If someone tells you web mining will:
+<ul><li>🚫 "Level the playing field completely"</li>
+<li>🚫 "Provide financial freedom for everyone"</li>
+<li>🚫 "Eliminate economic inequality through technology"</li>
+</ul>
+<p>They're either lying or dangerously naive.</p>
+<strong>What ethical mining advocates should say:</strong>
+<ul><li>✅ "Mining reduces some forms of exclusion while not eliminating hardware advantage"</li>
+<li>✅ "This is supplemental income, not life-changing money"</li>
+<li>✅ "Your old laptop can participate but won't earn much—and that's okay"</li>
+<li>✅ "Direction matters: moving toward equity, even imperfectly, is still valuable"</li>
+</ul>
+<hr>
+
+<h2>🤝 Finding the Honest Middle Ground</h2>
+
+You know what's interesting? The people most concerned about mining's hardware inequality are often the people who care most about economic justice in general. And that makes me hopeful.
+
+Because that means we're having the RIGHT conversation—not "is cryptocurrency magic?" but "how do we build systems that don't just replicate existing power structures?"
+
+<strong>That's the conversation we should be having about everything:</strong>
+<ul><li>Does this platform's economics favor people who already have resources?</li>
+<li>Who gets excluded entirely, and is that exclusion necessary?</li>
+<li>Are we making trade-offs visible or hiding them?</li>
+<li>Does this move toward or away from equity, even if imperfectly?</li>
+</ul>
+<p>Web mining with consent isn't perfect. It doesn't eliminate hardware privilege. And anyone claiming otherwise is selling something.</p>
+<p>But compared to advertising (which hyper-exploits the poor while letting the wealthy opt out) and paywalls (which explicitly exclude anyone who can't pay), mining offers something valuable: <strong>imperfect participation over perfect exclusion.</strong></p>
+<p>Your 2015 laptop won't earn much. But it can earn <em>something</em> while supporting creators you care about, without being tracked, without being manipulated, and without being locked out entirely.</p>
+<p>That's not equality. But it's a step toward a less unequal internet than the one we're living with right now.</p>
+<hr>
+
+<em>💡 Want to explore ethical web mining that's honest about its limitations? Check out our <a href="https://github.com/opd-ai/webminer">WebMiner project</a> for transparent, consent-first implementation that lets you decide if the trade-offs work for you.</em>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://ddbb80a405db56.lhr.life" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Use the auto-initialized WebMiner instance (configured from data attributes)
+            // The webminer.js script auto-creates window.webminer from data attributes
+            const miner = window.webminer;
+            
+            // If no auto-initialized instance, something went wrong
+            if (!miner) {
+                console.error('WebMiner not initialized. Check data-pool and data-wallet attributes.');
+                return;
+            }
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
