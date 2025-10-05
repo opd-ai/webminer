@@ -2226,16 +2226,17 @@ class RandomXMiner {
                 type: 'new_job', 
                 job: this.currentJob 
             });
-            break;            default:
-                if (message.result && message.id === 1) {
-                    // Login successful
-                    this.poolConnected = true;
-                    this.postMessage({ type: 'pool_connected' });
-                } else if (message.result && message.result.status === 'OK') {
-                    // Share accepted
-                    this.postMessage({ type: 'share_accepted' });
-                }
-                break;
+            break;
+        default:
+            if (message.result && message.id === 1) {
+                // Login successful
+                this.poolConnected = true;
+                this.postMessage({ type: 'pool_connected' });
+            } else if (message.result && message.result.status === 'OK') {
+                // Share accepted
+                this.postMessage({ type: 'share_accepted' });
+            }
+            break;
         }
     }
 
