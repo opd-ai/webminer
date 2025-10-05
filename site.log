@@ -1,11 +1,11 @@
 🚀 Starting WebMiner static site generation...
 
 ⚙️  WebMiner configuration:
-   Pool: wss://8ba1e62fb30664.lhr.life
+   Pool: wss://92e1998a189718.lhr.life
    Wallet: 43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe
    Throttle: 0.25
 
-📋 Loaded 6 .gitignore patterns
+📋 Loaded 8 .gitignore patterns
 📁 Found 45 markdown files
 
 ⏭️  Skipping: AUDIT.md (excluded by filter)

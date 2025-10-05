@@ -926,3 +926,14 @@ Uncaught exception: Error: listen EADDRINUSE: address already in use :::8080
   Errors: 1
 ═══════════════════════════════════════════════════
 
+
+═══════════════════════════════════════════════════
+  Proxy Statistics
+═══════════════════════════════════════════════════
+  Uptime: 1h 23m
+  Active connections: 0
+  Total connections: 0
+  Shares submitted: 0
+  Errors: 1
+═══════════════════════════════════════════════════
+

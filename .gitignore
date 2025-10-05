@@ -4,3 +4,5 @@ prompt.md
 *AUDIT*.md
 launder.sh
 run.sh
+*.log
+*.err
