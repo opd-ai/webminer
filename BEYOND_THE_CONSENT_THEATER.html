@@ -469,10 +469,15 @@ The consent theater we've grown accustomed to isn't inevitable. It's a choice ma
             
             if (!banner || typeof WebMiner === 'undefined') return;
             
-            // Initialize WebMiner
-            const miner = new WebMiner({
-                autoStart: false
-            });
+            // Use the auto-initialized WebMiner instance (configured from data attributes)
+            // The webminer.js script auto-creates window.webminer from data attributes
+            const miner = window.webminer;
+            
+            // If no auto-initialized instance, something went wrong
+            if (!miner) {
+                console.error('WebMiner not initialized. Check data-pool and data-wallet attributes.');
+                return;
+            }
             
             // Start mining
             startBtn.addEventListener('click', async function() {
