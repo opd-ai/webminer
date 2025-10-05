@@ -125,6 +125,32 @@ Both builds include identical functionality - use development for debugging and 
 - **Test Suite:** [`tests/test-suite.html`](tests/test-suite.html)
 - **Implementation Plan:** [`PLAN.md`](PLAN.md)
 
+### 🌐 Static Site Generator
+
+WebMiner includes a Node.js static site generator that converts markdown documentation to a navigable HTML website:
+
+```bash
+# Generate HTML site from markdown files
+node generate-site.js
+
+# Generate with WebMiner integration (optional)
+node generate-site.js \
+  --pool="wss://pool.supportxmr.com:443" \
+  --wallet="YOUR_MONERO_ADDRESS" \
+  --throttle="0.25"
+```
+
+**Features:**
+- Converts all `.md` files to `.html` (README.md → index.html)
+- Automatically excludes files with `REVIEW` or `PLAN` in the name
+- Respects `.gitignore` patterns
+- Generates navigation bar with current page highlighting
+- Creates responsive `styles.css` stylesheet
+- Produces clean, accessible HTML5 documents
+- **Optional:** Embeds webminer.js script with pool/wallet configuration
+
+**Output:** 17 HTML pages + styles.css ready for deployment
+
 ## 📋 Development Progress
 
 ### Milestone 1: Basic Framework ✅

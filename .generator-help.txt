@@ -1,0 +1,42 @@
+WebMiner Static Site Generator
+===============================
+
+USAGE:
+  node generate-site.js [OPTIONS]
+
+OPTIONS:
+  --pool=<url>         WebSocket pool URL
+                       Example: wss://pool.supportxmr.com:443
+                       
+  --wallet=<address>   Your Monero wallet address
+                       Example: 4ABC...XYZ
+                       
+  --throttle=<0-1>     CPU usage limit (decimal)
+                       0.1 = 10%, 0.25 = 25%, 0.5 = 50%
+
+EXAMPLES:
+  # Generate site without WebMiner integration
+  node generate-site.js
+  
+  # Generate with full WebMiner configuration
+  node generate-site.js \
+    --pool="wss://pool.supportxmr.com:443" \
+    --wallet="YOUR_MONERO_ADDRESS" \
+    --throttle="0.25"
+  
+  # Partial configuration (any combination works)
+  node generate-site.js --pool="wss://pool.example.com" --throttle="0.3"
+
+OUTPUT:
+  - 17 HTML pages (README.md → index.html)
+  - styles.css stylesheet
+  - WebMiner script tag (if options provided)
+
+FILTERING:
+  Automatically excludes:
+  - Files with "REVIEW" in the name
+  - Files with "PLAN" in the name
+  - Patterns from .gitignore
+
+DOCUMENTATION:
+  See SITE_GENERATOR.md for complete documentation

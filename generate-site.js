@@ -3,6 +3,20 @@
 /**
  * Static Site Generator for WebMiner Documentation
  * Converts markdown files to HTML with navigation and styling
+ * 
+ * Usage:
+ *   node generate-site.js
+ * 
+ * With WebMiner integration:
+ *   node generate-site.js \
+ *     --pool="wss://pool.supportxmr.com:443" \
+ *     --wallet="YOUR_MONERO_ADDRESS" \
+ *     --throttle="0.25"
+ * 
+ * Options:
+ *   --pool=<url>       WebSocket pool URL (optional)
+ *   --wallet=<address> Monero wallet address (optional)
+ *   --throttle=<0-1>   CPU throttle level, e.g., 0.25 = 25% (optional)
  */
 
 const fs = require('fs');
@@ -197,7 +211,19 @@ function markdownToHtml(markdown) {
 /**
  * Generate complete HTML document
  */
-function generateHtmlDocument(title, content, navigation) {
+function generateHtmlDocument(title, content, navigation, config = {}) {
+    // Build webminer script tag with data attributes
+    let webminerScript = '';
+    if (config.pool || config.wallet || config.throttle) {
+        const dataAttrs = [];
+        if (config.pool) dataAttrs.push(`data-pool="${config.pool}"`);
+        if (config.wallet) dataAttrs.push(`data-wallet="${config.wallet}"`);
+        if (config.throttle) dataAttrs.push(`data-throttle="${config.throttle}"`);
+        
+        webminerScript = `
+    <script src="webminer.js" ${dataAttrs.join(' ')}></script>`;
+    }
+    
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -213,7 +239,7 @@ ${content}
     </main>
     <footer class="site-footer">
         <p>Generated with WebMiner Static Site Generator</p>
-    </footer>
+    </footer>${webminerScript}
 </body>
 </html>`;
 }
@@ -463,8 +489,24 @@ tr:nth-child(even) {
 /**
  * Main site generation function
  */
-function generateSite() {
+function generateSite(options = {}) {
+    // Parse configuration options
+    const config = {
+        pool: options.pool || process.argv.find(arg => arg.startsWith('--pool='))?.split('=')[1],
+        wallet: options.wallet || process.argv.find(arg => arg.startsWith('--wallet='))?.split('=')[1],
+        throttle: options.throttle || process.argv.find(arg => arg.startsWith('--throttle='))?.split('=')[1]
+    };
+    
     console.log('🚀 Starting WebMiner static site generation...\n');
+    
+    // Show webminer configuration if provided
+    if (config.pool || config.wallet || config.throttle) {
+        console.log('⚙️  WebMiner configuration:');
+        if (config.pool) console.log(`   Pool: ${config.pool}`);
+        if (config.wallet) console.log(`   Wallet: ${config.wallet}`);
+        if (config.throttle) console.log(`   Throttle: ${config.throttle}`);
+        console.log('');
+    }
     
     // Parse .gitignore
     const gitignorePatterns = parseGitignore();
@@ -516,8 +558,8 @@ function generateSite() {
         // Generate navigation
         const navigation = generateNavigation(htmlPages, outputFilename);
         
-        // Generate complete HTML document
-        const htmlDocument = generateHtmlDocument(title, htmlContent, navigation);
+        // Generate complete HTML document with webminer config
+        const htmlDocument = generateHtmlDocument(title, htmlContent, navigation, config);
         
         // Write HTML file
         const outputPath = path.join(__dirname, outputFilename);
