@@ -1,7 +1,7 @@
 🚀 Starting WebMiner static site generation...
 
 ⚙️  WebMiner configuration:
-   Pool: wss://92e1998a189718.lhr.life
+   Pool: wss://8a19cc5f1f559b.lhr.life
    Wallet: 43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe
    Throttle: 0.25
 
@@ -10,7 +10,7 @@
 
 ⏭️  Skipping: AUDIT.md (excluded by filter)
 ⏭️  Skipping: AUDIT_PROMPT.md (excluded by filter)
-⏭️  Skipping: ESSAY_PLANNING.md (excluded by filter)
+⏭️  Skipping: ESSAY_PLANNING_OLD.md (excluded by filter)
 ⏭️  Skipping: REVIEW.md (excluded by filter)
 ⏭️  Skipping: REVIEW_AUDIT.md (excluded by filter)
 ⏭️  Skipping: REVIEW_COMPARISON.md (excluded by filter)
