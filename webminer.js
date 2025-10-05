@@ -609,7 +609,8 @@
             hasConsent: false,
             timestamp: null,
             throttleLevel: 0.25, // Default 25% CPU usage
-            showIndicator: true
+            showIndicator: true,
+            manuallySet: false // Tracks if user manually adjusted throttle (prevents auto-overrides)
         },
 
         /**
@@ -1015,6 +1016,9 @@
             this.state.throttleLevel = parseInt(throttleSlider.value) / 100;
             this.state.showMobileWarning = mobileWarning.checked;
             this.state.pauseWhenHidden = pauseBackground.checked;
+            
+            // Mark as manually set to prevent mobile optimizer from overriding user choice
+            this.state.manuallySet = true;
             
             this.savePreference();
             
@@ -1746,11 +1750,14 @@
 
         /**
          * Apply mobile-specific mining settings
+         * 
+         * Automatically optimizes throttle for mobile devices unless user has
+         * explicitly set their own preference via settings dialog.
          */
         applyMobileSpecificSettings() {
             if (!this.capabilities.isMobile) return;
 
-            // Reduce default throttle for mobile devices
+            // Reduce default throttle for mobile devices (respects user manual settings)
             if (MiningConsent.state.throttleLevel > 0.15 && !MiningConsent.state.manuallySet) {
                 MiningConsent.state.throttleLevel = 0.15; // 15% max for mobile
                 MiningConsent.savePreference();
