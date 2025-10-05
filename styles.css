@@ -33,6 +33,125 @@ body {
     gap: 10px;
 }
 
+/* Miner Consent Banner */
+.miner-consent-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.miner-banner-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.miner-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3em;
+    color: white;
+}
+
+.miner-info p {
+    margin: 0;
+    opacity: 0.95;
+    font-size: 0.95em;
+}
+
+.miner-controls {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.miner-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.miner-btn-primary {
+    background-color: #10b981;
+    color: white;
+}
+
+.miner-btn-primary:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.miner-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.miner-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Miner Status Bar */
+.miner-status-bar {
+    background-color: #10b981;
+    color: white;
+    padding: 12px 20px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.miner-status-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.miner-status-icon {
+    font-size: 1.2em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.miner-status-text {
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.miner-status-stats {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.95em;
+    padding: 4px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.miner-btn-stop {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.9em;
+}
+
+.miner-btn-stop:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
+
 .site-nav a {
     margin-right: 20px;
     text-decoration: none;
@@ -204,6 +323,33 @@ tr:nth-child(even) {
         margin-right: 0;
         margin-bottom: 5px;
         display: block;
+    }
+    
+    /* Miner UI mobile styles */
+    .miner-banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .miner-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .miner-btn {
+        width: 100%;
+    }
+    
+    .miner-status-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .miner-status-text {
+        flex-basis: 100%;
     }
     
     h1 {

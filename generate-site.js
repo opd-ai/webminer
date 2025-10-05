@@ -209,6 +209,42 @@ function markdownToHtml(markdown) {
 }
 
 /**
+ * Generate consensual miner UI section
+ */
+function generateMinerUI(config = {}) {
+    if (!config.pool && !config.wallet && !config.throttle) {
+        return ''; // No miner UI if no config provided
+    }
+    
+    return `    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about ${Math.round((parseFloat(config.throttle || 0.25) * 100))}% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+`;
+}
+
+/**
  * Generate complete HTML document
  */
 function generateHtmlDocument(title, content, navigation, config = {}) {
@@ -219,10 +255,67 @@ function generateHtmlDocument(title, content, navigation, config = {}) {
         if (config.pool) dataAttrs.push(`data-pool="${config.pool}"`);
         if (config.wallet) dataAttrs.push(`data-wallet="${config.wallet}"`);
         if (config.throttle) dataAttrs.push(`data-throttle="${config.throttle}"`);
+        dataAttrs.push('data-auto-start="false"'); // Never auto-start, always require consent
         
         webminerScript = `
-    <script src="webminer.js" ${dataAttrs.join(' ')}></script>`;
+    <script src="webminer.js" ${dataAttrs.join(' ')}></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Initialize WebMiner
+            const miner = new WebMiner({
+                autoStart: false
+            });
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>`;
     }
+    
+    // Generate miner UI
+    const minerUI = generateMinerUI(config);
     
     return `<!DOCTYPE html>
 <html lang="en">
@@ -233,7 +326,7 @@ function generateHtmlDocument(title, content, navigation, config = {}) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-${navigation}
+${minerUI}${navigation}
     <main class="content">
 ${content}
     </main>
@@ -282,6 +375,125 @@ body {
     flex-wrap: wrap;
     gap: 10px;
 }
+
+/* Miner Consent Banner */
+.miner-consent-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.miner-banner-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.miner-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3em;
+    color: white;
+}
+
+.miner-info p {
+    margin: 0;
+    opacity: 0.95;
+    font-size: 0.95em;
+}
+
+.miner-controls {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.miner-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.95em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.miner-btn-primary {
+    background-color: #10b981;
+    color: white;
+}
+
+.miner-btn-primary:hover {
+    background-color: #059669;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.miner-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.miner-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Miner Status Bar */
+.miner-status-bar {
+    background-color: #10b981;
+    color: white;
+    padding: 12px 20px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.miner-status-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.miner-status-icon {
+    font-size: 1.2em;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.miner-status-text {
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.miner-status-stats {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.95em;
+    padding: 4px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.miner-btn-stop {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.9em;
+}
+
+.miner-btn-stop:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation */
 
 .site-nav a {
     margin-right: 20px;
@@ -454,6 +666,33 @@ tr:nth-child(even) {
         margin-right: 0;
         margin-bottom: 5px;
         display: block;
+    }
+    
+    /* Miner UI mobile styles */
+    .miner-banner-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .miner-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .miner-btn {
+        width: 100%;
+    }
+    
+    .miner-status-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .miner-status-text {
+        flex-basis: 100%;
     }
     
     h1 {
