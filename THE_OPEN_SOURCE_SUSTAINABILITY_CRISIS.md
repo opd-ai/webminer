@@ -126,18 +126,15 @@ Even "successful" campaigns rarely clear minimum wage.
 
 ### **"Just Get a Tech Job" (The Dismissive Non-Solution)**
 
-**The suggestion:**
-*"If you need money, work for a tech company. Do open source in your spare time."*
+**The suggestion:** *"If you need money, work for a tech company. Do open source in your spare time."*
 
 **Why this is nonsense:**
-- ⏰ **There is no spare time**: Full-time job + open source maintenance = burnout central
-- 🧠 **Mental energy depletion**: After 8 hours of coding at work, maintaining OSS feels like unpaid overtime
-- ⚖️ **IP conflicts**: Many companies claim ownership of code written on personal time
-- 💔 **Motivation killer**: "Do the thing you love as an exhausting second job" destroys passion
-- 🚫 **Doesn't fix the structural problem**: Just tells individuals to suffer more efficiently
+- ⏰ Full-time job + OSS maintenance = burnout
+- 🧠 After 8 hours of coding, maintaining OSS feels like unpaid overtime
+- ⚖️ Many companies claim ownership of code written on personal time
+-  Doesn't fix the structural problem: Critical work should be compensated
 
-**The real message:**
-*"Your work is critical to the entire industry, but we won't pay you for it. Figure it out yourself."*
+**The real message:** *"Your work is critical to the industry, but we won't pay you. Figure it out."*
 
 ---
 
