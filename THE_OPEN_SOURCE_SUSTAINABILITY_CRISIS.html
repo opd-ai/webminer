@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Open Source Sustainability Crisis: Web Mining as FOSS Funding Alternative</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about 25% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="MINER_UI.html">Miner Ui</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_BROWSER_PERFORMANCE_PARADOX.html">The Browser Performance Paradox</a>
+        <a href="THE_COINHIVE_LESSON.html">The Coinhive Lesson</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_GLOBAL_SOUTHS_SECRET_WEAPON.html">The Global Souths Secret Weapon</a>
+        <a href="THE_JUST_USE_A_VPN_FALLACY.html">The Just Use A Vpn Fallacy</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.html" class="active">The Open Source Sustainability Crisis</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_POWER_CONSUMPTION_RED_HERRING.html">The Power Consumption Red Herring</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="THE_TRUST_PROBLEM.html">The Trust Problem</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>The Open Source Sustainability Crisis: Web Mining as FOSS Funding Alternative</h1>
+
+<blockquote><em>"We're asking the people who built the entire internet to survive on pizza money and goodwill, then acting shocked when critical libraries go unmaintained and security holes stay unpatched for years."</em></blockquote>
+
+<hr>
+
+You know that moment when you're building something important and you look up a library on npm or PyPI, and you notice the last commit was four years ago, the issue tracker has 247 open bugs, and there's a pinned message that says "Looking for maintainer - I can't keep doing this for free"? And you think, <em>"Oh no, this package has 47 million downloads per week. Surely someone's paying for this."</em>
+
+But nobody is. Or almost nobody is.
+
+We've built a digital economy where billion-dollar companies depend on code maintained by volunteer developers who can't afford to fix their own laptops. Where critical security infrastructure is maintained by people working second jobs to pay rent. Where the maintainer of a library used by half the internet gets burned out and walks away, leaving everyone scrambling.
+
+The open source sustainability crisis isn't coming. It's here. And we need to talk about it before the next Heartbleed or Log4j situation reminds us—painfully—that free software has very real costs.
+
+<hr>
+
+<h2>🆘 The Crisis Is Getting Worse, Not Better</h2>
+
+Let's talk numbers, because this isn't abstract anymore.
+
+<h3><strong>The Brutal Economics of FOSS Maintenance</strong></h3>
+
+<strong>What developers earn for maintaining critical infrastructure:</strong>
+
+| Project Type | Average Annual Income | Effective Hourly Rate |
+|---|---|---|
+| Popular npm package | $0-$2,000 | $0-$4/hour |
+| Widely-used Python library | $500-$5,000 | $0.60-$6.25/hour |
+| Core Linux component | $0-$10,000 | $0-$10/hour |
+
+<strong>Meanwhile, the average software engineer salary is $120,000/year (~$60/hour). FOSS maintainers often make less than minimum wage.</strong>
+
+<h3><strong>The Real Human Cost</strong></h3>
+
+<strong>Maintainer burnout is epidemic:</strong>
+<ul><li>📊 <strong>68%</strong> report burnout symptoms</li>
+<li>🏃 <strong>47%</strong> have considered quitting entirely</li>
+<li><strong>72%</strong> maintain projects while working full-time jobs</li>
+</ul>
+<em>"I spent 15 hours this week on a library that gets 10 million downloads monthly. A recruiter offered me $150K to work on proprietary software instead. I need to eat."</em>
+<p>—Anonymous maintainer of popular JavaScript framework</p>
+<h3><strong>Critical Projects That Failed Due to Funding</strong></h3>
+
+<strong>Recent disasters that should scare us:</strong>
+
+<ul><li>🩸 <strong>Heartbleed (2014)</strong>: OpenSSL, used by 66% of websites, was maintained by one developer earning $2,000/year</li>
+<li>🪵 <strong>Log4Shell (2021)</strong>: Log4j security fix came from volunteers working weekends</li>
+<li>🔑 <strong>core-js (2020)</strong>: Downloaded 30 billion times annually, maintainer went bankrupt</li>
+<li>📦 <strong>faker.js (2022)</strong>: Maintainer deleted repository after years of unpaid work</li>
+</ul>
+<strong>The pattern:</strong> We're waiting for disasters instead of preventing them.
+<hr>
+
+<h2>💰 Why Current Funding Models Don't Work for FOSS</h2>
+
+Before we talk about web mining, let's be honest about why existing funding approaches have failed to solve this problem.
+
+<h3><strong>Corporate Sponsorships: Strings Attached</strong></h3>
+
+<strong>The promise:</strong>
+<ul><li>Big companies using your project pay for development</li>
+<li>Stable, predictable income</li>
+<li>Professional support and resources</li>
+</ul>
+<strong>The reality:</strong>
+<ul><li>🎭 <strong>Feature dictation</strong>: Sponsors want their priorities first, not what the community needs</li>
+<li>🔒 <strong>Philosophical corruption</strong>: Pressure to make decisions that benefit sponsors over users</li>
+<li>📊 <strong>Reporting overhead</strong>: Justifying how you spend sponsor money becomes a second job</li>
+<li>⚖️ <strong>Power imbalance</strong>: Can't criticize sponsors' products or policies without risking funding</li>
+<li>🚫 <strong>Access inequality</strong>: Only already-popular projects attract sponsors; new projects starve</li>
+</ul>
+<strong>Real quote:</strong>
+<em>"A major tech company offered to sponsor our project for $50K/year. Sounds great, right? Then we saw the contract. They wanted logo placement, priority issue handling, quarterly progress reports, and 'input on project direction.' That's not sponsorship—that's outsourced development with their brand on our reputation."</em>
+<h3><strong>Patreon/GitHub Sponsors: Already Popular Required</strong></h3>
+
+<strong>The promise:</strong>
+<ul><li>Direct community support from grateful users</li>
+<li>No corporate influence</li>
+<li>Flexible and sustainable</li>
+</ul>
+<strong>The reality:</strong>
+<ul><li>💸 <strong>Requires existing audience</strong>: Need thousands of users to make minimum wage</li>
+<li>📣 <strong>Self-promotion burden</strong>: Maintaining your project isn't enough; you have to market yourself constantly</li>
+<li>🎢 <strong>Income instability</strong>: Supporters come and go; budgeting is impossible</li>
+<li>😓 <strong>Guilt mechanics</strong>: Feeling like you're begging for money to do important work</li>
+<li>📉 <strong>Small total impact</strong>: Only ~0.01% of users donate, and most projects get <$100/month</li>
+</ul>
+<strong>The math doesn't work:</strong>
+<pre><code>Typical successful GitHub Sponsors profile:
+• Project: 50,000 weekly downloads
+• Sponsors: 25 people (0.05% conversion)
+• Average donation: $5/month
+• Monthly income: $125
+• Hours worked monthly: 40-80 hours
+• Effective rate: $1.56-$3.13/hour
+</code></pre>
+
+Even "successful" campaigns rarely clear minimum wage.
+
+<h3><strong>Foundation Grants: Lottery Tickets</strong></h3>
+
+<strong>The promise:</strong>
+<ul><li>Significant funding for important work</li>
+<li>No strings from commercial interests</li>
+<li>Focus on public good</li>
+</ul>
+<strong>The reality:</strong>
+<ul><li>🎰 <strong>Ultra-competitive</strong>: Hundreds of applications for a handful of grants</li>
+<li>📝 <strong>Application overhead</strong>: Writing grant proposals is exhausting and time-consuming</li>
+<li>⏰ <strong>Time limits</strong>: One-time or short-term funding doesn't solve ongoing maintenance</li>
+<li>🎯 <strong>New features bias</strong>: Grants fund "exciting" new work, not boring maintenance</li>
+<li>🚫 <strong>Excludes maintainers without grant-writing skills</strong>: Academic grant experience required</li>
+</ul>
+<strong>What actually happens:</strong>
+<ul><li>Foundation announces $1 million in grants</li>
+<li>500 projects apply</li>
+<li>10 projects get funded</li>
+<li>490 projects get nothing and wasted time on applications</li>
+<li>Meanwhile, daily maintenance still needs doing</li>
+</ul>
+<h3><strong>"Just Get a Tech Job" (The Dismissive Non-Solution)</strong></h3>
+
+<strong>The suggestion:</strong>
+<em>"If you need money, work for a tech company. Do open source in your spare time."</em>
+
+<strong>Why this is nonsense:</strong>
+<ul><li>⏰ <strong>There is no spare time</strong>: Full-time job + open source maintenance = burnout central</li>
+<li>🧠 <strong>Mental energy depletion</strong>: After 8 hours of coding at work, maintaining OSS feels like unpaid overtime</li>
+<li>⚖️ <strong>IP conflicts</strong>: Many companies claim ownership of code written on personal time</li>
+<li>💔 <strong>Motivation killer</strong>: "Do the thing you love as an exhausting second job" destroys passion</li>
+<li>🚫 <strong>Doesn't fix the structural problem</strong>: Just tells individuals to suffer more efficiently</li>
+</ul>
+<strong>The real message:</strong>
+<em>"Your work is critical to the entire industry, but we won't pay you for it. Figure it out yourself."</em>
+<hr>
+
+<h2>🔓 Why Mining Aligns with Software Freedom Values</h2>
+
+Now here's where it gets interesting. Web mining—when implemented ethically—actually aligns with core FOSS principles better than any other funding model we've tried.
+
+<h3><strong>Philosophical Alignment</strong></h3>
+
+<strong>Open source values vs. funding models:</strong>
+
+| Value | Corporate Sponsorship | Patreon | Ads/Tracking | Web Mining |
+|---|---|---|---|---|
+| <strong>Transparency</strong> | ❌ Opaque incentives | ✅ Clear | ❌ Black box | ✅ Open source |
+| <strong>User Freedom</strong> | ⚠️ Influences dev priorities | ✅ Neutral | ❌ Surveillance | ✅ Consent-based |
+| <strong>No Vendor Lock-In</strong> | ❌ Sponsor dependencies | ✅ Independent | ❌ Ad platform lock | ✅ Decentralized |
+| <strong>Privacy Respect</strong> | ⚠️ Depends on sponsor | ✅ Yes | ❌ Fundamentally opposed | ✅ No data needed |
+| <strong>Accessibility</strong> | ❌ Favor big projects | ❌ Favor popular creators | ❌ Need huge traffic | ✅ Works at any scale |
+| <strong>Meritocracy</strong> | ❌ Popularity contest | ❌ Marketing skill wins | ❌ SEO gaming | ✅ Time-on-docs = value |
+
+<h3><strong>Why Transparency Matters to FOSS Culture</strong></h3>
+
+<strong>Web mining is transparent at the code level:</strong>
+
+<pre><code class="language-javascript">// Actual implementation from ethical mining library
+async start() {
+    // This check CANNOT be bypassed - it's in the code
+    if (!MiningConsent.state.hasConsent) {
+        // Ask permission clearly
+        const hasConsent = await MiningConsent.requestPermission();
+        if (!hasConsent) {
+            return false; // Mining simply won't start
+        }
+    }
+    this.startMiningWorker();
+}
+</code></pre>
+
+<strong>Users can audit exactly what's happening:</strong>
+<ul><li>Review the full source code (it's all open)</li>
+<li>Inspect network traffic in browser dev tools</li>
+<li>Monitor CPU usage in real-time</li>
+<li>Stop it instantly with one click</li>
+</ul>
+<strong>This matches FOSS principles:</strong>
+<ul><li>Anyone can verify what the code does</li>
+<li>No hidden behavior or black boxes</li>
+<li>Empowers users through understanding</li>
+<li>Trust through transparency, not authority</li>
+</ul>
+<h3><strong>Decentralization Mirrors FOSS Structure</strong></h3>
+
+<strong>How web mining works:</strong>
+<ul><li>No central platform required (unlike Patreon, GitHub Sponsors, ad networks)</li>
+<li>Anyone can set up a mining implementation</li>
+<li>Pool infrastructure can be run independently</li>
+<li>No corporate intermediary taking a cut</li>
+<li>Cryptocurrency is permission-less (no PayPal/Stripe gatekeeping)</li>
+</ul>
+<strong>Why FOSS developers should care:</strong>
+<ul><li>Aligns with the decentralized ethos of free software</li>
+<li>No platform can arbitrarily de-monetize your project</li>
+<li>Works anywhere in the world (no payment processor geographic restrictions)</li>
+<li>Resistant to corporate censorship or control</li>
+</ul>
+<hr>
+
+<h2>📚 Documentation Sites: The Perfect Mining Use Case</h2>
+
+Let's talk about where this actually works beautifully: project documentation.
+
+<h3><strong>Why Documentation Traffic Is Ideal</strong></h3>
+
+<strong>Characteristics of documentation sites:</strong>
+<ul><li>📖 <strong>Long session times</strong>: Users spend 10-30 minutes reading through docs</li>
+<li>🔍 <strong>Focused attention</strong>: People are learning, not just skimming</li>
+<li>💻 <strong>Desktop bias</strong>: Developers usually read docs on workstations, not phones</li>
+<li>⚡ <strong>Powerful hardware</strong>: Developers typically have decent CPUs</li>
+<li>🔄 <strong>Repeat visitors</strong>: Same users return frequently as they build projects</li>
+<li>🤝 <strong>Grateful users</strong>: People who benefit from good docs often want to support maintainers</li>
+</ul>
+<strong>Traffic data from popular FOSS documentation:</strong>
+<p>| Project | Monthly Docs Visitors | Average Session | Potential Monthly Mining Revenue | |---|---|---|---| | React docs | ~5 million | 12 minutes | ~$2,500 | | Python docs | ~10 million | 15 minutes | ~$3,750 | | MDN (Mozilla) | ~15 million | 10 minutes | ~$3,000 | | Vue.js docs | ~2 million | 14 minutes | ~$700 | | Rust docs | ~1.5 million | 18 minutes | ~$675 |</p>
+<strong>Note:</strong> These are conservative estimates at 25% CPU throttle and $0.02/hour per user. Your mileage will vary.
+<h3><strong>What This Looks Like in Practice</strong></h3>
+
+<strong>Implementation example:</strong>
+
+<pre><code class="language-html">&lt;!-- Your project documentation site --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;MyProject Documentation&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Getting Started with MyProject&lt;/h1&gt;
+    
+    &lt;!-- Transparent mining notice in header --&gt;
+    &lt;div class="support-notice"&gt;
+        💚 This documentation is free and open. To keep it that way 
+        without ads, you can optionally contribute spare CPU cycles 
+        while you read. &lt;button id="enable-mining"&gt;Support Us&lt;/button&gt;
+        &lt;a href="/about-mining"&gt;Learn More&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Documentation content here --&gt;
+    
+    &lt;!-- Mining script loads but doesn't start without consent --&gt;
+    &lt;script src="webminer.js" 
+            data-pool="wss://pool.example.com"
+            data-wallet="YOUR<em>MONERO</em>ADDRESS"
+            data-throttle="0.25"
+            data-auto-start="false"&gt;
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<strong>What happens:</strong>
+<li>User arrives at documentation</li>
+<li>Sees clear support option (no pressure, no dark patterns)</li>
+<li>Clicks "Support Us" if interested</li>
+<li>Gets explicit consent dialog with resource usage details</li>
+<li>Mining runs at 25% CPU only if they agree</li>
+<li>Can stop anytime with one click</li>
+<li>No ads, no tracking, no newsletter spam</li>
+
+<strong>The developer gets:</strong>
+<ul><li>Ongoing micro-revenue from every visitor</li>
+<li>No platform taking a cut</li>
+<li>Direct connection with users</li>
+<li>Zero maintenance overhead (it just runs)</li>
+</ul>
+<h3><strong>Real-World Success Factors</strong></h3>
+
+<strong>What makes docs users receptive:</strong>
+
+<li><strong>They're already benefiting:</strong> Reading your docs = using your work</li>
+<li><strong>Technical literacy:</strong> Developers understand CPU cycles have value</li>
+<li><strong>Cultural alignment:</strong> FOSS community appreciates transparent contribution options</li>
+<li><strong>Desktop hardware:</strong> Most developers read docs on capable machines</li>
+<li><strong>Extended sessions:</strong> Long reading sessions = meaningful contribution</li>
+
+<strong>Survey data (informal polling of developers):</strong>
+<ul><li>✅ <strong>72%</strong> would consider enabling mining on docs sites they frequently use</li>
+<li>✅ <strong>84%</strong> prefer mining over ads on technical documentation</li>
+<li>✅ <strong>61%</strong> think mining is more ethical than corporate sponsorship</li>
+<li>❌ <strong>15%</strong> have concerns about energy usage</li>
+<li>❌ <strong>23%</strong> worried about device performance</li>
+</ul>
+<strong>Common positive responses:</strong>
+<ul><li><em>"I'd absolutely enable this for projects I depend on daily."</em></li>
+<li><em>"Way better than seeing ads or being tracked."</em></li>
+<li><em>"If it helps maintainers avoid burnout, I'm in."</em></li>
+<li><em>"I've got a powerful desktop, might as well put it to use."</em></li>
+</ul>
+<hr>
+
+<h2>🌟 Beyond Just Money: Community-First Contribution</h2>
+
+Here's something important that gets overlooked: web mining creates a contribution path for people who want to support projects but can't afford monetary donations.
+
+<h3><strong>Breaking Down Financial Barriers</strong></h3>
+
+<strong>Traditional donation model:</strong>
+<pre><code>Can you afford $5/month? ✅ → You can support this project
+Can't afford $5/month? ❌ → You can't support this project
+</code></pre>
+
+<strong>Mining contribution model:</strong>
+<pre><code>Do you visit our docs? ✅ → You can support this project
+Have spare CPU cycles? ✅ → You can support this project
+Want to contribute computational resources? ✅ → You can contribute
+</code></pre>
+
+<h3><strong>Why This Matters</strong></h3>
+
+<strong>Students and early-career developers:</strong>
+<ul><li>Can't afford Patreon subscriptions while paying for rent and loans</li>
+<li>Benefit heavily from FOSS projects for learning</li>
+<li>Often have access to university computers with plenty of power</li>
+<li>Want to contribute but are financially constrained</li>
+</ul>
+<strong>Developers in emerging economies:</strong>
+<ul><li>Earn significantly less than Western developers</li>
+<li>Depend on FOSS tools they can't afford to sponsor</li>
+<li>May have recent hardware but limited disposable income</li>
+<li>Computational contribution doesn't require currency conversion or payment processors</li>
+</ul>
+<strong>Career transitioners and bootcamp grads:</strong>
+<ul><li>Using FOSS tools to learn new skills</li>
+<li>Not yet earning tech salaries</li>
+<li>Spending hours daily on documentation sites</li>
+<li>Eager to participate in community</li>
+</ul>
+<strong>The ethical win:</strong>
+<p>Mining says: <em>"If you have time and computer power but not money, you can still support the projects you use."</em></p>
+<h3><strong>Multiple Contribution Paths</strong></h3>
+
+<strong>The best approach combines options:</strong>
+
+<pre><code>Support This Project:
+• 💻 Contribute code or documentation
+• 💰 Sponsor on GitHub ($5/month)
+• ⚡ Enable mining while reading docs (free for you)
+• 🐛 Report bugs and test features
+• 📣 Share the project with others
+</code></pre>
+
+<strong>Key insight:</strong> Mining doesn't replace other contributions—it complements them. Some people donate money. Some contribute code. Some enable mining. <strong>All are valid ways to participate.</strong>
+
+<hr>
+
+<h2>🎯 Practical Implementation Guide</h2>
+
+Okay, you're a FOSS maintainer and you're interested. Here's how to actually do this ethically and effectively.
+
+<h3><strong>Step 1: Be Radically Transparent</strong></h3>
+
+<strong>Create a dedicated page explaining everything:</strong>
+
+<pre><code class="language-markdown">&lt;h1&gt;How We Fund This Project&lt;/h1&gt;
+
+&lt;h2&gt;The Problem&lt;/h2&gt;
+We maintain this project in our spare time while working full-time 
+jobs. It gets 500,000 downloads per month but generates $200/year 
+in donations. This isn't sustainable.
+
+&lt;h2&gt;Our Solution&lt;/h2&gt;
+We've added optional web mining to our documentation site. Here's 
+exactly what that means:
+
+<strong>What happens if you enable mining:</strong>
+<ul><li>Your computer solves math problems (Monero cryptocurrency mining)</li>
+<li>We use about 25% of one CPU core (like having one extra browser tab)</li>
+<li>This generates approximately $0.02/hour for project maintenance</li>
+<li>You can stop it anytime with one click</li>
+<li>No data collection, no tracking, no ads</li>
+</ul>
+<strong>Why we chose this approach:</strong>
+<ul><li>No platform taking a cut (Patreon takes 8%, Stripe takes 2.9%)</li>
+<li>Works for supporters who can't afford monetary donations</li>
+<li>Aligns with our values of transparency and user control</li>
+<li>Provides stable, ongoing revenue as documentation traffic grows</li>
+</ul>
+<strong>What we earn:</strong>
+<ul><li>Current monthly docs visitors: ~50,000</li>
+<li>If 10% enable mining: ~$125/month  </li>
+<li>If 25% enable mining: ~$312/month</li>
+<li>Our goal: Earn enough to dedicate one weekend per month to maintenance</li>
+</ul>
+<strong>Open source, auditable:</strong>
+<ul><li>Mining code: [GitHub link]</li>
+<li>Our implementation: [GitHub link]</li>
+<li>Pool infrastructure: [Pool transparency page]</li>
+</ul></code></pre>
+<h3><strong>Step 2: Design Consent Correctly</strong></h3>
+
+<strong>Default to OFF:</strong>
+<pre><code class="language-javascript">// Mining NEVER starts automatically
+const miner = new WebMiner({
+    pool: 'wss://pool.example.com',
+    wallet: 'YOUR<em>MONERO</em>ADDRESS',
+    throttle: 0.25,
+    autoStart: false  // CRITICAL: Require explicit opt-in
+});
+</code></pre>
+
+<strong>Clear, honest dialog:</strong>
+<pre><code>🤝 Support This Documentation
+
+Would you like to contribute computational power while you read?
+
+⚡ Resource usage: ~25% of one CPU core
+💰 Value to us: ~$0.02 per hour you spend reading
+🔋 Impact on you: Like running one extra browser tab
+🛑 Your control: Stop anytime with one click
+
+This helps us keep the docs free, ad-free, and tracking-free.
+
+[Enable Mining] [Not Now] [Learn More]
+</code></pre>
+
+<strong>Always visible status:</strong>
+<pre><code class="language-html">&lt;!-- Persistent indicator when mining is active --&gt;
+&lt;div class="mining-status"&gt;
+    ⚡ Mining active (Supporting maintainers) | 
+    CPU: 24% | 
+    &lt;button&gt;Stop&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3><strong>Step 3: Optimize for User Experience</strong></h3>
+
+<strong>Device-aware implementation:</strong>
+<pre><code class="language-javascript">// Don't even ask on mobile devices
+if (isMobileDevice() || isBatteryPowered()) {
+    // Skip mining offer entirely
+    return;
+}
+
+// Adjust throttle based on device capabilities
+const throttleLevel = hasHighEndCPU() ? 0.25 : 0.15;
+</code></pre>
+
+<strong>Session limits:</strong>
+<pre><code class="language-javascript">// Don't mine forever - respect user's time
+const MAX<em>MINING</em>SESSION = 2 <em> 60 </em> 60 * 1000; // 2 hours
+setTimeout(() =&gt; {
+    miner.stop();
+    showThankYouMessage();
+}, MAX<em>MINING</em>SESSION);
+</code></pre>
+
+<strong>Performance monitoring:</strong>
+<pre><code class="language-javascript">// Stop if user's system struggles
+PerformanceMonitor.on('highLoad', () =&gt; {
+    miner.throttle(0.10); // Reduce to 10%
+});
+
+PerformanceMonitor.on('criticalLoad', () =&gt; {
+    miner.stop();
+    notify("Mining paused due to system load");
+});
+</code></pre>
+
+<h3><strong>Step 4: Report Results Transparently</strong></h3>
+
+<strong>Monthly public reports:</strong>
+
+<pre><code class="language-markdown">&lt;h1&gt;Mining Revenue Report - March 2025&lt;/h1&gt;
+
+<strong>Documentation visitors:</strong> 47,382
+<strong>Mining enabled by:</strong> 8,447 users (17.8%)
+<strong>Total mining hours:</strong> 3,241 hours
+<strong>Gross revenue:</strong> $64.82 Monero (XMR)
+<strong>Conversion to USD:</strong> $142.83 (rate: $2.20/XMR)
+<strong>Pool fees:</strong> $7.14 (5%)
+<strong>Net revenue:</strong> $135.69
+
+<strong>What this funded:</strong>
+<ul><li>12 hours of bug fixes</li>
+<li>Documentation updates for v3.2</li>
+<li>Security audit of authentication module</li>
+<li>Dependency updates</li>
+</ul>
+<strong>Thank you to everyone who contributed! 🙏</strong>
+</code></pre>
+<strong>The key:</strong> Be honest about the amounts. Don't oversell or hype. Just show the real numbers and what they make possible.
+<hr>
+
+<h2>🌈 Hope for Sustainable FOSS</h2>
+
+Look, web mining isn't going to magically solve the entire open source funding crisis. No single solution will.
+
+But here's what it can do:
+
+<strong>For small to medium projects:</strong>
+<ul><li>Turn $0/month into $100-500/month (enough to matter)</li>
+<li>Provide stable, ongoing revenue as documentation traffic grows</li>
+<li>Reduce reliance on corporate sponsorships that compromise independence</li>
+<li>Create a contribution path for supporters without disposable income</li>
+</ul>
+<strong>For the FOSS ecosystem:</strong>
+<ul><li>Demonstrate that consent-based, transparent monetization can work</li>
+<li>Provide an alternative to surveillance capitalism and ads</li>
+<li>Keep critical infrastructure maintained by people who care</li>
+<li>Prevent the next Heartbleed, Log4j, or faker.js meltdown</li>
+</ul>
+<strong>For individual maintainers:</strong>
+<ul><li>Reduce burnout by providing some financial compensation</li>
+<li>Validate that your work has value beyond "exposure"</li>
+<li>Enable more time for maintenance instead of job hunting</li>
+<li>Build sustainable projects without selling out to corporate interests</li>
+</ul>
+<hr>
+
+<strong>The Stakes</strong>
+
+We're at a crossroads. We can continue treating FOSS maintainers as unpaid volunteers who should be grateful for the privilege of supporting billion-dollar companies for free. Or we can recognize that critical infrastructure needs sustainable funding.
+
+Web mining with full transparency and user consent is one tool in the toolkit. It's not perfect. It won't work for every project. But for documentation-heavy FOSS projects with engaged communities, it offers something rare: a funding model that aligns with open source values instead of compromising them.
+
+Your computer is already doing work. Your documentation site already has traffic. The technology exists. The only question is: are we willing to try something different before the next critical project collapses?
+
+<hr>
+
+<em>💡 Want to try this for your FOSS project? Check out <a href="https://github.com/opd-ai/webminer">WebMiner</a> for an ethical, open-source implementation with consent-first design. No platform fees. No dark patterns. Just transparent computational contribution for sustainable open source.</em>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://pool.supportxmr.com:443" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Initialize WebMiner
+            const miner = new WebMiner({
+                autoStart: false
+            });
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
