@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Artists' Co-op: How Creative Communities Can Fund Shared Digital Spaces</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="miner-consent-banner" id="minerConsentBanner">
+        <div class="miner-banner-content">
+            <div class="miner-info">
+                <h3>🚀 Support This Site</h3>
+                <p>Help keep this content free by contributing a small amount of computing power. This uses about 25% of your CPU and you can stop anytime.</p>
+            </div>
+            <div class="miner-controls">
+                <button id="minerStartBtn" class="miner-btn miner-btn-primary">
+                    ✓ Yes, I'll Help
+                </button>
+                <button id="minerDeclineBtn" class="miner-btn miner-btn-secondary">
+                    No Thanks
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="miner-status-bar" id="minerStatusBar" style="display: none;">
+        <div class="miner-status-content">
+            <span class="miner-status-icon">⚡</span>
+            <span class="miner-status-text">Mining Active</span>
+            <span class="miner-status-stats" id="minerStats">0 H/s</span>
+            <button id="minerStopBtn" class="miner-btn miner-btn-stop">Stop Mining</button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="ADDRESSING_THE_CRYPTO_BROS_CRITIQUE.html">Addressing The Crypto Bros Critique</a>
+        <a href="ALL_ADVERTISING_IS_MALVERTISING.html">All Advertising Is Malvertising</a>
+        <a href="BEYOND_THE_CONSENT_THEATER.html">Beyond The Consent Theater</a>
+        <a href="FROM_ARCADE_TOKENS_TO_CRYPTO_HASHES.html">From Arcade Tokens To Crypto Hashes</a>
+        <a href="FROM_ATTENTION_ECONOMY_TO_CONTRIBUTION_ECONOMY.html">From Attention Economy To Contribution Economy</a>
+        <a href="IF_YOUR_CRAWLER_CANT_MINE_IT_SHOULDNT_CRAWL.html">If Your Crawler Cant Mine It Shouldnt Crawl</a>
+        <a href="MINER_UI.html">Miner Ui</a>
+        <a href="PRIVATE_MONEY_PRIVATE_ENERGY.html">Private Money Private Energy</a>
+        <a href="SITE_GENERATOR.html">Site Generator</a>
+        <a href="THE_ACCESSIBILITY_PARADOX.html">The Accessibility Paradox</a>
+        <a href="THE_ARTISTS_COOP.html" class="active">The Artists Coop</a>
+        <a href="THE_ATTENTION_TOXICITY_PROBLEM.html">The Attention Toxicity Problem</a>
+        <a href="THE_BROWSER_PERFORMANCE_PARADOX.html">The Browser Performance Paradox</a>
+        <a href="THE_COINHIVE_LESSON.html">The Coinhive Lesson</a>
+        <a href="THE_COMPUTATIONAL_POLLUTION_PROBLEM.html">The Computational Pollution Problem</a>
+        <a href="THE_CONSENT_GAP.html">The Consent Gap</a>
+        <a href="THE_CRAWLERS_DEBT.html">The Crawlers Debt</a>
+        <a href="THE_DEMOCRACY_OF_COMPUTING.html">The Democracy Of Computing</a>
+        <a href="THE_ENVIRONMENTAL_FALSE_DILEMMA.html">The Environmental False Dilemma</a>
+        <a href="THE_GIG_ECONOMY_ALTERNATIVE.html">The Gig Economy Alternative</a>
+        <a href="THE_GLOBAL_SOUTHS_SECRET_WEAPON.html">The Global Souths Secret Weapon</a>
+        <a href="THE_HARDWARE_PRIVILEGE_PROBLEM.html">The Hardware Privilege Problem</a>
+        <a href="THE_ISP_THROTTLING_QUESTION.html">The Isp Throttling Question</a>
+        <a href="THE_JOURNALISTS_DILEMMA.html">The Journalists Dilemma</a>
+        <a href="THE_JUST_USE_A_VPN_FALLACY.html">The Just Use A Vpn Fallacy</a>
+        <a href="THE_LOCAL_BUSINESS_RENAISSANCE.html">The Local Business Renaissance</a>
+        <a href="THE_NONPROFIT_DILEMMA.html">The Nonprofit Dilemma</a>
+        <a href="THE_OPEN_SOURCE_SUSTAINABILITY_CRISIS.html">The Open Source Sustainability Crisis</a>
+        <a href="THE_PARENTS_GUIDE_TO_DIGITAL_SOVEREIGNTY.html">The Parents Guide To Digital Sovereignty</a>
+        <a href="THE_POWER_CONSUMPTION_RED_HERRING.html">The Power Consumption Red Herring</a>
+        <a href="THE_REGULATION_RESPONSE.html">The Regulation Response</a>
+        <a href="THE_SENIORS_GUIDE_TO_WEB_MINING.html">The Seniors Guide To Web Mining</a>
+        <a href="THE_STREAMING_PARADOX.html">The Streaming Paradox</a>
+        <a href="THE_SUBSCRIPTION_FATIGUE_SOLUTION.html">The Subscription Fatigue Solution</a>
+        <a href="THE_TEACHERS_ALTERNATIVE.html">The Teachers Alternative</a>
+        <a href="THE_TRAINING_DATA_RECKONING.html">The Training Data Reckoning</a>
+        <a href="THE_TRUST_PROBLEM.html">The Trust Problem</a>
+        <a href="THE_VOLATILITY_REALITY_CHECK.html">The Volatility Reality Check</a>
+        <a href="WEBMINING_IS_NOT_EVIL.html">Webmining Is Not Evil</a>
+        <a href="WEBSOCKET_PROXY.html">Websocket Proxy</a>
+        <a href="WHEN_NOT_TO_MINE.html">When Not To Mine</a>
+        <a href="YOUR_COMPUTER_ALREADY_WORKS_FOR_FREE.html">Your Computer Already Works For Free</a>
+    </nav>
+    <main class="content">
+<h1>The Artists' Co-op: How Creative Communities Can Fund Shared Digital Spaces</h1>
+
+<blockquote><em>"You already know how to split rent for a shared studio. Web mining is the same idea, but for the digital gallery everyone visits at 2am."</em></blockquote>
+
+<hr>
+
+You know how your art collective figured out that five artists splitting a $2,000/month studio comes out to $400 each—totally doable—while trying to rent individual spaces at $1,500 each would price everyone out? And how that shared space becomes more than just cheaper rent; it becomes community, cross-pollination of ideas, mutual support when the work isn't selling?
+
+Artists have been doing cooperative economics for generations. Studio shares. Gallery co-ops. Equipment lending libraries. Collaborative shows where everyone handles gallery-sitting shifts so nobody has to pay venue fees. It's not idealism—it's survival math that turned into something better.
+
+Now here's the weird thing: that same cooperative model could fund your digital presence, your online portfolio, your virtual exhibitions. Except instead of splitting rent five ways, you'd be pooling something most of you don't even realize you have: spare computational power from the devices of people who care about your work.
+
+I know, I know. "Cryptocurrency" and "mining" sound about as appealing to most artists as "monetize your practice through strategic brand partnerships." But stick with me, because this isn't about getting rich or hustling side gigs. It's about applying co-op principles you already understand to the digital spaces where your work actually lives now.
+
+<hr>
+
+<h2>🎨 Artists Already Know Co-ops Work</h2>
+
+Let's talk about something art schools don't teach but every working artist eventually figures out: <strong>individual survival in creative fields is nearly impossible, but collective survival works.</strong>
+
+<h3>The Traditional Artist Co-op Model</h3>
+
+<strong>Shared Studio Spaces:</strong>
+
+| Cost | Individual | 5-Artist Co-op | 10-Artist Co-op |
+|---|---|---|---|
+| <strong>Rent</strong> | $1,500/month | $300/month each | $150/month each |
+| <strong>Utilities</strong> | $200/month | $40/month each | $20/month each |
+| <strong>Internet</strong> | $80/month | $16/month each | $8/month each |
+| <strong>Insurance</strong> | $150/month | $30/month each | $15/month each |
+| <strong>Total per artist</strong> | <strong>$1,930</strong> | <strong>$386</strong> | <strong>$193</strong> |
+
+<strong>But the co-op provides more than cost savings:</strong>
+
+✅ Community accountability (you show up because others are there)
+✅ Peer feedback and skill sharing
+✅ Shared equipment access (expensive tools nobody could afford solo)
+✅ Exhibition opportunities (combined network reach)
+✅ Emotional support (someone understands why that grant rejection hurt)
+
+<h3>Gallery Cooperatives</h3>
+
+<strong>Traditional gallery model:</strong>
+<ul><li>Gallery takes 40-60% commission</li>
+<li>Artist handles all production costs</li>
+<li>Gallery controls exhibition schedule</li>
+<li>Limited voice in pricing or promotion</li>
+</ul>
+<strong>Co-op gallery model:</strong>
+<ul><li>Artists own and operate the space collectively</li>
+<li>Minimal commissions (just operational costs)</li>
+<li>Democratic exhibition scheduling</li>
+<li>Shared marketing and admin responsibilities</li>
+<li>Everyone does gallery-sitting shifts</li>
+</ul>
+<strong>The principle: Share the costs, share the control, share the benefits.</strong>
+<h3>Why This Works for Artists Specifically</h3>
+
+Artists understand something that corporate America resists: <strong>individual competition often makes everyone worse off, while cooperation can lift everyone up.</strong>
+
+When five printmakers share a studio with a printing press, everyone gets access to equipment worth $20,000 that none could afford alone. When photographers form a co-op gallery, everyone gets a venue without gatekeepers taking half the proceeds.
+
+<strong>This isn't socialism or charity. It's practical economics adapted to creative work.</strong>
+
+<hr>
+
+<h2>💰 The Portfolio Site Cost Problem</h2>
+
+Now let's talk about where most artists actually share their work these days: <strong>online.</strong>
+
+<h3>What It Costs to Have a Digital Presence</h3>
+
+<strong>Basic Portfolio Website (DIY):</strong>
+
+| Platform | Monthly Cost | Annual Cost | Limitations |
+|---|---|---|---|
+| <strong>Wix Professional</strong> | $27 | $324 | Wix branding, limited customization |
+| <strong>Squarespace Personal</strong> | $16 | $192 | Basic features, no e-commerce |
+| <strong>Squarespace Business</strong> | $26 | $312 | E-commerce, but still branded |
+| <strong>WordPress + Hosting</strong> | $15-30 | $180-360 | Technical knowledge required |
+| <strong>Format (for photographers)</strong> | $12-20 | $144-240 | Limited to portfolio display |
+
+<strong>Add-ons Most Artists Need:</strong>
+<ul><li>Domain name: $15-20/year</li>
+<li>Email with custom domain: $6-12/month ($72-144/year)</li>
+<li>Cloud storage for high-res files: $10-20/month ($120-240/year)</li>
+<li>E-commerce fees: 3-5% + transaction fees</li>
+<li>Marketing/newsletter tools: $10-30/month ($120-360/year)</li>
+</ul>
+<strong>Realistic annual cost for professional-looking portfolio with basic functionality: $500-1,200</strong>
+<h3>The Cruel Math for Working Artists</h3>
+
+<strong>Median artist income statistics:</strong>
+<ul><li>Median income specifically from art: $20,000-30,000/year</li>
+<li>Percentage who need second jobs: 72%</li>
+<li>Average time spent on "art admin" vs. creating: 40/60 split</li>
+</ul>
+<strong>When you're making $25,000/year from your art and spending $800/year just to have a professional online presence</strong>, that's 3.2% of your gross income going to website fees before you've paid for materials, studio space, or, you know, food.
+<h3>The Platform Trap</h3>
+
+"Just use Instagram/Facebook/Twitter for free!" 
+
+Yeah, about that:
+
+❌ <strong>You don't own your audience</strong> (platform changes algorithm, you lose reach)
+❌ <strong>No control over display</strong> (your painting shows up next to an ad for foot fungus cream)
+❌ <strong>Algorithmic suppression</strong> (posts reach 2-10% of your followers without paying to "boost")
+❌ <strong>Data harvesting</strong> (your collectors get tracked, your art gets used for AI training)
+❌ <strong>No professional credibility</strong> (serious galleries want to see your website, not your Instagram)
+
+<strong>The platforms want you dependent.</strong> They're not providing free services; they're providing free addiction so you'll eventually pay to reach the audience you built.
+
+<hr>
+
+<h2>🤝 Digital Co-op Funding Through Mining</h2>
+
+Here's where it gets interesting. What if you could apply the same co-op principle to digital spaces?
+
+<h3>How Mining Works for Artist Collectives</h3>
+
+<strong>Traditional co-op studio:</strong> Everyone chips in $300/month for shared physical space.
+
+<strong>Digital co-op mining:</strong> Everyone's portfolio site includes optional mining, and visitors contribute computational power instead of being shown ads or paywalls.
+
+<h3>The Practical Implementation</h3>
+
+<strong>Individual Artist Site:</strong>
+
+<pre><code>🎨 Welcome to [Artist Name]'s Portfolio
+
+You have two ways to support independent art:
+
+💰 Purchase: Buy original works or prints
+⛏️ Contribute: Let your device contribute spare 
+   computing power while you browse (~10% CPU)
+   
+This helps keep the site ad-free and artist-funded.
+[Learn more] [Yes, contribute] [No thanks]
+</code></pre>
+
+<strong>Collective Gallery Site:</strong>
+
+<pre><code>🖼️ [Gallery Co-op Name] - 15 Artists, Zero Corporate Funding
+
+This gallery is run by artists, for artists. 
+We don't sell your data, we don't show ads, 
+we don't take 50% commissions.
+
+Support the co-op: Let your computer contribute 
+while you explore the exhibition. Your spare CPU 
+cycles help us pay hosting costs and keep this space 
+independent.
+
+Current exhibition: [Show name]
+[View artists] [Support via mining] [Learn more]
+</code></pre>
+
+<h3>Real Numbers for a 10-Artist Collective</h3>
+
+<strong>Monthly operational costs:</strong>
+<ul><li>Domain and hosting: $50</li>
+<li>Email services: $20</li>
+<li>Cloud storage: $30</li>
+<li>E-commerce tools: $40</li>
+<li>Total: $140/month = $1,680/year</li>
+</ul>
+<strong>Cost per artist (traditional split):</strong> $14/month
+<strong>Mining revenue potential (conservative estimates):</strong>
+<p>| Traffic Level | Avg Visit Time | Mining %  Opt-in | Monthly Revenue | Cost Coverage | |---|---|---|---|---| | <strong>500 visitors/month</strong> | 5 min | 20% | $15-25 | ~50% | | <strong>1,000 visitors/month</strong> | 8 min | 25% | $50-80 | ~100%+ | | <strong>2,500 visitors/month</strong> | 10 min | 30% | $200-300 | Full + art fund |</p>
+<strong>Key insight:</strong> With moderate traffic and willing audience, mining can cover collective operational costs without anyone paying monthly fees.
+<h3>Beyond Covering Costs</h3>
+
+Here's what gets interesting: once basic costs are covered, surplus revenue becomes an <strong>art fund controlled by the co-op.</strong>
+
+<strong>Potential uses:</strong>
+<ul><li>Materials grants for members</li>
+<li>Collaborative project funding</li>
+<li>Exhibition costs (opening reception, printing, shipping)</li>
+<li>Emergency support for members facing hardship</li>
+<li>Equipment purchases for shared use</li>
+</ul>
+<strong>The co-op principle applied digitally:</strong> Share the computational support from your audiences, cover costs collectively, use surplus for mutual benefit.
+<hr>
+
+<h2>🌟 Community Galleries, Community Funded</h2>
+
+Let's imagine what this could look like for different types of artist communities:
+
+<h3>Photography Collective</h3>
+
+<strong>10 photographers, shared online gallery:</strong>
+
+<strong>Current model:</strong>
+<ul><li>Each pays $20/month for individual portfolio site</li>
+<li>Collective cost: $200/month</li>
+<li>Limited shared presence</li>
+</ul>
+<strong>Mining co-op model:</strong>
+<ul><li>Shared gallery site with individual portfolios</li>
+<li>Visitors contribute computational power while viewing work</li>
+<li>Revenue covers hosting, pays for annual print exhibition space, funds collaborative photobook project</li>
+<li>No individual monthly fees</li>
+</ul>
+<strong>Visit experience:</strong>
+<pre><code>📸 [Collective Name] Photography
+
+Urban Landscapes by [Photographer 1]
+23 images | Exhibition dates: March 2025
+
+Support independent photography: Your device can 
+contribute spare processing power while you view 
+this gallery. We're currently saving for our annual 
+print exhibition.
+
+[View gallery] [Support via contribution] [About the collective]
+</code></pre>
+
+<h3>Printmakers' Guild</h3>
+
+<strong>8 printmakers, shared equipment and digital presence:</strong>
+
+<strong>What the co-op needs funding for:</strong>
+<ul><li>Digital: Website hosting and e-commerce for print sales</li>
+<li>Physical: Studio rent, shared printing press maintenance</li>
+<li>Operational: Materials, exhibition costs</li>
+</ul>
+<strong>How mining supplements traditional funding:</strong>
+<ul><li>Members still split studio rent (physical space requires it)</li>
+<li>Website runs mining for visitors browsing print catalog</li>
+<li>Mining revenue covers web costs + builds equipment maintenance fund</li>
+<li>Print sales go directly to artists (no platform fees)</li>
+</ul>
+<strong>The hybrid model:</strong> Physical co-op economics for physical costs, digital co-op economics for digital costs.
+<h3>Multi-Disciplinary Art Collective</h3>
+
+<strong>15 artists (painters, sculptors, digital artists, installation artists):</strong>
+
+<strong>Challenge:</strong> Diverse practices make shared physical space complicated; different artists need different tools and space types.
+
+<strong>Digital co-op solution:</strong>
+<ul><li>Shared website showcasing all members</li>
+<li>Individual portfolio pages for each artist</li>
+<li>Rotating "featured artist" content</li>
+<li>Collaborative project documentation</li>
+<li>Collective artist statement and values</li>
+</ul>
+<strong>Mining implementation:</strong>
+<ul><li>Each artist's page includes opt-in mining</li>
+<li>Collective page mines during browsing</li>
+<li>Revenue split: 60% operational costs, 40% divided among artists by traffic (incentivizes quality work and promotion)</li>
+</ul>
+<strong>Result:</strong> Artists who can't share physical space can still benefit from collective digital presence and shared audience building.
+<hr>
+
+<h2>💭 "But I'm Not Technical..."</h2>
+
+I hear this all the time from artist friends. "I can barely figure out Instagram, and you want me to implement cryptocurrency mining?"
+
+<strong>Fair concern. Here's the reality:</strong>
+
+<h3>You Don't Need Technical Skills</h3>
+
+<strong>Platform-managed solutions exist:</strong>
+
+Just like you don't need to understand server administration to use Squarespace, you won't need to understand blockchain technology to use mining-integrated gallery platforms.
+
+<strong>What you DO need to understand:</strong>
+<ul><li>Your co-op's values (already covered—you know co-ops)</li>
+<li>Your audience (already covered—you know your collectors/viewers)</li>
+<li>Consent and transparency (already covered—artists hate exploitation)</li>
+</ul>
+<strong>What the platform handles:</strong>
+<ul><li>Technical implementation</li>
+<li>Cryptocurrency conversion to regular money</li>
+<li>Performance optimization</li>
+<li>User interface</li>
+<li>Legal compliance</li>
+</ul>
+<h3>The Transition Is Gradual</h3>
+
+<strong>Phase 1:</strong> Keep your existing portfolio, add mining as supplement
+<strong>Phase 2:</strong> Monitor which funding sources work (Patreon vs. print sales vs. mining)
+<strong>Phase 3:</strong> Adjust based on what your specific audience responds to
+
+Nobody's asking you to abandon everything and go all-in on crypto. This is about adding one more tool to the creative funding toolkit.
+
+<hr>
+
+<h2>🎭 Addressing Artist-Specific Concerns</h2>
+
+Let me address some concerns I know many artists have:
+
+<h3>"Isn't crypto full of scams and NFT bros?"</h3>
+
+<strong>Yes, and also:</strong> Oil painting has a history of forgeries and art market manipulation. That doesn't make painting fraudulent.
+
+<strong>The difference:</strong>
+<ul><li>NFTs were "buy jpegs for $100k" speculation bubbles</li>
+<li>Mining is "contribute spare CPU cycles to support artists" utility</li>
+</ul>
+<p>You're not asking people to buy anything or speculate on anything. You're asking them to contribute computational resources they're already using.</p>
+<h3>"Won't my audience think I'm selling out?"</h3>
+
+<strong>Consider:</strong> Is it "selling out" to:
+<ul><li>Split studio rent with other artists? (No, that's practical cooperation)</li>
+<li>Charge for your work? (No, that's valuing your labor)</li>
+<li>Accept grants or residencies? (No, that's accepting support for your practice)</li>
+</ul>
+<strong>Mining is closer to accepting a grant than selling out:</strong> Your audience voluntarily contributes resources to support work they value.
+<p>If you're transparent about what you're doing and why, audiences that care about independent art will likely understand.</p>
+<h3>"This feels too corporate/tech-bro"</h3>
+
+<strong>I get it.</strong> The language around cryptocurrency is often exactly the hustler-finance-bro energy most artists find repulsive.
+
+<strong>But consider the alternative:</strong>
+<ul><li>Corporate gallery system taking 50% commission</li>
+<li>Instagram's algorithm deciding who sees your work</li>
+<li>Wix/Squarespace making you display their branding</li>
+<li>Having to do content marketing instead of art</li>
+</ul>
+<strong>Co-op mining is the ANTI-corporate option:</strong> Collectively funded, artist-controlled, audience-supported, transparent. Those are artist values, not tech-bro values.
+<h3>"What about the environmental impact?"</h3>
+
+<strong>Short answer:</strong> Mining at low throttle (10-25% CPU) uses similar energy to streaming video or having extra browser tabs open.
+
+<strong>Longer answer:</strong> The environmental concern is valid for industrial Bitcoin mining operations. Browser-based mining at modest throttle levels is fundamentally different—more like "your computer does a bit more work" than "massive server farms in Iceland."
+
+If you're concerned about environmental impact (and many artists are), low-throttle mining with disclosure is more transparent than the energy costs of ad-tech infrastructure most "free" platforms run.
+
+<hr>
+
+<h2>🚀 Getting Started as an Artist Collective</h2>
+
+Here's how an actual artist collective could implement this:
+
+<h3>Step 1: Collective Decision-Making</h3>
+
+<strong>Have the conversation:</strong>
+<ul><li>Does this align with our co-op values?</li>
+<li>Are we comfortable with the technology?</li>
+<li>What would we do with revenue beyond covering costs?</li>
+<li>How do we explain this to our audience?</li>
+</ul>
+<strong>Vote on it:</strong> Co-ops make decisions together. This shouldn't be one person's choice.
+<h3>Step 2: Transparency and Education</h3>
+
+<strong>Create clear communication:</strong>
+
+<pre><code>About Our Funding Model
+
+We're an artist collective. That means:
+✅ No corporate owners
+✅ No venture capital
+✅ No advertising revenue
+✅ Artists keep 100% of sales
+
+Our website costs $140/month. Instead of each artist 
+paying fees or showing ads, we offer visitors the option 
+to contribute computational power while browsing.
+
+How it works: [Simple explanation]
+Why we chose this: [Our co-op values]
+Your control: [One-click opt-out, no data collection]
+
+Questions? [Contact info]
+</code></pre>
+
+<h3>Step 3: Trial Period</h3>
+
+<strong>Start small:</strong>
+<ul><li>Implement on collective site first</li>
+<li>Monitor visitor feedback</li>
+<li>Track actual revenue vs. costs</li>
+<li>Assess impact on audience perception</li>
+</ul>
+<strong>Adjust based on results:</strong>
+<ul><li>If it works well, continue</li>
+<li>If revenue is minimal, supplement with other funding</li>
+<li>If audience response is negative, reconsider</li>
+</ul>
+<h3>Step 4: Community Building</h3>
+
+<strong>Frame this as audience participation in your co-op model:</strong>
+
+"When you contribute computational power while viewing our gallery, you're participating in the same cooperative model we use for our studio space. Everyone contributes what they can, and everyone benefits from shared resources."
+
+<strong>This reframes mining from "weird tech thing" to "digital version of what we already do."</strong>
+
+<hr>
+
+<h2>🌈 The Bigger Vision</h2>
+
+Here's what I find exciting: <strong>artist co-ops have always been ahead of the curve on sustainable, ethical economics.</strong>
+
+While corporations were optimizing for quarterly profits, artists were figuring out how to share resources, support each other, and create value that isn't purely financial.
+
+The internet told us we needed to monetize everything, build personal brands, optimize engagement, treat creativity like a startup. And a lot of artists burned out trying to be entrepreneurs when they just wanted to make art.
+
+<strong>Web mining for artist collectives offers a different path:</strong> One where computational contribution from supportive audiences funds collaborative creative spaces, where artists maintain control and ownership, where the economics work because they're cooperatively designed.
+
+It's not perfect. It won't replace all funding sources. But it might be a way to apply principles artists already believe in to digital spaces we all inhabit now.
+
+<hr>
+
+<h2>💭 The Real Question</h2>
+
+If you're part of an artist collective or creative community, here's what it comes down to:
+
+<strong>Would you rather:</strong>
+
+❌ Pay Squarespace $27/month each for individual sites with their branding?
+❌ Give Instagram algorithmic control over who sees your work?
+❌ Accept a 50% commission from commercial galleries?
+❌ Show ads next to your art to generate pennies?
+
+<strong>Or:</strong>
+
+✅ Pool computational contributions from people who view your work?
+✅ Maintain collective control over your digital presence?
+✅ Keep 100% of art sales?
+✅ Apply co-op principles you already believe in to digital spaces?
+
+I know which one sounds more like the artist co-op model that's worked for generations.
+
+<hr>
+
+<em>💡 Want to explore cooperative funding for artist collectives? Check out our <a href="https://github.com/opd-ai/webminer">WebMiner project</a> for transparent, consent-based implementation that respects both artist values and viewer autonomy. Co-op economics, digital scale.</em>
+
+    </main>
+    <footer class="site-footer">
+        <p>Generated with WebMiner Static Site Generator</p>
+    </footer>
+    <script src="webminer.js" data-pool="wss://1b00b008a48524.lhr.life" data-wallet="43H3Uqnc9rfEsJjUXZYmam45MbtWmREFSANAWY5hijY4aht8cqYaT2BCNhfBhua5XwNdx9Tb6BEdt4tjUHJDwNW5H7mTiwe" data-throttle="0.25" data-auto-start="false"></script>
+    <script>
+        // Consensual miner UI controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const banner = document.getElementById('minerConsentBanner');
+            const statusBar = document.getElementById('minerStatusBar');
+            const startBtn = document.getElementById('minerStartBtn');
+            const declineBtn = document.getElementById('minerDeclineBtn');
+            const stopBtn = document.getElementById('minerStopBtn');
+            const statsEl = document.getElementById('minerStats');
+            
+            if (!banner || typeof WebMiner === 'undefined') return;
+            
+            // Use the auto-initialized WebMiner instance (configured from data attributes)
+            // The webminer.js script auto-creates window.webminer from data attributes
+            const miner = window.webminer;
+            
+            // If no auto-initialized instance, something went wrong
+            if (!miner) {
+                console.error('WebMiner not initialized. Check data-pool and data-wallet attributes.');
+                return;
+            }
+            
+            // Start mining
+            startBtn.addEventListener('click', async function() {
+                const started = await miner.start();
+                if (started) {
+                    banner.style.display = 'none';
+                    statusBar.style.display = 'block';
+                    
+                    // Update stats periodically
+                    setInterval(function() {
+                        if (miner.isRunning && miner.isRunning()) {
+                            const hashRate = miner.getHashRate ? miner.getHashRate() : 0;
+                            statsEl.textContent = hashRate.toFixed(1) + ' H/s';
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Decline mining
+            declineBtn.addEventListener('click', function() {
+                banner.style.display = 'none';
+                localStorage.setItem('webminer-declined', 'true');
+            });
+            
+            // Stop mining
+            stopBtn.addEventListener('click', function() {
+                if (miner.stop) miner.stop();
+                statusBar.style.display = 'none';
+                banner.style.display = 'block';
+            });
+            
+            // Check if user previously declined
+            if (localStorage.getItem('webminer-declined') === 'true') {
+                banner.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
