@@ -54,6 +54,8 @@ And here's the kicker: **you never see a penny of the value your device creates.
 
 Here's where things get interesting: solar panels are everywhere now. Your neighbor with the panels, your coworker who won't stop talking about their "energy independence," that house down the street that somehow has a lower electric bill than everyone else despite running the AC all summer. And this creates an opportunity most people haven't connected yet.
 
+*(Now, I know what many of you are thinking: "Solar panels? I'm a renter" or "Solar panels? That's a $30,000 investment I can't make right now." Don't worry—we'll get to alternatives that work for everyone. But bear with me as I explain the big picture first, because understanding the solar connection helps explain why web mining makes sense for the rest of us.)*
+
 ### The Solar Panel Shift
 
 **Here's what's cool about this trend:**
@@ -69,7 +71,7 @@ I can already hear the objection: *"Oh great, here comes the crypto pitch."* But
 
 Here's the simple reality: **cryptocurrency mining is just computers doing math.** And if you've got excess solar power during the day, running some calculations while you work could actually make more financial sense than selling that power back to the grid at wholesale rates.
 
-**Consider this scenario:**
+**Consider this scenario (for those fortunate enough to have solar installations):**
 
 ```
 🏠 Your Situation: Solar panels + home computer
@@ -83,7 +85,7 @@ Here's the simple reality: **cryptocurrency mining is just computers doing math.
 
 ## 💻 Web Mining: The Gentle Alternative
 
-If you don't have solar panels (most people don't), there's still an interesting middle ground that doesn't require any hardware investment: **ethical web mining.**
+If you don't have solar panels (and honestly, most of us don't—whether due to renting, cost, building restrictions, or just living somewhere that doesn't get enough sun), there's still an interesting middle ground that doesn't require any hardware investment: **ethical web mining.**
 
 ### How It Actually Works
 
@@ -130,8 +132,8 @@ You get "free" services in return, but at the cost of privacy, performance, and 
 
 ### Alternative Future: Transparent Participation
 
-With ethical mining and renewable energy, the equation changes:
-- ⚡ You generate your own power (if practical for your situation)
+With ethical mining and renewable energy (or even just grid electricity used transparently), the equation changes:
+- ⚡ You generate your own power (if practical for your situation) or use grid power openly
 - 💻 Your computer works transparently, with your permission
 - 💰 You receive direct compensation for computational contribution  
 - 🎯 You support content creators and services you actually value
@@ -195,9 +197,9 @@ If this sounds interesting but overwhelming, here's how to think about it practi
 - Decide if the trade-off feels fair to you
 
 **Questions to ask yourself:**
-- How much does this actually impact my device?
+- How much does this actually impact my device? (Is it making my laptop sound like a small aircraft preparing for takeoff?)
 - Do I prefer this to seeing ads or sharing data?
-- What would I do with $3-10 extra per month?
+- What would I do with $3-10 extra per month? (Probably buy coffee, but still—it's coffee I didn't have before.)
 
 ### Phase 2: Energy Awareness (Minimal Investment)
 
@@ -238,7 +240,7 @@ This isn't about investing in speculative assets or believing in revolutionary t
 
 ### "Won't This Destroy My Computer?"
 
-**Also fair.** Some early mining software was poorly designed and could damage hardware.
+**Also fair.** Some early mining software was poorly designed and could damage hardware. (Think "my laptop became a space heater" levels of poor design.)
 
 **Modern ethical mining systems:**
 - Limit CPU usage to safe levels (typically 15-50%)
